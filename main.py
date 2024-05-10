@@ -3,9 +3,10 @@ import secrets
 
 
 class FiestelStructure:
+    """Class implementing a Fiestel cipher structure."""
+
     def __init__(self, block_size, num_rounds, key_length_bytes, r):
-        """
-        Initializes a FiestelStructure object.
+        """Initialize the Fiestel cipher structure.
 
         Args:
             block_size (int): The size of each block in bits.
@@ -22,8 +23,7 @@ class FiestelStructure:
         self.r = r
 
     def chaotic_map(self, x):
-        """
-        Calculates the next value in a chaotic map sequence.
+        """Compute the next value in a chaotic map sequence.
 
         Args:
             x (float): The current value in the sequence.
@@ -34,8 +34,7 @@ class FiestelStructure:
         return self.r * x * (1 - x)
 
     def generate_key(self):
-        """
-        Generates a random key.
+        """Generate a random key.
 
         Returns:
             numpy.ndarray: An array representing the generated key.
@@ -45,8 +44,7 @@ class FiestelStructure:
         return key_bits
 
     def feistel_round(self, L, R, round_key):
-        """
-        Performs one round of the Feistel cipher.
+        """Perform one round of the Feistel cipher.
 
         Args:
             L (numpy.ndarray): The left half of the block.
@@ -63,8 +61,7 @@ class FiestelStructure:
         return R, F
 
     def encrypt_block(self, block, key):
-        """
-        Encrypts a single block of data.
+        """Encrypt a single block of data.
 
         Args:
             block (numpy.ndarray): The block of data to be encrypted.
@@ -81,8 +78,7 @@ class FiestelStructure:
         return encrypted_block
 
     def encrypt_data(self, data, key):
-        """
-        Encrypts a sequence of data blocks.
+        """Encrypt a sequence of data blocks.
 
         Args:
             data (numpy.ndarray): The data to be encrypted.
@@ -102,8 +98,7 @@ class FiestelStructure:
         return np.concatenate(encrypted_data)
 
     def decrypt_block(self, block, key):
-        """
-        Decrypts a single block of data.
+        """Decrypt a single block of data.
 
         Args:
             block (numpy.ndarray): The block of data to be decrypted.
@@ -121,8 +116,7 @@ class FiestelStructure:
         return decrypted_block
 
     def decrypt_data(self, encrypted_data, key):
-        """
-        Decrypts a sequence of encrypted data blocks.
+        """Decrypt a sequence of encrypted data blocks.
 
         Args:
             encrypted_data (numpy.ndarray): The encrypted data.
@@ -139,8 +133,7 @@ class FiestelStructure:
         return np.concatenate(decrypted_data)
 
     def confusion_score(self, plaintext, ciphertext):
-        """
-        Calculates the confusion score between plaintext and ciphertext.
+        """Calculate the confusion score between plaintext and ciphertext.
 
         Args:
             plaintext (numpy.ndarray): The original plaintext data.
@@ -158,8 +151,7 @@ class FiestelStructure:
         return confusion
 
     def diffusion_score(self, plaintext, ciphertext):
-        """
-        Calculates the diffusion score between plaintext and ciphertext.
+        """Calculate the diffusion score between plaintext and ciphertext.
 
         Args:
             plaintext (numpy.ndarray): The original plaintext data.
@@ -173,8 +165,7 @@ class FiestelStructure:
         return hamming_dist
 
     def string_to_bits(self, string):
-        """
-        Converts a string to a binary array.
+        """Convert a string to a binary array.
 
         Args:
             string (str): The input string.
@@ -185,8 +176,7 @@ class FiestelStructure:
         return np.array([int(i) for i in "".join(format(ord(i), "08b") for i in string)])
 
     def bits_to_string(self, bits):
-        """
-        Converts a binary array to a string.
+        """Convert a binary array to a string.
 
         Args:
             bits (numpy.ndarray): The input binary array.
