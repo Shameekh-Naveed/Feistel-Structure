@@ -1,203 +1,1243 @@
-Cryptography, or cryptology (from Ancient Greek: κρυπτός, romanized: kryptós "hidden, secret"; and γράφειν graphein, "to write", or -λογία -logia, "study", respectively[1]), is the practice and study of techniques for secure communication in the presence of adversarial behavior.[2] More generally, cryptography is about constructing and analyzing protocols that prevent third parties or the public from reading private messages.[3] Modern cryptography exists at the intersection of the disciplines of mathematics, computer science, information security, electrical engineering, digital signal processing, physics, and others.[4] Core concepts related to information security (data confidentiality, data integrity, authentication, and non-repudiation) are also central to cryptography.[5] Practical applications of cryptography include electronic commerce, chip-based payment cards, digital currencies, computer passwords, and military communications.
-
-Cryptography prior to the modern age was effectively synonymous with encryption, converting readable information (plaintext) to unintelligible nonsense text (ciphertext), which can only be read by reversing the process (decryption). The sender of an encrypted (coded) message shares the decryption (decoding) technique only with the intended recipients to preclude access from adversaries. The cryptography literature often uses the names "Alice" (or "A") for the sender, "Bob" (or "B") for the intended recipient, and "Eve" (or "E") for the eavesdropping adversary.[6] Since the development of rotor cipher machines in World War I and the advent of computers in World War II, cryptography methods have become increasingly complex and their applications more varied.
-
-Modern cryptography is heavily based on mathematical theory and computer science practice; cryptographic algorithms are designed around computational hardness assumptions, making such algorithms hard to break in actual practice by any adversary. While it is theoretically possible to break into a well-designed system, it is infeasible in actual practice to do so. Such schemes, if well designed, are therefore termed "computationally secure". Theoretical advances (e.g., improvements in integer factorization algorithms) and faster computing technology require these designs to be continually reevaluated and, if necessary, adapted. Information-theoretically secure schemes that provably cannot be broken even with unlimited computing power, such as the one-time pad, are much more difficult to use in practice than the best theoretically breakable but computationally secure schemes.
-
-The growth of cryptographic technology has raised a number of legal issues in the Information Age. Cryptography's potential for use as a tool for espionage and sedition has led many governments to classify it as a weapon and to limit or even prohibit its use and export.[7] In some jurisdictions where the use of cryptography is legal, laws permit investigators to compel the disclosure of encryption keys for documents relevant to an investigation.[8][9] Cryptography also plays a major role in digital rights management and copyright infringement disputes with regard to digital media.[10]
+Lorenz cipher machine, used in World War II to encrypt
+communications of the German High Command
+Cryptography
+Cryptography, or cryptology (from Ancient
+Greek: κρυπτός, romanized: kryptós "hidden,
+secret"; and γράφειν graphein, "to write", or
+-λογία -logia, "study", respectively[1]), is the
+practice and study of techniques for secure
+communication in the presence of adversarial
+behavior.[2] More generally, cryptography is about
+constructing and analyzing protocols that prevent
+third parties or the public from reading private
+messages.[3] Modern cryptography exists at the
+intersection of the disciplines of mathematics,
+computer science, information security, electrical
+engineering, digital signal processing, physics,
+and others.[4] Core concepts related to information
+security (data confidentiality, data integrity,
+authentication, and non-repudiation) are also
+central to cryptography.[5] Practical applications of cryptography include electronic commerce, chip-based
+payment cards, digital currencies, computer passwords, and military communications.
+Cryptography prior to the modern age was effectively synonymous with encryption, converting readable
+information (plaintext) to unintelligible nonsense text (ciphertext), which can only be read by reversing the
+process (decryption). The sender of an encrypted (coded) message shares the decryption (decoding)
+technique only with the intended recipients to preclude access from adversaries. The cryptography literature
+often uses the names "Alice" (or "A") for the sender, "Bob" (or "B") for the intended recipient, and "Eve"
+(or "E") for the eavesdropping adversary.[6] Since the development of rotor cipher machines in World War I
+and the advent of computers in World War II, cryptography methods have become increasingly complex
+and their applications more varied.
+Modern cryptography is heavily based on mathematical theory and computer science practice;
+cryptographic algorithms are designed around computational hardness assumptions, making such algorithms
+hard to break in actual practice by any adversary. While it is theoretically possible to break into a well-
+designed system, it is infeasible in actual practice to do so. Such schemes, if well designed, are therefore
+termed "computationally secure". Theoretical advances (e.g., improvements in integer factorization
+algorithms) and faster computing technology require these designs to be continually reevaluated and, if
+necessary, adapted. Information-theoretically secure schemes that provably cannot be broken even with
+unlimited computing power, such as the one-time pad, are much more difficult to use in practice than the
+best theoretically breakable but computationally secure schemes.
+The growth of cryptographic technology has raised a number of legal issues in the Information Age.
+Cryptography's potential for use as a tool for espionage and sedition has led many governments to classify it
+as a weapon and to limit or even prohibit its use and export.[7] In some jurisdictions where the use of
+Alphabet shift ciphers are believed to
+have been used by Julius Caesar
+over 2,000 years ago.[6] This is an
+example with k = 3. In other words,
+the letters in the alphabet are shifted
+three in one direction to encrypt and
+three in the other direction to
+decrypt.
+cryptography is legal, laws permit investigators to compel the disclosure of encryption keys for documents
+relevant to an investigation.[8][9] Cryptography also plays a major role in digital rights management and
+copyright infringement disputes with regard to digital media.[10]
+The first use of the term "cryptograph" (as opposed to
+"cryptogram") dates back to the 19th century—originating from
+"The Gold-Bug", a story by Edgar Allan Poe.[11][12]
+Until modern times, cryptography referred almost exclusively to
+"encryption", which is the process of converting ordinary
+information (called plaintext) into an unintelligible form (called
+ciphertext).[13] Decryption is the reverse, in other words, moving
+from the unintelligible ciphertext back to plaintext. A cipher (or
+cypher) is a pair of algorithms that carry out the encryption and the
+reversing decryption. The detailed operation of a cipher is
+controlled both by the algorithm and, in each instance, by a "key".
+The key is a secret (ideally known only to the communicants),
+usually a string of characters (ideally short so it can be remembered
+by the user), which is needed to decrypt the ciphertext. In formal mathematical terms, a "cryptosystem" is
+the ordered list of elements of finite possible plaintexts, finite possible cyphertexts, finite possible keys, and
+the encryption and decryption algorithms that correspond to each key. Keys are important both formally and
+in actual practice, as ciphers without variable keys can be trivially broken with only the knowledge of the
+cipher used and are therefore useless (or even counter-productive) for most purposes. Historically, ciphers
+were often used directly for encryption or decryption without additional procedures such as authentication
+or integrity checks.
+There are two main types of cryptosystems: symmetric and asymmetric. In symmetric systems, the only
+ones known until the 1970s, the same secret key encrypts and decrypts a message. Data manipulation in
+symmetric systems is significantly faster than in asymmetric systems. Asymmetric systems use a "public
+key" to encrypt a message and a related "private key" to decrypt it. The advantage of asymmetric systems is
+that the public key can be freely published, allowing parties to establish secure communication without
+having a shared secret key. In practice, asymmetric systems are used to first exchange a secret key, and then
+secure communication proceeds via a more efficient symmetric system using that key.[14] Examples of
+asymmetric systems include Diffie–Hellman key exchange, RSA (Rivest–Shamir–Adleman), ECC (Elliptic
+Curve Cryptography), and Post-quantum cryptography. Secure symmetric algorithms include the commonly
+used AES (Advanced Encryption Standard) which replaced the older DES (Data Encryption Standard).[15]
+Insecure symmetric algorithms include children's language tangling schemes such as Pig Latin or other cant,
+and all historical cryptographic schemes, however seriously intended, prior to the invention of the one-time
+pad early in the 20th century.
+In colloquial use, the term "code" is often used to mean any method of encryption or concealment of
+meaning. However, in cryptography, code has a more specific meaning: the replacement of a unit of
+plaintext (i.e., a meaningful word or phrase) with a code word (for example, "wallaby" replaces "attack at
+dawn"). A cypher, in contrast, is a scheme for changing or substituting an element below such a level (a
+letter, a syllable, or a pair of letters, etc.) to produce a cyphertext.
 Terminology
-diagram showing shift three alphabetic cypher D becomes A and E becomes B
-Alphabet shift ciphers are believed to have been used by Julius Caesar over 2,000 years ago.[6] This is an example with k = 3. In other words, the letters in the alphabet are shifted three in one direction to encrypt and three in the other direction to decrypt.
-
-The first use of the term "cryptograph" (as opposed to "cryptogram") dates back to the 19th century—originating from "The Gold-Bug", a story by Edgar Allan Poe.[11][12]
-
-Until modern times, cryptography referred almost exclusively to "encryption", which is the process of converting ordinary information (called plaintext) into an unintelligible form (called ciphertext).[13] Decryption is the reverse, in other words, moving from the unintelligible ciphertext back to plaintext. A cipher (or cypher) is a pair of algorithms that carry out the encryption and the reversing decryption. The detailed operation of a cipher is controlled both by the algorithm and, in each instance, by a "key". The key is a secret (ideally known only to the communicants), usually a string of characters (ideally short so it can be remembered by the user), which is needed to decrypt the ciphertext. In formal mathematical terms, a "cryptosystem" is the ordered list of elements of finite possible plaintexts, finite possible cyphertexts, finite possible keys, and the encryption and decryption algorithms that correspond to each key. Keys are important both formally and in actual practice, as ciphers without variable keys can be trivially broken with only the knowledge of the cipher used and are therefore useless (or even counter-productive) for most purposes. Historically, ciphers were often used directly for encryption or decryption without additional procedures such as authentication or integrity checks.
-
-There are two main types of cryptosystems: symmetric and asymmetric. In symmetric systems, the only ones known until the 1970s, the same secret key encrypts and decrypts a message. Data manipulation in symmetric systems is significantly faster than in asymmetric systems. Asymmetric systems use a "public key" to encrypt a message and a related "private key" to decrypt it. The advantage of asymmetric systems is that the public key can be freely published, allowing parties to establish secure communication without having a shared secret key. In practice, asymmetric systems are used to first exchange a secret key, and then secure communication proceeds via a more efficient symmetric system using that key.[14] Examples of asymmetric systems include Diffie–Hellman key exchange, RSA (Rivest–Shamir–Adleman), ECC (Elliptic Curve Cryptography), and Post-quantum cryptography. Secure symmetric algorithms include the commonly used AES (Advanced Encryption Standard) which replaced the older DES (Data Encryption Standard).[15] Insecure symmetric algorithms include children's language tangling schemes such as Pig Latin or other cant, and all historical cryptographic schemes, however seriously intended, prior to the invention of the one-time pad early in the 20th century.
-
-In colloquial use, the term "code" is often used to mean any method of encryption or concealment of meaning. However, in cryptography, code has a more specific meaning: the replacement of a unit of plaintext (i.e., a meaningful word or phrase) with a code word (for example, "wallaby" replaces "attack at dawn"). A cypher, in contrast, is a scheme for changing or substituting an element below such a level (a letter, a syllable, or a pair of letters, etc.) to produce a cyphertext.
-
-Cryptanalysis is the term used for the study of methods for obtaining the meaning of encrypted information without access to the key normally required to do so; i.e., it is the study of how to "crack" encryption algorithms or their implementations.
-
-Some use the terms "cryptography" and "cryptology" interchangeably in English,[16] while others (including US military practice generally) use "cryptography" to refer specifically to the use and practice of cryptographic techniques and "cryptology" to refer to the combined study of cryptography and cryptanalysis.[17][18] English is more flexible than several other languages in which "cryptology" (done by cryptologists) is always used in the second sense above. RFC 2828 advises that steganography is sometimes included in cryptology.[19]
-
-The study of characteristics of languages that have some application in cryptography or cryptology (e.g. frequency data, letter combinations, universal patterns, etc.) is called cryptolinguistics. Cryptolingusitics is especially used in military intelligence applications for deciphering foreign communications.[20][21]
+Reconstructed ancient Greek
+scytale, an early cipher device
+Cryptanalysis is the term used for the study of methods for obtaining the meaning of encrypted information
+without access to the key normally required to do so; i.e., it is the study of how to "crack" encryption
+algorithms or their implementations.
+Some use the terms "cryptography" and "cryptology" interchangeably in English,[16] while others
+(including US military practice generally) use "cryptography" to refer specifically to the use and practice of
+cryptographic techniques and "cryptology" to refer to the combined study of cryptography and
+cryptanalysis.[17][18] English is more flexible than several other languages in which "cryptology" (done by
+cryptologists) is always used in the second sense above. RFC 2828 (https://datatracker.ietf.org/doc/html/rfc2
+828) advises that steganography is sometimes included in cryptology.[19]
+The study of characteristics of languages that have some application in cryptography or cryptology (e.g.
+frequency data, letter combinations, universal patterns, etc.) is called cryptolinguistics. Cryptolingusitics is
+especially used in military intelligence applications for deciphering foreign communications.[20][21]
+Before the modern era, cryptography focused on message confidentiality (i.e., encryption)—conversion of
+messages from a comprehensible form into an incomprehensible one and back again at the other end,
+rendering it unreadable by interceptors or eavesdroppers without secret knowledge (namely the key needed
+for decryption of that message). Encryption attempted to ensure secrecy in communications, such as those
+of spies, military leaders, and diplomats. In recent decades, the field has expanded beyond confidentiality
+concerns to include techniques for message integrity checking, sender/receiver identity authentication,
+digital signatures, interactive proofs and secure computation, among others.
+The main classical cipher types are transposition ciphers, which
+rearrange the order of letters in a message (e.g., 'hello world'
+becomes 'ehlol owrdl' in a trivially simple rearrangement scheme),
+and substitution ciphers, which systematically replace letters or
+groups of letters with other letters or groups of letters (e.g., 'fly at
+once' becomes 'gmz bu podf' by replacing each letter with the one
+following it in the Latin alphabet).[22] Simple versions of either
+have never offered much confidentiality from enterprising
+opponents. An early substitution cipher was the Caesar cipher, in
+which each letter in the plaintext was replaced by a letter some
+fixed number of positions further down the alphabet. Suetonius
+reports that Julius Caesar used it with a shift of three to
+communicate with his generals. Atbash is an example of an early Hebrew cipher. The earliest known use of
+cryptography is some carved ciphertext on stone in Egypt (c. 1900 BCE), but this may have been done for
+the amusement of literate observers rather than as a way of concealing information.
+The Greeks of Classical times are said to have known of ciphers (e.g., the scytale transposition cipher
+claimed to have been used by the Spartan military).[23] Steganography (i.e., hiding even the existence of a
+message so as to keep it confidential) was also first developed in ancient times. An early example, from
+Herodotus, was a message tattooed on a slave's shaved head and concealed under the regrown hair.[13]
 History
-Main article: History of cryptography
-
-Before the modern era, cryptography focused on message confidentiality (i.e., encryption)—conversion of messages from a comprehensible form into an incomprehensible one and back again at the other end, rendering it unreadable by interceptors or eavesdroppers without secret knowledge (namely the key needed for decryption of that message). Encryption attempted to ensure secrecy in communications, such as those of spies, military leaders, and diplomats. In recent decades, the field has expanded beyond confidentiality concerns to include techniques for message integrity checking, sender/receiver identity authentication, digital signatures, interactive proofs and secure computation, among others.
 Classic cryptography
-Skytala stick with strip of paper wound around in spiral
-Reconstructed ancient Greek scytale, an early cipher device
-
-The main classical cipher types are transposition ciphers, which rearrange the order of letters in a message (e.g., 'hello world' becomes 'ehlol owrdl' in a trivially simple rearrangement scheme), and substitution ciphers, which systematically replace letters or groups of letters with other letters or groups of letters (e.g., 'fly at once' becomes 'gmz bu podf' by replacing each letter with the one following it in the Latin alphabet).[22] Simple versions of either have never offered much confidentiality from enterprising opponents. An early substitution cipher was the Caesar cipher, in which each letter in the plaintext was replaced by a letter some fixed number of positions further down the alphabet. Suetonius reports that Julius Caesar used it with a shift of three to communicate with his generals. Atbash is an example of an early Hebrew cipher. The earliest known use of cryptography is some carved ciphertext on stone in Egypt (c. 1900 BCE), but this may have been done for the amusement of literate observers rather than as a way of concealing information.
-
-The Greeks of Classical times are said to have known of ciphers (e.g., the scytale transposition cipher claimed to have been used by the Spartan military).[23] Steganography (i.e., hiding even the existence of a message so as to keep it confidential) was also first developed in ancient times. An early example, from Herodotus, was a message tattooed on a slave's shaved head and concealed under the regrown hair.[13] Other steganography methods involve 'hiding in plain sight,' such as using a music cipher to disguise an encrypted message within a regular piece of sheet music. More modern examples of steganography include the use of invisible ink, microdots, and digital watermarks to conceal information.
-
-In India, the 2000-year-old Kamasutra of Vātsyāyana speaks of two different kinds of ciphers called Kautiliyam and Mulavediya. In the Kautiliyam, the cipher letter substitutions are based on phonetic relations, such as vowels becoming consonants. In the Mulavediya, the cipher alphabet consists of pairing letters and using the reciprocal ones.[13]
-
-In Sassanid Persia, there were two secret scripts, according to the Muslim author Ibn al-Nadim: the šāh-dabīrīya (literally "King's script") which was used for official correspondence, and the rāz-saharīya which was used to communicate secret messages with other countries.[24]
-
-David Kahn notes in The Codebreakers that modern cryptology originated among the Arabs, the first people to systematically document cryptanalytic methods.[25] Al-Khalil (717–786) wrote the Book of Cryptographic Messages, which contains the first use of permutations and combinations to list all possible Arabic words with and without vowels.[26]
-Arabic text of a book by Al-Kindi
-First page of a book by Al-Kindi which discusses encryption of messages
-
-Ciphertexts produced by a classical cipher (and some modern ciphers) will reveal statistical information about the plaintext, and that information can often be used to break the cipher. After the discovery of frequency analysis, perhaps by the Arab mathematician and polymath Al-Kindi (also known as Alkindus) in the 9th century,[27] nearly all such ciphers could be broken by an informed attacker. Such classical ciphers still enjoy popularity today, though mostly as puzzles (see cryptogram). Al-Kindi wrote a book on cryptography entitled Risalah fi Istikhraj al-Mu'amma (Manuscript for the Deciphering Cryptographic Messages), which described the first known use of frequency analysis cryptanalysis techniques.[27][28]
-book sized metal machine with large dial left page and nineteen small dials right page
-16th-century book-shaped French cipher machine, with arms of Henri II of France
-manuscript from Gabriel de Luetz d'Aramon in bound volume
-Enciphered letter from Gabriel de Luetz d'Aramon, French Ambassador to the Ottoman Empire, after 1546, with partial decipherment
-
-Language letter frequencies may offer little help for some extended historical encryption techniques such as homophonic cipher that tend to flatten the frequency distribution. For those ciphers, language letter group (or n-gram) frequencies may provide an attack.
-
-Essentially all ciphers remained vulnerable to cryptanalysis using the frequency analysis technique until the development of the polyalphabetic cipher, most clearly by Leon Battista Alberti around the year 1467, though there is some indication that it was already known to Al-Kindi.[28] Alberti's innovation was to use different ciphers (i.e., substitution alphabets) for various parts of a message (perhaps for each successive plaintext letter at the limit). He also invented what was probably the first automatic cipher device, a wheel that implemented a partial realization of his invention. In the Vigenère cipher, a polyalphabetic cipher, encryption uses a key word, which controls letter substitution depending on which letter of the key word is used. In the mid-19th century Charles Babbage showed that the Vigenère cipher was vulnerable to Kasiski examination, but this was first published about ten years later by Friedrich Kasiski.[29]
-
-Although frequency analysis can be a powerful and general technique against many ciphers, encryption has still often been effective in practice, as many a would-be cryptanalyst was unaware of the technique. Breaking a message without using frequency analysis essentially required knowledge of the cipher used and perhaps of the key involved, thus making espionage, bribery, burglary, defection, etc., more attractive approaches to the cryptanalytically uninformed. It was finally explicitly recognized in the 19th century that secrecy of a cipher's algorithm is not a sensible nor practical safeguard of message security; in fact, it was further realized that any adequate cryptographic scheme (including ciphers) should remain secure even if the adversary fully understands the cipher algorithm itself. Security of the key used should alone be sufficient for a good cipher to maintain confidentiality under an attack. This fundamental principle was first explicitly stated in 1883 by Auguste Kerckhoffs and is generally called Kerckhoffs's Principle; alternatively and more bluntly, it was restated by Claude Shannon, the inventor of information theory and the fundamentals of theoretical cryptography, as Shannon's Maxim—'the enemy knows the system'.
-
-Different physical devices and aids have been used to assist with ciphers. One of the earliest may have been the scytale of ancient Greece, a rod supposedly used by the Spartans as an aid for a transposition cipher. In medieval times, other aids were invented such as the cipher grille, which was also used for a kind of steganography. With the invention of polyalphabetic ciphers came more sophisticated aids such as Alberti's own cipher disk, Johannes Trithemius' tabula recta scheme, and Thomas Jefferson's wheel cypher (not publicly known, and reinvented independently by Bazeries around 1900). Many mechanical encryption/decryption devices were invented early in the 20th century, and several patented, among them rotor machines—famously including the Enigma machine used by the German government and military from the late 1920s and during World War II.[30] The ciphers implemented by better quality examples of these machine designs brought about a substantial increase in cryptanalytic difficulty after WWI.[31]
+First page of a book by Al-Kindi
+which discusses encryption of
+messages
+16th-century book-shaped French
+cipher machine, with arms of Henri II
+of France
+Other steganography methods involve 'hiding in plain sight,' such as using a music cipher to disguise an
+encrypted message within a regular piece of sheet music. More modern examples of steganography include
+the use of invisible ink, microdots, and digital watermarks to conceal information.
+In India, the 2000-year-old Kamasutra of Vātsyāyana speaks of two different kinds of ciphers called
+Kautiliyam and Mulavediya. In the Kautiliyam, the cipher letter substitutions are based on phonetic
+relations, such as vowels becoming consonants. In the Mulavediya, the cipher alphabet consists of pairing
+letters and using the reciprocal ones.[13]
+In Sassanid Persia, there were two secret scripts, according to the Muslim author Ibn al-Nadim: the šāh-
+dabīrīya (literally "King's script") which was used for official correspondence, and the rāz-saharīya which
+was used to communicate secret messages with other countries.[24]
+David Kahn notes in The Codebreakers that modern cryptology originated among the Arabs, the first
+people to systematically document cryptanalytic methods.[25] Al-Khalil (717–786) wrote the Book of
+Cryptographic Messages, which contains the first use of permutations and combinations to list all possible
+Arabic words with and without vowels.[26]
+Ciphertexts produced by a classical cipher (and some modern
+ciphers) will reveal statistical information about the plaintext, and
+that information can often be used to break the cipher. After the
+discovery of frequency analysis, perhaps by the Arab
+mathematician and polymath Al-Kindi (also known as Alkindus) in
+the 9th century,[27] nearly all such ciphers could be broken by an
+informed attacker. Such classical ciphers still enjoy popularity
+today, though mostly as puzzles (see cryptogram). Al-Kindi wrote a
+book on cryptography entitled Risalah fi Istikhraj al-Mu'amma
+(Manuscript for the Deciphering Cryptographic Messages), which
+described the first known use of frequency analysis cryptanalysis
+techniques.[27][28]
+Language letter frequencies may offer little help for some extended
+historical encryption techniques such as homophonic cipher that
+tend to flatten the frequency distribution. For those ciphers,
+language letter group (or n-gram) frequencies may provide an
+attack.
+Essentially all ciphers remained vulnerable to cryptanalysis using
+the frequency analysis technique until the development of the
+polyalphabetic cipher, most clearly by Leon Battista Alberti around
+the year 1467, though there is some indication that it was already
+known to Al-Kindi.[28] Alberti's innovation was to use different
+ciphers (i.e., substitution alphabets) for various parts of a message
+(perhaps for each successive plaintext letter at the limit). He also
+invented what was probably the first automatic cipher device, a
+wheel that implemented a partial realization of his invention. In the Vigenère cipher, a polyalphabetic cipher,
+Enciphered letter from Gabriel de
+Luetz d'Aramon, French Ambassador
+to the Ottoman Empire, after 1546,
+with partial decipherment
+encryption uses a key word, which controls letter substitution
+depending on which letter of the key word is used. In the mid-19th
+century Charles Babbage showed that the Vigenère cipher was
+vulnerable to Kasiski examination, but this was first published
+about ten years later by Friedrich Kasiski.[29]
+Although frequency analysis can be a powerful and general
+technique against many ciphers, encryption has still often been
+effective in practice, as many a would-be cryptanalyst was unaware
+of the technique. Breaking a message without using frequency
+analysis essentially required knowledge of the cipher used and
+perhaps of the key involved, thus making espionage, bribery,
+burglary, defection, etc., more attractive approaches to the
+cryptanalytically uninformed. It was finally explicitly recognized in the 19th century that secrecy of a
+cipher's algorithm is not a sensible nor practical safeguard of message security; in fact, it was further
+realized that any adequate cryptographic scheme (including ciphers) should remain secure even if the
+adversary fully understands the cipher algorithm itself. Security of the key used should alone be sufficient
+for a good cipher to maintain confidentiality under an attack. This fundamental principle was first explicitly
+stated in 1883 by Auguste Kerckhoffs and is generally called Kerckhoffs's Principle; alternatively and more
+bluntly, it was restated by Claude Shannon, the inventor of information theory and the fundamentals of
+theoretical cryptography, as Shannon's Maxim—'the enemy knows the system'.
+Different physical devices and aids have been used to assist with ciphers. One of the earliest may have been
+the scytale of ancient Greece, a rod supposedly used by the Spartans as an aid for a transposition cipher. In
+medieval times, other aids were invented such as the cipher grille, which was also used for a kind of
+steganography. With the invention of polyalphabetic ciphers came more sophisticated aids such as Alberti's
+own cipher disk, Johannes Trithemius' tabula recta scheme, and Thomas Jefferson's wheel cypher (not
+publicly known, and reinvented independently by Bazeries around 1900). Many mechanical
+encryption/decryption devices were invented early in the 20th century, and several patented, among them
+rotor machines—famously including the Enigma machine used by the German government and military
+from the late 1920s and during World War II.[30] The ciphers implemented by better quality examples of
+these machine designs brought about a substantial increase in cryptanalytic difficulty after WWI.[31]
+Cryptanalysis of the new mechanical ciphering devices proved to be both difficult and laborious. In the
+United Kingdom, cryptanalytic efforts at Bletchley Park during WWII spurred the development of more
+efficient means for carrying out repetitive tasks, such as military code breaking (decryption). This
+culminated in the development of the Colossus, the world's first fully electronic, digital, programmable
+computer, which assisted in the decryption of ciphers generated by the German Army's Lorenz SZ40/42
+machine.
+Extensive open academic research into cryptography is relatively recent, beginning in the mid-1970s. In the
+early 1970s IBM personnel designed the Data Encryption Standard (DES) algorithm that became the first
+federal government cryptography standard in the United States.[32] In 1976 Whitfield Diffie and Martin
 Early computer-era cryptography
-
-Cryptanalysis of the new mechanical ciphering devices proved to be both difficult and laborious. In the United Kingdom, cryptanalytic efforts at Bletchley Park during WWII spurred the development of more efficient means for carrying out repetitive tasks, such as military code breaking (decryption). This culminated in the development of the Colossus, the world's first fully electronic, digital, programmable computer, which assisted in the decryption of ciphers generated by the German Army's Lorenz SZ40/42 machine.
-
-Extensive open academic research into cryptography is relatively recent, beginning in the mid-1970s. In the early 1970s IBM personnel designed the Data Encryption Standard (DES) algorithm that became the first federal government cryptography standard in the United States.[32] In 1976 Whitfield Diffie and Martin Hellman published the Diffie–Hellman key exchange algorithm.[33] In 1977 the RSA algorithm was published in Martin Gardner's Scientific American column.[34] Since then, cryptography has become a widely used tool in communications, computer networks, and computer security generally.
-
-Some modern cryptographic techniques can only keep their keys secret if certain mathematical problems are intractable, such as the integer factorization or the discrete logarithm problems, so there are deep connections with abstract mathematics. There are very few cryptosystems that are proven to be unconditionally secure. The one-time pad is one, and was proven to be so by Claude Shannon. There are a few important algorithms that have been proven secure under certain assumptions. For example, the infeasibility of factoring extremely large integers is the basis for believing that RSA is secure, and some other systems, but even so, proof of unbreakability is unavailable since the underlying mathematical problem remains open. In practice, these are widely used, and are believed unbreakable in practice by most competent observers. There are systems similar to RSA, such as one by Michael O. Rabin that are provably secure provided factoring n = pq is impossible; it is quite unusable in practice. The discrete logarithm problem is the basis for believing some other cryptosystems are secure, and again, there are related, less practical systems that are provably secure relative to the solvability or insolvability discrete log problem.[35]
-
-As well as being aware of cryptographic history, cryptographic algorithm and system designers must also sensibly consider probable future developments while working on their designs. For instance, continuous improvements in computer processing power have increased the scope of brute-force attacks, so when specifying key lengths, the required key lengths are similarly advancing.[36] The potential impact of quantum computing are already being considered by some cryptographic system designers developing post-quantum cryptography.[when?] The announced imminence of small implementations of these machines may be making the need for preemptive caution rather more than merely speculative.[5]
+Hellman published the Diffie–Hellman key exchange algorithm.[33] In 1977 the RSA algorithm was
+published in Martin Gardner's Scientific American column.[34] Since then, cryptography has become a
+widely used tool in communications, computer networks, and computer security generally.
+Some modern cryptographic techniques can only keep their keys secret if certain mathematical problems are
+intractable, such as the integer factorization or the discrete logarithm problems, so there are deep
+connections with abstract mathematics. There are very few cryptosystems that are proven to be
+unconditionally secure. The one-time pad is one, and was proven to be so by Claude Shannon. There are a
+few important algorithms that have been proven secure under certain assumptions. For example, the
+infeasibility of factoring extremely large integers is the basis for believing that RSA is secure, and some
+other systems, but even so, proof of unbreakability is unavailable since the underlying mathematical
+problem remains open. In practice, these are widely used, and are believed unbreakable in practice by most
+competent observers. There are systems similar to RSA, such as one by Michael O. Rabin that are provably
+secure provided factoring n = pq is impossible; it is quite unusable in practice. The discrete logarithm
+problem is the basis for believing some other cryptosystems are secure, and again, there are related, less
+practical systems that are provably secure relative to the solvability or insolvability discrete log problem.[35]
+As well as being aware of cryptographic history, cryptographic algorithm and system designers must also
+sensibly consider probable future developments while working on their designs. For instance, continuous
+improvements in computer processing power have increased the scope of brute-force attacks, so when
+specifying key lengths, the required key lengths are similarly advancing.[36] The potential impact of
+quantum computing are already being considered by some cryptographic system designers developing post-
+quantum cryptography. The announced imminence of small implementations of these machines may be
+making the need for preemptive caution rather more than merely speculative.[5]
+Prior to the early 20th century, cryptography was mainly concerned with linguistic and lexicographic
+patterns. Since then cryptography has broadened in scope, and now makes extensive use of mathematical
+subdisciplines, including information theory, computational complexity, statistics, combinatorics, abstract
+algebra, number theory, and finite mathematics.[37] Cryptography is also a branch of engineering, but an
+unusual one since it deals with active, intelligent, and malevolent opposition; other kinds of engineering
+(e.g., civil or chemical engineering) need deal only with neutral natural forces. There is also active research
+examining the relationship between cryptographic problems and quantum physics.
+Just as the development of digital computers and electronics helped in cryptanalysis, it made possible much
+more complex ciphers. Furthermore, computers allowed for the encryption of any kind of data representable
+in any binary format, unlike classical ciphers which only encrypted written language texts; this was new
+and significant. Computer use has thus supplanted linguistic cryptography, both for cipher design and
+cryptanalysis. Many computer ciphers can be characterized by their operation on binary bit sequences
+(sometimes in groups or blocks), unlike classical and mechanical schemes, which generally manipulate
+traditional characters (i.e., letters and digits) directly. However, computers have also assisted cryptanalysis,
+which has compensated to some extent for increased cipher complexity. Nonetheless, good modern ciphers
+have stayed ahead of cryptanalysis; it is typically the case that use of a quality cipher is very efficient (i.e.,
 Modern cryptography
-
-Prior to the early 20th century, cryptography was mainly concerned with linguistic and lexicographic patterns. Since then cryptography has broadened in scope, and now makes extensive use of mathematical subdisciplines, including information theory, computational complexity, statistics, combinatorics, abstract algebra, number theory, and finite mathematics.[37] Cryptography is also a branch of engineering, but an unusual one since it deals with active, intelligent, and malevolent opposition; other kinds of engineering (e.g., civil or chemical engineering) need deal only with neutral natural forces. There is also active research examining the relationship between cryptographic problems and quantum physics.
-
-Just as the development of digital computers and electronics helped in cryptanalysis, it made possible much more complex ciphers. Furthermore, computers allowed for the encryption of any kind of data representable in any binary format, unlike classical ciphers which only encrypted written language texts; this was new and significant. Computer use has thus supplanted linguistic cryptography, both for cipher design and cryptanalysis. Many computer ciphers can be characterized by their operation on binary bit sequences (sometimes in groups or blocks), unlike classical and mechanical schemes, which generally manipulate traditional characters (i.e., letters and digits) directly. However, computers have also assisted cryptanalysis, which has compensated to some extent for increased cipher complexity. Nonetheless, good modern ciphers have stayed ahead of cryptanalysis; it is typically the case that use of a quality cipher is very efficient (i.e., fast and requiring few resources, such as memory or CPU capability), while breaking it requires an effort many orders of magnitude larger, and vastly larger than that required for any classical cipher, making cryptanalysis so inefficient and impractical as to be effectively impossible.
+Symmetric-key cryptography, where a
+single key is used for encryption and
+decryption
+One round (out of 8.5) of the IDEA
+cipher, used in most versions of
+PGP and OpenPGP compatible
+software for time-efficient encryption
+of messages
+fast and requiring few resources, such as memory or CPU capability), while breaking it requires an effort
+many orders of magnitude larger, and vastly larger than that required for any classical cipher, making
+cryptanalysis so inefficient and impractical as to be effectively impossible.
+Symmetric-key cryptography refers to encryption methods in
+which both the sender and receiver share the same key (or, less
+commonly, in which their keys are different, but related in an
+easily computable way). This was the only kind of encryption
+publicly known until June 1976.[33]
+Symmetric key ciphers are implemented as either block ciphers
+or stream ciphers. A block cipher enciphers input in blocks of
+plaintext as opposed to individual characters, the input form
+used by a stream cipher.
+The Data Encryption Standard (DES) and the Advanced
+Encryption Standard (AES) are block cipher designs that have
+been designated cryptography standards by the US
+government (though DES's designation was finally withdrawn
+after the AES was adopted).[38] Despite its deprecation as an
+official standard, DES (especially its still-approved and much
+more secure triple-DES variant) remains quite popular; it is used
+across a wide range of applications, from ATM encryption[39] to e-
+mail privacy[40] and secure remote access.[41] Many other block
+ciphers have been designed and released, with considerable
+variation in quality. Many, even some designed by capable
+practitioners, have been thoroughly broken, such as FEAL.[5][42]
+Stream ciphers, in contrast to the 'block' type, create an arbitrarily
+long stream of key material, which is combined with the plaintext
+bit-by-bit or character-by-character, somewhat like the one-time
+pad. In a stream cipher, the output stream is created based on a
+hidden internal state that changes as the cipher operates. That
+internal state is initially set up using the secret key material. RC4 is
+a widely used stream cipher.[5] Block ciphers can be used as stream
+ciphers by generating blocks of a keystream (in place of a
+Pseudorandom number generator) and applying an XOR operation
+to each bit of the plaintext with each bit of the keystream.[43]
+Message authentication codes (MACs) are much like cryptographic hash functions, except that a secret key
+can be used to authenticate the hash value upon receipt;[5][44] this additional complication blocks an attack
+scheme against bare digest algorithms, and so has been thought worth the effort. Cryptographic hash
+functions are a third type of cryptographic algorithm. They take a message of any length as input, and
 Modern cryptography
 Symmetric-key cryptography
-Main article: Symmetric-key algorithm
-diagram showing encrypt with a key and decrypt process
-Symmetric-key cryptography, where a single key is used for encryption and decryption
-
-Symmetric-key cryptography refers to encryption methods in which both the sender and receiver share the same key (or, less commonly, in which their keys are different, but related in an easily computable way). This was the only kind of encryption publicly known until June 1976.[33]
-logic diagram showing International Data Encryption Algorithm cypher process
-One round (out of 8.5) of the IDEA cipher, used in most versions of PGP and OpenPGP compatible software for time-efficient encryption of messages
-
-Symmetric key ciphers are implemented as either block ciphers or stream ciphers. A block cipher enciphers input in blocks of plaintext as opposed to individual characters, the input form used by a stream cipher.
-
-The Data Encryption Standard (DES) and the Advanced Encryption Standard (AES) are block cipher designs that have been designated cryptography standards by the US government (though DES's designation was finally withdrawn after the AES was adopted).[38] Despite its deprecation as an official standard, DES (especially its still-approved and much more secure triple-DES variant) remains quite popular; it is used across a wide range of applications, from ATM encryption[39] to e-mail privacy[40] and secure remote access.[41] Many other block ciphers have been designed and released, with considerable variation in quality. Many, even some designed by capable practitioners, have been thoroughly broken, such as FEAL.[5][42]
-
-Stream ciphers, in contrast to the 'block' type, create an arbitrarily long stream of key material, which is combined with the plaintext bit-by-bit or character-by-character, somewhat like the one-time pad. In a stream cipher, the output stream is created based on a hidden internal state that changes as the cipher operates. That internal state is initially set up using the secret key material. RC4 is a widely used stream cipher.[5] Block ciphers can be used as stream ciphers by generating blocks of a keystream (in place of a Pseudorandom number generator) and applying an XOR operation to each bit of the plaintext with each bit of the keystream.[43]
-
-Message authentication codes (MACs) are much like cryptographic hash functions, except that a secret key can be used to authenticate the hash value upon receipt;[5][44] this additional complication blocks an attack scheme against bare digest algorithms, and so has been thought worth the effort. Cryptographic hash functions are a third type of cryptographic algorithm. They take a message of any length as input, and output a short, fixed-length hash, which can be used in (for example) a digital signature. For good hash functions, an attacker cannot find two messages that produce the same hash. MD4 is a long-used hash function that is now broken; MD5, a strengthened variant of MD4, is also widely used but broken in practice. The US National Security Agency developed the Secure Hash Algorithm series of MD5-like hash functions: SHA-0 was a flawed algorithm that the agency withdrew; SHA-1 is widely deployed and more secure than MD5, but cryptanalysts have identified attacks against it; the SHA-2 family improves on SHA-1, but is vulnerable to clashes as of 2011; and the US standards authority thought it "prudent" from a security perspective to develop a new standard to "significantly improve the robustness of NIST's overall hash algorithm toolkit."[45] Thus, a hash function design competition was meant to select a new U.S. national standard, to be called SHA-3, by 2012. The competition ended on October 2, 2012, when the NIST announced that Keccak would be the new SHA-3 hash algorithm.[46] Unlike block and stream ciphers that are invertible, cryptographic hash functions produce a hashed output that cannot be used to retrieve the original input data. Cryptographic hash functions are used to verify the authenticity of data retrieved from an untrusted source or to add a layer of security.
+Public-key cryptography, where different
+keys are used for encryption and
+decryption.
+Whitfield Diffie and Martin Hellman,
+authors of the first published paper
+on public-key cryptography.
+output a short, fixed-length hash, which can be used in (for example) a digital signature. For good hash
+functions, an attacker cannot find two messages that produce the same hash. MD4 is a long-used hash
+function that is now broken; MD5, a strengthened variant of MD4, is also widely used but broken in
+practice. The US National Security Agency developed the Secure Hash Algorithm series of MD5-like hash
+functions: SHA-0 was a flawed algorithm that the agency withdrew; SHA-1 is widely deployed and more
+secure than MD5, but cryptanalysts have identified attacks against it; the SHA-2 family improves on SHA-
+1, but is vulnerable to clashes as of 2011; and the US standards authority thought it "prudent" from a
+security perspective to develop a new standard to "significantly improve the robustness of NIST's overall
+hash algorithm toolkit."[45] Thus, a hash function design competition was meant to select a new U.S.
+national standard, to be called SHA-3, by 2012. The competition ended on October 2, 2012, when the
+NIST announced that Keccak would be the new SHA-3 hash algorithm.[46] Unlike block and stream
+ciphers that are invertible, cryptographic hash functions produce a hashed output that cannot be used to
+retrieve the original input data. Cryptographic hash functions are used to verify the authenticity of data
+retrieved from an untrusted source or to add a layer of security.
+Symmetric-key cryptosystems use the same key for encryption
+and decryption of a message, although a message or group of
+messages can have a different key than others. A significant
+disadvantage of symmetric ciphers is the key management
+necessary to use them securely. Each distinct pair of
+communicating parties must, ideally, share a different key, and
+perhaps for each ciphertext exchanged as well. The number of
+keys required increases as the square of the number of network
+members, which very quickly requires complex key
+management schemes to keep them all consistent and secret.
+In a groundbreaking 1976 paper, Whitfield Diffie and Martin
+Hellman proposed the notion of public-key (also, more generally,
+called asymmetric key) cryptography in which two different but
+mathematically related keys are used—a public key and a private
+key.[47] A public key system is so constructed that calculation of
+one key (the 'private key') is computationally infeasible from the
+other (the 'public key'), even though they are necessarily related. Instead, both keys are generated secretly,
+as an interrelated pair.[48] The historian David Kahn described public-key cryptography as "the most
+revolutionary new concept in the field since polyalphabetic substitution emerged in the Renaissance".[49]
+In public-key cryptosystems, the public key may be freely distributed, while its paired private key must
+remain secret. In a public-key encryption system, the public key is used for encryption, while the private or
+secret key is used for decryption. While Diffie and Hellman could not find such a system, they showed that
+public-key cryptography was indeed possible by presenting the Diffie–Hellman key exchange protocol, a
 Public-key cryptography
-Main article: Public-key cryptography
-diagram of Public-key cryptography showing public key and private key
-Public-key cryptography, where different keys are used for encryption and decryption.
-
-Symmetric-key cryptosystems use the same key for encryption and decryption of a message, although a message or group of messages can have a different key than others. A significant disadvantage of symmetric ciphers is the key management necessary to use them securely. Each distinct pair of communicating parties must, ideally, share a different key, and perhaps for each ciphertext exchanged as well. The number of keys required increases as the square of the number of network members, which very quickly requires complex key management schemes to keep them all consistent and secret.
-headshots of Whitfield Diffie and Martin Hellman
-Whitfield Diffie and Martin Hellman, authors of the first published paper on public-key cryptography.
-
-In a groundbreaking 1976 paper, Whitfield Diffie and Martin Hellman proposed the notion of public-key (also, more generally, called asymmetric key) cryptography in which two different but mathematically related keys are used—a public key and a private key.[47] A public key system is so constructed that calculation of one key (the 'private key') is computationally infeasible from the other (the 'public key'), even though they are necessarily related. Instead, both keys are generated secretly, as an interrelated pair.[48] The historian David Kahn described public-key cryptography as "the most revolutionary new concept in the field since polyalphabetic substitution emerged in the Renaissance".[49]
-
-In public-key cryptosystems, the public key may be freely distributed, while its paired private key must remain secret. In a public-key encryption system, the public key is used for encryption, while the private or secret key is used for decryption. While Diffie and Hellman could not find such a system, they showed that public-key cryptography was indeed possible by presenting the Diffie–Hellman key exchange protocol, a solution that is now widely used in secure communications to allow two parties to secretly agree on a shared encryption key.[33] The X.509 standard defines the most commonly used format for public key certificates.[50]
-
-Diffie and Hellman's publication sparked widespread academic efforts in finding a practical public-key encryption system. This race was finally won in 1978 by Ronald Rivest, Adi Shamir, and Len Adleman, whose solution has since become known as the RSA algorithm.[51]
-
-The Diffie–Hellman and RSA algorithms, in addition to being the first publicly known examples of high-quality public-key algorithms, have been among the most widely used. Other asymmetric-key algorithms include the Cramer–Shoup cryptosystem, ElGamal encryption, and various elliptic curve techniques.[citation needed]
-
-A document published in 1997 by the Government Communications Headquarters (GCHQ), a British intelligence organization, revealed that cryptographers at GCHQ had anticipated several academic developments.[52] Reportedly, around 1970, James H. Ellis had conceived the principles of asymmetric key cryptography. In 1973, Clifford Cocks invented a solution that was very similar in design rationale to RSA.[52][53] In 1974, Malcolm J. Williamson is claimed to have developed the Diffie–Hellman key exchange.[54]
-In this example the message is only signed and not encrypted. 1) Alice signs a message with her private key. 2) Bob can verify that Alice sent the message and that the message has not been modified.
-
-Public-key cryptography is also used for implementing digital signature schemes. A digital signature is reminiscent of an ordinary signature; they both have the characteristic of being easy for a user to produce, but difficult for anyone else to forge. Digital signatures can also be permanently tied to the content of the message being signed; they cannot then be 'moved' from one document to another, for any attempt will be detectable. In digital signature schemes, there are two algorithms: one for signing, in which a secret key is used to process the message (or a hash of the message, or both), and one for verification, in which the matching public key is used with the message to check the validity of the signature. RSA and DSA are two of the most popular digital signature schemes. Digital signatures are central to the operation of public key infrastructures and many network security schemes (e.g., SSL/TLS, many VPNs, etc.).[42]
-
-Public-key algorithms are most often based on the computational complexity of "hard" problems, often from number theory. For example, the hardness of RSA is related to the integer factorization problem, while Diffie–Hellman and DSA are related to the discrete logarithm problem. The security of elliptic curve cryptography is based on number theoretic problems involving elliptic curves. Because of the difficulty of the underlying problems, most public-key algorithms involve operations such as modular multiplication and exponentiation, which are much more computationally expensive than the techniques used in most block ciphers, especially with typical key sizes. As a result, public-key cryptosystems are commonly hybrid cryptosystems, in which a fast high-quality symmetric-key encryption algorithm is used for the message itself, while the relevant symmetric key is sent with the message, but encrypted using a public-key algorithm. Similarly, hybrid signature schemes are often used, in which a cryptographic hash function is computed, and only the resulting hash is digitally signed.[5]
+In this example the message is only
+signed and not encrypted. 1) Alice signs a
+message with her private key. 2) Bob can
+verify that Alice sent the message and
+that the message has not been modified.
+solution that is now widely used in secure communications to allow two parties to secretly agree on a
+shared encryption key.[33] The X.509 standard defines the most commonly used format for public key
+certificates.[50]
+Diffie and Hellman's publication sparked widespread academic efforts in finding a practical public-key
+encryption system. This race was finally won in 1978 by Ronald Rivest, Adi Shamir, and Len Adleman,
+whose solution has since become known as the RSA algorithm.[51]
+The Diffie–Hellman and RSA algorithms, in addition to being the first publicly known examples of high-
+quality public-key algorithms, have been among the most widely used. Other asymmetric-key algorithms
+include the Cramer–Shoup cryptosystem, ElGamal encryption, and various elliptic curve techniques.
+A document published in 1997 by the Government Communications Headquarters (GCHQ), a British
+intelligence organization, revealed that cryptographers at GCHQ had anticipated several academic
+developments.[52] Reportedly, around 1970, James H. Ellis had conceived the principles of asymmetric key
+cryptography. In 1973, Clifford Cocks invented a solution that was very similar in design rationale to
+RSA.[52][53] In 1974, Malcolm J. Williamson is claimed to have developed the Diffie–Hellman key
+exchange.[54]
+Public-key cryptography is also used for implementing digital
+signature schemes. A digital signature is reminiscent of an
+ordinary signature; they both have the characteristic of being
+easy for a user to produce, but difficult for anyone else to
+forge. Digital signatures can also be permanently tied to the
+content of the message being signed; they cannot then be
+'moved' from one document to another, for any attempt will be
+detectable. In digital signature schemes, there are two
+algorithms: one for signing, in which a secret key is used to
+process the message (or a hash of the message, or both), and
+one for verification, in which the matching public key is used
+with the message to check the validity of the signature. RSA
+and DSA are two of the most popular digital signature
+schemes. Digital signatures are central to the operation of
+public key infrastructures and many network security schemes
+(e.g., SSL/TLS, many VPNs, etc.).[42]
+Public-key algorithms are most often based on the
+computational complexity of "hard" problems, often from
+number theory. For example, the hardness of RSA is related to the integer factorization problem, while
+Diffie–Hellman and DSA are related to the discrete logarithm problem. The security of elliptic curve
+cryptography is based on number theoretic problems involving elliptic curves. Because of the difficulty of
+the underlying problems, most public-key algorithms involve operations such as modular multiplication and
+exponentiation, which are much more computationally expensive than the techniques used in most block
+ciphers, especially with typical key sizes. As a result, public-key cryptosystems are commonly hybrid
+cryptosystems, in which a fast high-quality symmetric-key encryption algorithm is used for the message
+itself, while the relevant symmetric key is sent with the message, but encrypted using a public-key
+algorithm. Similarly, hybrid signature schemes are often used, in which a cryptographic hash function is
+computed, and only the resulting hash is digitally signed.[5]
+Cryptographic hash functions are functions that take a variable-length input and return a fixed-length
+output, which can be used in, for example, a digital signature. For a hash function to be secure, it must be
+difficult to compute two inputs that hash to the same value (collision resistance) and to compute an input
+that hashes to a given output (preimage resistance). MD4 is a long-used hash function that is now broken;
+MD5, a strengthened variant of MD4, is also widely used but broken in practice. The US National Security
+Agency developed the Secure Hash Algorithm series of MD5-like hash functions: SHA-0 was a flawed
+algorithm that the agency withdrew; SHA-1 is widely deployed and more secure than MD5, but
+cryptanalysts have identified attacks against it; the SHA-2 family improves on SHA-1, but is vulnerable to
+clashes as of 2011; and the US standards authority thought it "prudent" from a security perspective to
+develop a new standard to "significantly improve the robustness of NIST's overall hash algorithm
+toolkit."[45] Thus, a hash function design competition was meant to select a new U.S. national standard, to
+be called SHA-3, by 2012. The competition ended on October 2, 2012, when the NIST announced that
+Keccak would be the new SHA-3 hash algorithm.[46] Unlike block and stream ciphers that are invertible,
+cryptographic hash functions produce a hashed output that cannot be used to retrieve the original input data.
+Cryptographic hash functions are used to verify the authenticity of data retrieved from an untrusted source
+or to add a layer of security.
+The goal of cryptanalysis is to find some weakness or insecurity in a cryptographic scheme, thus permitting
+its subversion or evasion.
+It is a common misconception that every encryption method can be broken. In connection with his WWII
+work at Bell Labs, Claude Shannon proved that the one-time pad cipher is unbreakable, provided the key
+material is truly random, never reused, kept secret from all possible attackers, and of equal or greater length
+than the message.[55] Most ciphers, apart from the one-time pad, can be broken with enough computational
+effort by brute force attack, but the amount of effort needed may be exponentially dependent on the key
+size, as compared to the effort needed to make use of the cipher. In such cases, effective security could be
+achieved if it is proven that the effort required (i.e., "work factor", in Shannon's terms) is beyond the ability
+of any adversary. This means it must be shown that no efficient method (as opposed to the time-consuming
+brute force method) can be found to break the cipher. Since no such proof has been found to date, the one-
+time-pad remains the only theoretically unbreakable cipher. Although well-implemented one-time-pad
+encryption cannot be broken, traffic analysis is still possible.
+There are a wide variety of cryptanalytic attacks, and they can be classified in any of several ways. A
+common distinction turns on what Eve (an attacker) knows and what capabilities are available. In a
+ciphertext-only attack, Eve has access only to the ciphertext (good modern cryptosystems are usually
+effectively immune to ciphertext-only attacks). In a known-plaintext attack, Eve has access to a ciphertext
+and its corresponding plaintext (or to many such pairs). In a chosen-plaintext attack, Eve may choose a
+plaintext and learn its corresponding ciphertext (perhaps many times); an example is gardening, used by the
+British during WWII. In a chosen-ciphertext attack, Eve may be able to choose ciphertexts and learn their
 Cryptographic hash functions
-
-Cryptographic hash functions are functions that take a variable-length input and return a fixed-length output, which can be used in, for example, a digital signature. For a hash function to be secure, it must be difficult to compute two inputs that hash to the same value (collision resistance) and to compute an input that hashes to a given output (preimage resistance). MD4 is a long-used hash function that is now broken; MD5, a strengthened variant of MD4, is also widely used but broken in practice. The US National Security Agency developed the Secure Hash Algorithm series of MD5-like hash functions: SHA-0 was a flawed algorithm that the agency withdrew; SHA-1 is widely deployed and more secure than MD5, but cryptanalysts have identified attacks against it; the SHA-2 family improves on SHA-1, but is vulnerable to clashes as of 2011; and the US standards authority thought it "prudent" from a security perspective to develop a new standard to "significantly improve the robustness of NIST's overall hash algorithm toolkit."[45] Thus, a hash function design competition was meant to select a new U.S. national standard, to be called SHA-3, by 2012. The competition ended on October 2, 2012, when the NIST announced that Keccak would be the new SHA-3 hash algorithm.[46] Unlike block and stream ciphers that are invertible, cryptographic hash functions produce a hashed output that cannot be used to retrieve the original input data. Cryptographic hash functions are used to verify the authenticity of data retrieved from an untrusted source or to add a layer of security.
 Cryptanalysis
-Main article: Cryptanalysis
-Enigma machine typewriter keypad over many rotors in a wood box
-Variants of the Enigma machine, used by Germany's military and civil authorities from the late 1920s through World War II, implemented a complex electro-mechanical polyalphabetic cipher. Breaking and reading of the Enigma cipher at Poland's Cipher Bureau, for 7 years before the war, and subsequent decryption at Bletchley Park, was important to Allied victory.[13]
-
-The goal of cryptanalysis is to find some weakness or insecurity in a cryptographic scheme, thus permitting its subversion or evasion.
-
-It is a common misconception that every encryption method can be broken. In connection with his WWII work at Bell Labs, Claude Shannon proved that the one-time pad cipher is unbreakable, provided the key material is truly random, never reused, kept secret from all possible attackers, and of equal or greater length than the message.[55] Most ciphers, apart from the one-time pad, can be broken with enough computational effort by brute force attack, but the amount of effort needed may be exponentially dependent on the key size, as compared to the effort needed to make use of the cipher. In such cases, effective security could be achieved if it is proven that the effort required (i.e., "work factor", in Shannon's terms) is beyond the ability of any adversary. This means it must be shown that no efficient method (as opposed to the time-consuming brute force method) can be found to break the cipher. Since no such proof has been found to date, the one-time-pad remains the only theoretically unbreakable cipher. Although well-implemented one-time-pad encryption cannot be broken, traffic analysis is still possible.
-
-There are a wide variety of cryptanalytic attacks, and they can be classified in any of several ways. A common distinction turns on what Eve (an attacker) knows and what capabilities are available. In a ciphertext-only attack, Eve has access only to the ciphertext (good modern cryptosystems are usually effectively immune to ciphertext-only attacks). In a known-plaintext attack, Eve has access to a ciphertext and its corresponding plaintext (or to many such pairs). In a chosen-plaintext attack, Eve may choose a plaintext and learn its corresponding ciphertext (perhaps many times); an example is gardening, used by the British during WWII. In a chosen-ciphertext attack, Eve may be able to choose ciphertexts and learn their corresponding plaintexts.[5] Finally in a man-in-the-middle attack Eve gets in between Alice (the sender) and Bob (the recipient), accesses and modifies the traffic and then forward it to the recipient.[56] Also important, often overwhelmingly so, are mistakes (generally in the design or use of one of the protocols involved).
-Kaiserschloss Kryptologen monument numbers on stele
-Poznań monument (center) to Polish cryptanalysts whose breaking of Germany's Enigma machine ciphers, beginning in 1932, altered the course of World War II
-
-Cryptanalysis of symmetric-key ciphers typically involves looking for attacks against the block ciphers or stream ciphers that are more efficient than any attack that could be against a perfect cipher. For example, a simple brute force attack against DES requires one known plaintext and 255 decryptions, trying approximately half of the possible keys, to reach a point at which chances are better than even that the key sought will have been found. But this may not be enough assurance; a linear cryptanalysis attack against DES requires 243 known plaintexts (with their corresponding ciphertexts) and approximately 243 DES operations.[57] This is a considerable improvement over brute force attacks.
-
-Public-key algorithms are based on the computational difficulty of various problems. The most famous of these are the difficulty of integer factorization of semiprimes and the difficulty of calculating discrete logarithms, both of which are not yet proven to be solvable in polynomial time (P) using only a classical Turing-complete computer. Much public-key cryptanalysis concerns designing algorithms in P that can solve these problems, or using other technologies, such as quantum computers. For instance, the best-known algorithms for solving the elliptic curve-based version of discrete logarithm are much more time-consuming than the best-known algorithms for factoring, at least for problems of more or less equivalent size. Thus, to achieve an equivalent strength of encryption, techniques that depend upon the difficulty of factoring large composite numbers, such as the RSA cryptosystem, require larger keys than elliptic curve techniques. For this reason, public-key cryptosystems based on elliptic curves have become popular since their invention in the mid-1990s.
-
-While pure cryptanalysis uses weaknesses in the algorithms themselves, other attacks on cryptosystems are based on actual use of the algorithms in real devices, and are called side-channel attacks. If a cryptanalyst has access to, for example, the amount of time the device took to encrypt a number of plaintexts or report an error in a password or PIN character, they may be able to use a timing attack to break a cipher that is otherwise resistant to analysis. An attacker might also study the pattern and length of messages to derive valuable information; this is known as traffic analysis[58] and can be quite useful to an alert adversary. Poor administration of a cryptosystem, such as permitting too short keys, will make any system vulnerable, regardless of other virtues. Social engineering and other attacks against humans (e.g., bribery, extortion, blackmail, espionage, rubber-hose cryptanalysis or torture) are usually employed due to being more cost-effective and feasible to perform in a reasonable amount of time compared to pure cryptanalysis by a high margin.
+Variants of the Enigma machine,
+used by Germany's military and civil
+authorities from the late 1920s
+through World War II, implemented a
+complex electro-mechanical
+polyalphabetic cipher. Breaking and
+reading of the Enigma cipher at
+Poland's Cipher Bureau, for 7 years
+before the war, and subsequent
+decryption at Bletchley Park, was
+important to Allied victory.[13]
+Poznań monument (center) to Polish
+cryptanalysts whose breaking of
+Germany's Enigma machine ciphers,
+beginning in 1932, altered the course
+of World War II
+corresponding plaintexts.[5] Finally in a man-in-the-middle attack
+Eve gets in between Alice (the sender) and Bob (the recipient),
+accesses and modifies the traffic and then forward it to the
+recipient.[56] Also important, often overwhelmingly so, are mistakes
+(generally in the design or use of one of the protocols involved).
+Cryptanalysis of symmetric-
+key ciphers typically
+involves looking for attacks
+against the block ciphers or
+stream ciphers that are more
+efficient than any attack that
+could be against a perfect
+cipher. For example, a
+simple brute force attack
+against DES requires one
+known plaintext and 255
+decryptions, trying
+approximately half of the
+possible keys, to reach a
+point at which chances are better than even that the key sought will
+have been found. But this may not be enough assurance; a linear
+cryptanalysis attack against DES requires 243 known plaintexts
+(with their corresponding ciphertexts) and approximately 243 DES
+operations.[57] This is a considerable improvement over brute force
+attacks.
+Public-key algorithms are based on the computational difficulty of various problems. The most famous of
+these are the difficulty of integer factorization of semiprimes and the difficulty of calculating discrete
+logarithms, both of which are not yet proven to be solvable in polynomial time (P) using only a classical
+Turing-complete computer. Much public-key cryptanalysis concerns designing algorithms in P that can
+solve these problems, or using other technologies, such as quantum computers. For instance, the best-
+known algorithms for solving the elliptic curve-based version of discrete logarithm are much more time-
+consuming than the best-known algorithms for factoring, at least for problems of more or less equivalent
+size. Thus, to achieve an equivalent strength of encryption, techniques that depend upon the difficulty of
+factoring large composite numbers, such as the RSA cryptosystem, require larger keys than elliptic curve
+techniques. For this reason, public-key cryptosystems based on elliptic curves have become popular since
+their invention in the mid-1990s.
+While pure cryptanalysis uses weaknesses in the algorithms themselves, other attacks on cryptosystems are
+based on actual use of the algorithms in real devices, and are called side-channel attacks. If a cryptanalyst
+has access to, for example, the amount of time the device took to encrypt a number of plaintexts or report an
+error in a password or PIN character, they may be able to use a timing attack to break a cipher that is
+otherwise resistant to analysis. An attacker might also study the pattern and length of messages to derive
+valuable information; this is known as traffic analysis[58] and can be quite useful to an alert adversary. Poor
+administration of a cryptosystem, such as permitting too short keys, will make any system vulnerable,
+regardless of other virtues. Social engineering and other attacks against humans (e.g., bribery, extortion,
+blackmail, espionage, rubber-hose cryptanalysis or torture) are usually employed due to being more cost-
+effective and feasible to perform in a reasonable amount of time compared to pure cryptanalysis by a high
+margin.
+Much of the theoretical work in cryptography concerns cryptographic primitives—algorithms with basic
+cryptographic properties—and their relationship to other cryptographic problems. More complicated
+cryptographic tools are then built from these basic primitives. These primitives provide fundamental
+properties, which are used to develop more complex tools called cryptosystems or cryptographic protocols,
+which guarantee one or more high-level security properties. Note, however, that the distinction between
+cryptographic primitives and cryptosystems, is quite arbitrary; for example, the RSA algorithm is sometimes
+considered a cryptosystem, and sometimes a primitive. Typical examples of cryptographic primitives
+include pseudorandom functions, one-way functions, etc.
+One or more cryptographic primitives are often used to develop a more complex algorithm, called a
+cryptographic system, or cryptosystem. Cryptosystems (e.g., El-Gamal encryption) are designed to provide
+particular functionality (e.g., public key encryption) while guaranteeing certain security properties (e.g.,
+chosen-plaintext attack (CPA) security in the random oracle model). Cryptosystems use the properties of the
+underlying cryptographic primitives to support the system's security properties. As the distinction between
+primitives and cryptosystems is somewhat arbitrary, a sophisticated cryptosystem can be derived from a
+combination of several more primitive cryptosystems. In many cases, the cryptosystem's structure involves
+back and forth communication among two or more parties in space (e.g., between the sender of a secure
+message and its receiver) or across time (e.g., cryptographically protected backup data). Such cryptosystems
+are sometimes called cryptographic protocols.
+Some widely known cryptosystems include RSA, Schnorr signature, ElGamal encryption, and Pretty Good
+Privacy (PGP). More complex cryptosystems include electronic cash[59] systems, signcryption systems, etc.
+Some more 'theoretical' cryptosystems include interactive proof systems,[60] (like zero-knowledge
+proofs)[61] and systems for secret sharing,[62][63].
+Lightweight cryptography (LWC) concerns cryptographic algorithms developed for a strictly constrained
+environment. The growth of Internet of Things (IoT) has spiked research into the development of
+lightweight algorithms that are better suited for the environment. An IoT environment requires strict
+constraints on power consumption, processing power, and security.[64] Algorithms such as PRESENT,
+AES, and SPECK are examples of the many LWC algorithms that have been developed to achieve the
+standard set by the National Institute of Standards and Technology.[65]
+Cryptography is widely used on the internet to help protect user-data and prevent eavesdropping. To ensure
+secrecy during transmission, many systems use private key cryptography to protect transmitted information.
+With public-key systems, one can maintain secrecy without a master key or a large number of keys.[66] But,
 Cryptographic primitives
-
-Much of the theoretical work in cryptography concerns cryptographic primitives—algorithms with basic cryptographic properties—and their relationship to other cryptographic problems. More complicated cryptographic tools are then built from these basic primitives. These primitives provide fundamental properties, which are used to develop more complex tools called cryptosystems or cryptographic protocols, which guarantee one or more high-level security properties. Note, however, that the distinction between cryptographic primitives and cryptosystems, is quite arbitrary; for example, the RSA algorithm is sometimes considered a cryptosystem, and sometimes a primitive. Typical examples of cryptographic primitives include pseudorandom functions, one-way functions, etc.
 Cryptosystems
-Main article: List of cryptosystems
-
-One or more cryptographic primitives are often used to develop a more complex algorithm, called a cryptographic system, or cryptosystem. Cryptosystems (e.g., El-Gamal encryption) are designed to provide particular functionality (e.g., public key encryption) while guaranteeing certain security properties (e.g., chosen-plaintext attack (CPA) security in the random oracle model). Cryptosystems use the properties of the underlying cryptographic primitives to support the system's security properties. As the distinction between primitives and cryptosystems is somewhat arbitrary, a sophisticated cryptosystem can be derived from a combination of several more primitive cryptosystems. In many cases, the cryptosystem's structure involves back and forth communication among two or more parties in space (e.g., between the sender of a secure message and its receiver) or across time (e.g., cryptographically protected backup data). Such cryptosystems are sometimes called cryptographic protocols.
-
-Some widely known cryptosystems include RSA, Schnorr signature, ElGamal encryption, and Pretty Good Privacy (PGP). More complex cryptosystems include electronic cash[59] systems, signcryption systems, etc. Some more 'theoretical'[clarification needed] cryptosystems include interactive proof systems,[60] (like zero-knowledge proofs)[61] and systems for secret sharing,[62][63].
 Lightweight cryptography
-
-Lightweight cryptography (LWC) concerns cryptographic algorithms developed for a strictly constrained environment. The growth of Internet of Things (IoT) has spiked research into the development of lightweight algorithms that are better suited for the environment. An IoT environment requires strict constraints on power consumption, processing power, and security.[64] Algorithms such as PRESENT, AES, and SPECK are examples of the many LWC algorithms that have been developed to achieve the standard set by the National Institute of Standards and Technology.[65]
 Applications
-[icon]	
-This section needs expansion. You can help by adding to it. (December 2021)
-Main category: Applications of cryptography
-
-Cryptography is widely used on the internet to help protect user-data and prevent eavesdropping. To ensure secrecy during transmission, many systems use private key cryptography to protect transmitted information. With public-key systems, one can maintain secrecy without a master key or a large number of keys.[66] But, some algorithms like BitLocker and VeraCrypt are generally not private-public key cryptography. For example, Veracrypt uses a password hash to generate the single private key. However, it can be configured to run in public-private key systems. The C++ opensource encryption library OpenSSL provides free and opensource encryption software and tools. The most commonly used encryption cipher suit is AES,[67] as it has hardware acceleration for all x86 based processors that has AES-NI. A close contender is ChaCha20-Poly1305, which is a stream cipher, however it is commonly used for mobile devices as they are ARM based which does not feature AES-NI instruction set extension.
+some algorithms like BitLocker and VeraCrypt are generally not private-public key cryptography. For
+example, Veracrypt uses a password hash to generate the single private key. However, it can be configured
+to run in public-private key systems. The C++ opensource encryption library OpenSSL provides free and
+opensource encryption software and tools. The most commonly used encryption cipher suit is AES,[67] as it
+has hardware acceleration for all x86 based processors that has AES-NI. A close contender is ChaCha20-
+Poly1305, which is a stream cipher, however it is commonly used for mobile devices as they are ARM
+based which does not feature AES-NI instruction set extension.
+Cryptography can be used to secure communications by encrypting them. Websites use encryption via
+HTTPS.[68] "End-to-end" encryption, where only sender and receiver can read messages, is implemented
+for email in Pretty Good Privacy and for secure messaging in general in WhatsApp, Signal and
+Telegram.[68]
+Operating systems use encryption to keep passwords secret, conceal parts of the system, and ensure that
+software updates are truly from the system maker.[68] Instead of storing plaintext passwords, computer
+systems store hashes thereof; then, when a user logs in, the system passes the given password through a
+cryptographic hash function and compares it to the hashed value on file. In this manner, neither the system
+nor an attacker has at any point access to the password in plaintext.[68]
+Encryption is sometimes used to encrypt one's entire drive. For example, University College London has
+implemented BitLocker (a program by Microsoft) to render drive data opaque without users logging in.[68]
+Cryptographic techniques enable cryptocurrency technologies, such as distributed ledger technologies (e.g.,
+blockchains), which finance cryptoeconomics applications such as decentralized finance (DeFi). Key
+cryptographic techniques that enable cryptocurrencies and cryptoeconomics include, but are not limited to:
+cryptographic keys, cryptographic hash function, asymmetric (public key) encryption, Multi-Factor
+Authentication (MFA), End-to-End Encryption (E2EE), and Zero Knowledge Proofs (ZKP).
+Cryptography has long been of interest to intelligence gathering and law enforcement agencies.[9] Secret
+communications may be criminal or even treasonous. Because of its facilitation of privacy, and the
+diminution of privacy attendant on its prohibition, cryptography is also of considerable interest to civil rights
+supporters. Accordingly, there has been a history of controversial legal issues surrounding cryptography,
+especially since the advent of inexpensive computers has made widespread access to high-quality
+cryptography possible.
+In some countries, even the domestic use of cryptography is, or has been, restricted. Until 1999, France
+significantly restricted the use of cryptography domestically, though it has since relaxed many of these rules.
+In China and Iran, a license is still required to use cryptography.[7] Many countries have tight restrictions on
 Cybersecurity
-
-Cryptography can be used to secure communications by encrypting them. Websites use encryption via HTTPS.[68] "End-to-end" encryption, where only sender and receiver can read messages, is implemented for email in Pretty Good Privacy and for secure messaging in general in WhatsApp, Signal and Telegram.[68]
-
-Operating systems use encryption to keep passwords secret, conceal parts of the system, and ensure that software updates are truly from the system maker.[68] Instead of storing plaintext passwords, computer systems store hashes thereof; then, when a user logs in, the system passes the given password through a cryptographic hash function and compares it to the hashed value on file. In this manner, neither the system nor an attacker has at any point access to the password in plaintext.[68]
-
-Encryption is sometimes used to encrypt one's entire drive. For example, University College London has implemented BitLocker (a program by Microsoft) to render drive data opaque without users logging in.[68]
 Cryptocurrencies and cryptoeconomics
-
-Cryptographic techniques enable cryptocurrency technologies, such as distributed ledger technologies (e.g., blockchains), which finance cryptoeconomics applications such as decentralized finance (DeFi). Key cryptographic techniques that enable cryptocurrencies and cryptoeconomics include, but are not limited to: cryptographic keys, cryptographic hash function, asymmetric (public key) encryption, Multi-Factor Authentication (MFA), End-to-End Encryption (E2EE), and Zero Knowledge Proofs (ZKP).
 Legal issues
-See also: Cryptography laws in different nations
 Prohibitions
-
-Cryptography has long been of interest to intelligence gathering and law enforcement agencies.[9] Secret communications may be criminal or even treasonous.[citation needed] Because of its facilitation of privacy, and the diminution of privacy attendant on its prohibition, cryptography is also of considerable interest to civil rights supporters. Accordingly, there has been a history of controversial legal issues surrounding cryptography, especially since the advent of inexpensive computers has made widespread access to high-quality cryptography possible.
-
-In some countries, even the domestic use of cryptography is, or has been, restricted. Until 1999, France significantly restricted the use of cryptography domestically, though it has since relaxed many of these rules. In China and Iran, a license is still required to use cryptography.[7] Many countries have tight restrictions on the use of cryptography. Among the more restrictive are laws in Belarus, Kazakhstan, Mongolia, Pakistan, Singapore, Tunisia, and Vietnam.[69]
-
-In the United States, cryptography is legal for domestic use, but there has been much conflict over legal issues related to cryptography.[9] One particularly important issue has been the export of cryptography and cryptographic software and hardware. Probably because of the importance of cryptanalysis in World War II and an expectation that cryptography would continue to be important for national security, many Western governments have, at some point, strictly regulated export of cryptography. After World War II, it was illegal in the US to sell or distribute encryption technology overseas; in fact, encryption was designated as auxiliary military equipment and put on the United States Munitions List.[70] Until the development of the personal computer, asymmetric key algorithms (i.e., public key techniques), and the Internet, this was not especially problematic. However, as the Internet grew and computers became more widely available, high-quality encryption techniques became well known around the globe.
+the use of cryptography. Among the more restrictive are laws in Belarus, Kazakhstan, Mongolia, Pakistan,
+Singapore, Tunisia, and Vietnam.[69]
+In the United States, cryptography is legal for domestic use, but there has been much conflict over legal
+issues related to cryptography.[9] One particularly important issue has been the export of cryptography and
+cryptographic software and hardware. Probably because of the importance of cryptanalysis in World War II
+and an expectation that cryptography would continue to be important for national security, many Western
+governments have, at some point, strictly regulated export of cryptography. After World War II, it was
+illegal in the US to sell or distribute encryption technology overseas; in fact, encryption was designated as
+auxiliary military equipment and put on the United States Munitions List.[70] Until the development of the
+personal computer, asymmetric key algorithms (i.e., public key techniques), and the Internet, this was not
+especially problematic. However, as the Internet grew and computers became more widely available, high-
+quality encryption techniques became well known around the globe.
+In the 1990s, there were several challenges to US export regulation of cryptography. After the source code
+for Philip Zimmermann's Pretty Good Privacy (PGP) encryption program found its way onto the Internet in
+June 1991, a complaint by RSA Security (then called RSA Data Security, Inc.) resulted in a lengthy
+criminal investigation of Zimmermann by the US Customs Service and the FBI, though no charges were
+ever filed.[71][72] Daniel J. Bernstein, then a graduate student at UC Berkeley, brought a lawsuit against the
+US government challenging some aspects of the restrictions based on free speech grounds. The 1995 case
+Bernstein v. United States ultimately resulted in a 1999 decision that printed source code for cryptographic
+algorithms and systems was protected as free speech by the United States Constitution.[73]
+In 1996, thirty-nine countries signed the Wassenaar Arrangement, an arms control treaty that deals with the
+export of arms and "dual-use" technologies such as cryptography. The treaty stipulated that the use of
+cryptography with short key-lengths (56-bit for symmetric encryption, 512-bit for RSA) would no longer be
+export-controlled.[74] Cryptography exports from the US became less strictly regulated as a consequence of
+a major relaxation in 2000;[75] there are no longer very many restrictions on key sizes in US-exported mass-
+market software. Since this relaxation in US export restrictions, and because most personal computers
+connected to the Internet include US-sourced web browsers such as Firefox or Internet Explorer, almost
+every Internet user worldwide has potential access to quality cryptography via their browsers (e.g., via
+Transport Layer Security). The Mozilla Thunderbird and Microsoft Outlook E-mail client programs
+similarly can transmit and receive emails via TLS, and can send and receive email encrypted with S/MIME.
+Many Internet users do not realize that their basic application software contains such extensive
+cryptosystems. These browsers and email programs are so ubiquitous that even governments whose intent is
+to regulate civilian use of cryptography generally do not find it practical to do much to control distribution
+or use of cryptography of this quality, so even when such laws are in force, actual enforcement is often
+effectively impossible.
+Another contentious issue connected to cryptography in the United States is the influence of the National
+Security Agency on cipher development and policy.[9] The NSA was involved with the design of DES
+during its development at IBM and its consideration by the National Bureau of Standards as a possible
+Federal Standard for cryptography.[76] DES was designed to be resistant to differential cryptanalysis,[77] a
 Export controls
-Main article: Export of cryptography
-
-In the 1990s, there were several challenges to US export regulation of cryptography. After the source code for Philip Zimmermann's Pretty Good Privacy (PGP) encryption program found its way onto the Internet in June 1991, a complaint by RSA Security (then called RSA Data Security, Inc.) resulted in a lengthy criminal investigation of Zimmermann by the US Customs Service and the FBI, though no charges were ever filed.[71][72] Daniel J. Bernstein, then a graduate student at UC Berkeley, brought a lawsuit against the US government challenging some aspects of the restrictions based on free speech grounds. The 1995 case Bernstein v. United States ultimately resulted in a 1999 decision that printed source code for cryptographic algorithms and systems was protected as free speech by the United States Constitution.[73]
-
-In 1996, thirty-nine countries signed the Wassenaar Arrangement, an arms control treaty that deals with the export of arms and "dual-use" technologies such as cryptography. The treaty stipulated that the use of cryptography with short key-lengths (56-bit for symmetric encryption, 512-bit for RSA) would no longer be export-controlled.[74] Cryptography exports from the US became less strictly regulated as a consequence of a major relaxation in 2000;[75] there are no longer very many restrictions on key sizes in US-exported mass-market software. Since this relaxation in US export restrictions, and because most personal computers connected to the Internet include US-sourced web browsers such as Firefox or Internet Explorer, almost every Internet user worldwide has potential access to quality cryptography via their browsers (e.g., via Transport Layer Security). The Mozilla Thunderbird and Microsoft Outlook E-mail client programs similarly can transmit and receive emails via TLS, and can send and receive email encrypted with S/MIME. Many Internet users do not realize that their basic application software contains such extensive cryptosystems. These browsers and email programs are so ubiquitous that even governments whose intent is to regulate civilian use of cryptography generally do not find it practical to do much to control distribution or use of cryptography of this quality, so even when such laws are in force, actual enforcement is often effectively impossible.[citation needed]
 NSA involvement
-NSA headquarters in Fort Meade, Maryland
-See also: Clipper chip
-
-Another contentious issue connected to cryptography in the United States is the influence of the National Security Agency on cipher development and policy.[9] The NSA was involved with the design of DES during its development at IBM and its consideration by the National Bureau of Standards as a possible Federal Standard for cryptography.[76] DES was designed to be resistant to differential cryptanalysis,[77] a powerful and general cryptanalytic technique known to the NSA and IBM, that became publicly known only when it was rediscovered in the late 1980s.[78] According to Steven Levy, IBM discovered differential cryptanalysis,[72] but kept the technique secret at the NSA's request. The technique became publicly known only when Biham and Shamir re-discovered and announced it some years later. The entire affair illustrates the difficulty of determining what resources and knowledge an attacker might actually have.
-
-Another instance of the NSA's involvement was the 1993 Clipper chip affair, an encryption microchip intended to be part of the Capstone cryptography-control initiative. Clipper was widely criticized by cryptographers for two reasons. The cipher algorithm (called Skipjack) was then classified (declassified in 1998, long after the Clipper initiative lapsed). The classified cipher caused concerns that the NSA had deliberately made the cipher weak to assist its intelligence efforts. The whole initiative was also criticized based on its violation of Kerckhoffs's Principle, as the scheme included a special escrow key held by the government for use by law enforcement (i.e. wiretapping).[72]
+NSA headquarters in Fort Meade,
+Maryland
+powerful and general cryptanalytic technique known to the NSA
+and IBM, that became publicly known only when it was
+rediscovered in the late 1980s.[78] According to Steven Levy, IBM
+discovered differential cryptanalysis,[72] but kept the technique
+secret at the NSA's request. The technique became publicly known
+only when Biham and Shamir re-discovered and announced it some
+years later. The entire affair illustrates the difficulty of determining
+what resources and knowledge an attacker might actually have.
+Another instance of the NSA's involvement was the 1993 Clipper
+chip affair, an encryption microchip intended to be part of the
+Capstone cryptography-control initiative. Clipper was widely
+criticized by cryptographers for two reasons. The cipher algorithm
+(called Skipjack) was then classified (declassified in 1998, long after the Clipper initiative lapsed). The
+classified cipher caused concerns that the NSA had deliberately made the cipher weak to assist its
+intelligence efforts. The whole initiative was also criticized based on its violation of Kerckhoffs's Principle,
+as the scheme included a special escrow key held by the government for use by law enforcement (i.e.
+wiretapping).[72]
+Cryptography is central to digital rights management (DRM), a group of techniques for technologically
+controlling use of copyrighted material, being widely implemented and deployed at the behest of some
+copyright holders. In 1998, U.S. President Bill Clinton signed the Digital Millennium Copyright Act
+(DMCA), which criminalized all production, dissemination, and use of certain cryptanalytic techniques and
+technology (now known or later discovered); specifically, those that could be used to circumvent DRM
+technological schemes.[79] This had a noticeable impact on the cryptography research community since an
+argument can be made that any cryptanalytic research violated the DMCA. Similar statutes have since been
+enacted in several countries and regions, including the implementation in the EU Copyright Directive.
+Similar restrictions are called for by treaties signed by World Intellectual Property Organization member-
+states.
+The United States Department of Justice and FBI have not enforced the DMCA as rigorously as had been
+feared by some, but the law, nonetheless, remains a controversial one. Niels Ferguson, a well-respected
+cryptography researcher, has publicly stated that he will not release some of his research into an Intel
+security design for fear of prosecution under the DMCA.[80] Cryptologist Bruce Schneier has argued that
+the DMCA encourages vendor lock-in, while inhibiting actual measures toward cyber-security.[81] Both
+Alan Cox (longtime Linux kernel developer) and Edward Felten (and some of his students at Princeton)
+have encountered problems related to the Act. Dmitry Sklyarov was arrested during a visit to the US from
+Russia, and jailed for five months pending trial for alleged violations of the DMCA arising from work he
+had done in Russia, where the work was legal. In 2007, the cryptographic keys responsible for Blu-ray and
+HD DVD content scrambling were discovered and released onto the Internet. In both cases, the Motion
+Picture Association of America sent out numerous DMCA takedown notices, and there was a massive
+Internet backlash[10] triggered by the perceived impact of such notices on fair use and free speech.
 Digital rights management
-Main article: Digital rights management
-
-Cryptography is central to digital rights management (DRM), a group of techniques for technologically controlling use of copyrighted material, being widely implemented and deployed at the behest of some copyright holders. In 1998, U.S. President Bill Clinton signed the Digital Millennium Copyright Act (DMCA), which criminalized all production, dissemination, and use of certain cryptanalytic techniques and technology (now known or later discovered); specifically, those that could be used to circumvent DRM technological schemes.[79] This had a noticeable impact on the cryptography research community since an argument can be made that any cryptanalytic research violated the DMCA. Similar statutes have since been enacted in several countries and regions, including the implementation in the EU Copyright Directive. Similar restrictions are called for by treaties signed by World Intellectual Property Organization member-states.
-
-The United States Department of Justice and FBI have not enforced the DMCA as rigorously as had been feared by some, but the law, nonetheless, remains a controversial one. Niels Ferguson, a well-respected cryptography researcher, has publicly stated that he will not release some of his research into an Intel security design for fear of prosecution under the DMCA.[80] Cryptologist Bruce Schneier has argued that the DMCA encourages vendor lock-in, while inhibiting actual measures toward cyber-security.[81] Both Alan Cox (longtime Linux kernel developer) and Edward Felten (and some of his students at Princeton) have encountered problems related to the Act. Dmitry Sklyarov was arrested during a visit to the US from Russia, and jailed for five months pending trial for alleged violations of the DMCA arising from work he had done in Russia, where the work was legal. In 2007, the cryptographic keys responsible for Blu-ray and HD DVD content scrambling were discovered and released onto the Internet. In both cases, the Motion Picture Association of America sent out numerous DMCA takedown notices, and there was a massive Internet backlash[10] triggered by the perceived impact of such notices on fair use and free speech.
 Forced disclosure of encryption keys
-Main article: Key disclosure law
-
-In the United Kingdom, the Regulation of Investigatory Powers Act gives UK police the powers to force suspects to decrypt files or hand over passwords that protect encryption keys. Failure to comply is an offense in its own right, punishable on conviction by a two-year jail sentence or up to five years in cases involving national security.[8] Successful prosecutions have occurred under the Act; the first, in 2009,[82] resulted in a term of 13 months' imprisonment.[83] Similar forced disclosure laws in Australia, Finland, France, and India compel individual suspects under investigation to hand over encryption keys or passwords during a criminal investigation.
-
-In the United States, the federal criminal case of United States v. Fricosu addressed whether a search warrant can compel a person to reveal an encryption passphrase or password.[84] The Electronic Frontier Foundation (EFF) argued that this is a violation of the protection from self-incrimination given by the Fifth Amendment.[85] In 2012, the court ruled that under the All Writs Act, the defendant was required to produce an unencrypted hard drive for the court.[86]
-
-In many jurisdictions, the legal status of forced disclosure remains unclea
-
-r.
-
-The 2016 FBI–Apple encryption dispute concerns the ability of courts in the United States to compel manufacturers' assistance in unlocking cell phones whose contents are cryptographically protected.
-
-As a potential counter-measure to forced disclosure some cryptographic software supports plausible deniability, where the encrypted data is indistinguishable from unused random data (for example such as that of a drive which has been securely wiped).
+In the United Kingdom, the Regulation of Investigatory Powers Act gives UK police the powers to force
+suspects to decrypt files or hand over passwords that protect encryption keys. Failure to comply is an
+offense in its own right, punishable on conviction by a two-year jail sentence or up to five years in cases
+involving national security.[8] Successful prosecutions have occurred under the Act; the first, in 2009,[82]
+resulted in a term of 13 months' imprisonment.[83] Similar forced disclosure laws in Australia, Finland,
+France, and India compel individual suspects under investigation to hand over encryption keys or
+passwords during a criminal investigation.
+In the United States, the federal criminal case of United States v. Fricosu addressed whether a search
+warrant can compel a person to reveal an encryption passphrase or password.[84] The Electronic Frontier
+Foundation (EFF) argued that this is a violation of the protection from self-incrimination given by the Fifth
+Amendment.[85] In 2012, the court ruled that under the All Writs Act, the defendant was required to
+produce an unencrypted hard drive for the court.[86]
+In many jurisdictions, the legal status of forced disclosure remains unclear.
+The 2016 FBI–Apple encryption dispute concerns the ability of courts in the United States to compel
+manufacturers' assistance in unlocking cell phones whose contents are cryptographically protected.
+As a potential counter-measure to forced disclosure some cryptographic software supports plausible
+deniability, where the encrypted data is indistinguishable from unused random data (for example such as
+that of a drive which has been securely wiped).
+Collision attack
+Comparison of cryptography libraries
+Cryptovirology – Securing and encrypting virology
+Crypto Wars – Attempts to limit access to strong cryptography
+Encyclopedia of Cryptography and Security – Book by Technische Universiteit Eindhoven
+Global surveillance – Mass surveillance across national borders
+Indistinguishability obfuscation – Type of cryptographic software obfuscation
+Information theory – Scientific study of digital information
+Outline of cryptography – Overview of and topical guide to cryptography
+List of cryptographers
+List of important publications in cryptography
+List of multiple discoveries
+List of unsolved problems in computer science – List of unsolved computational
+problems
+Secure cryptoprocessor
+Strong cryptography – Term applied to cryptographic systems that are highly resistant to
+cryptanalysis
+Syllabical and Steganographical Table – Eighteenth-century work believed to be the first
+cryptography chart – first cryptography chart
 See also
+World Wide Web Consortium's Web Cryptography API – World Wide Web Consortium
+cryptography standard
+1. Liddell, Henry George; Scott, Robert; Jones, Henry Stuart; McKenzie, Roderick (1984). A
+Greek-English Lexicon. Oxford University Press.
+2. Rivest, Ronald L. (1990). "Cryptography". In J. Van Leeuwen (ed.). Handbook of Theoretical
+Computer Science. Vol. 1. Elsevier.
+3. Bellare, Mihir; Rogaway, Phillip (21 September 2005). "Introduction". Introduction to Modern
+Cryptography. p. 10.
+4. Sadkhan, Sattar B. (December 2013). "Key note lecture multidisciplinary in cryptology and
+information security" (https://ieeexplore.ieee.org/document/6998773). 2013 International
+Conference on Electrical Communication, Computer, Power, and Control Engineering
+(ICECCPCE). pp. 1–2. doi:10.1109/ICECCPCE.2013.6998773 (https://doi.org/10.1109%2FI
+CECCPCE.2013.6998773). ISBN 978-1-4799-5633-3. S2CID 22378547 (https://api.semanti
+cscholar.org/CorpusID:22378547). Archived (https://web.archive.org/web/20220827043815/
+https://ieeexplore.ieee.org/document/6998773/) from the original on 27 August 2022.
+Retrieved 20 September 2022.
+5. Menezes, A.J.; van Oorschot, P.C.; Vanstone, S.A. (1997). Handbook of Applied
+Cryptography (https://archive.org/details/handbookofapplie0000mene). Taylor & Francis.
+ISBN 978-0-8493-8523-0.
+6. Biggs, Norman (2008). Codes: An introduction to Information Communication and
+Cryptography (https://archive.org/details/codesintroductio00bigg_911). Springer. p. 171 (http
+s://archive.org/details/codesintroductio00bigg_911/page/n176).
+7. "Overview per country" (http://www.cryptolaw.org/cls2.htm). Crypto Law Survey. February
+2013. Archived (https://web.archive.org/web/20130101062615/http://www.cryptolaw.org/cls2.
+htm) from the original on 1 January 2013. Retrieved 26 March 2015.
+8. "UK Data Encryption Disclosure Law Takes Effect" (https://web.archive.org/web/2012012013
+5135/http://www.pcworld.com/article/137881/uk_data_encryption_disclosure_law_takes_eff
+ect.html). PC World. 1 October 2007. Archived from the original (http://www.pcworld.com/artic
+le/137881/uk_data_encryption_disclosure_law_takes_effect.html) on 20 January 2012.
+Retrieved 26 March 2015.
+9. Ranger, Steve (24 March 2015). "The undercover war on your internet secrets: How online
+surveillance cracked our trust in the web" (https://web.archive.org/web/20160612190952/htt
+p://www.techrepublic.com/article/the-undercover-war-on-your-internet-secrets-how-online-su
+rveillance-cracked-our-trust-in-the-web/). TechRepublic. Archived from the original (https://w
+ww.techrepublic.com/article/the-undercover-war-on-your-internet-secrets-how-online-surveill
+ance-cracked-our-trust-in-the-web/) on 12 June 2016. Retrieved 12 June 2016.
+10. Doctorow, Cory (2 May 2007). "Digg users revolt over AACS key" (https://boingboing.net/200
+7/05/02/digg-users-revolt-ov.html). Boing Boing. Archived (https://web.archive.org/web/20150
+512030538/http://boingboing.net/2007/05/02/digg-users-revolt-ov.html) from the original on
+12 May 2015. Retrieved 26 March 2015.
+11. Whalen, Terence (1994). "The Code for Gold: Edgar Allan Poe and Cryptography".
+Representations. 46 (46). University of California Press: 35–57. doi:10.2307/2928778 (http
+s://doi.org/10.2307%2F2928778). JSTOR 2928778 (https://www.jstor.org/stable/2928778).
+12. Rosenheim, Shawn (1997). The Cryptographic Imagination: Secret Writing from Edgar Poe
+to the Internet (https://books.google.com/books?id=sjhbAAAAMAAJ). Johns Hopkins
+University Press. p. 20. ISBN 978-0801853319.
+13. Kahn, David (1967). The Codebreakers. ISBN 978-0-684-83130-5.
+References
+14. "An Introduction to Modern Cryptosystems" (https://www.giac.org/paper/gsec/2604/introducti
+on-modern-cryptosystems/104482). Archived (https://web.archive.org/web/20151117030739/
+https://www.giac.org/paper/gsec/2604/introduction-modern-cryptosystems/104482) from the
+original on 17 November 2015. Retrieved 12 October 2015.
+15. Sharbaf, M.S. (1 November 2011). "Quantum cryptography: An emerging technology in
+network security". 2011 IEEE International Conference on Technologies for Homeland
+Security (HST). pp. 13–19. doi:10.1109/THS.2011.6107841 (https://doi.org/10.1109%2FTH
+S.2011.6107841). ISBN 978-1-4577-1376-7. S2CID 17915038 (https://api.semanticscholar.o
+rg/CorpusID:17915038).
+16. "cryptology | Britannica" (https://www.britannica.com/topic/cryptology). www.britannica.com.
+Archived (https://web.archive.org/web/20220710193304/https://www.britannica.com/topic/cry
+ptology) from the original on 10 July 2022. Retrieved 22 June 2022.
+17. Oded Goldreich, Foundations of Cryptography, Volume 1: Basic Tools, Cambridge University
+Press, 2001, ISBN 0-521-79172-3
+18. "Cryptology (definition)" (http://www.merriam-webster.com/dictionary/cryptology). Merriam-
+Webster's Collegiate Dictionary (11th ed.). Merriam-Webster. Retrieved 26 March 2015.
+19. Shirey, Rob (May 2000). "Internet Security Glossary" (https://tools.ietf.org/html/rfc2828).
+Internet Engineering Task Force. doi:10.17487/RFC2828 (https://doi.org/10.17487%2FRFC2
+828). RFC 2828 (https://tools.ietf.org/html/rfc2828). Archived (https://web.archive.org/web/20
+150418092913/http://tools.ietf.org/html/rfc2828) from the original on 18 April 2015. Retrieved
+26 March 2015.
+20. Military.com (13 May 2021). "What's a Cryptologic Linguist?" (https://www.military.com/join-ar
+med-forces/army-cryptologic-linguist.html). Military.com. Retrieved 17 July 2023.
+21. James D. Benson; Michael J. Cummings; William S. Greaves, eds. (January 1988).
+Linguistics in a Systemic Perspective. John Benjamins Publishing Company. p. 38.
+ISBN 9789027278760.
+22. Saltzman, Benjamin A. (1 October 2018). "Vt hkskdkxt: Early Medieval Cryptography, Textual
+Errors, and Scribal Agency" (https://www.journals.uchicago.edu/doi/10.1086/698861).
+Speculum. 93 (4): 975–1009. doi:10.1086/698861 (https://doi.org/10.1086%2F698861).
+ISSN 0038-7134 (https://www.worldcat.org/issn/0038-7134). S2CID 165362817 (https://api.s
+emanticscholar.org/CorpusID:165362817). Archived (https://web.archive.org/web/202202261
+85812/https://www.journals.uchicago.edu/doi/10.1086/698861) from the original on 26
+February 2022. Retrieved 26 February 2022.
+23. I︠A︡shchenko, V.V. (2002). Cryptography: an introduction (https://books.google.com/books?id=
+cH-NGrpcIMcC&pg=PA6). AMS Bookstore. p. 6. ISBN 978-0-8218-2986-8.
+24. electricpulp.com. "CODES – Encyclopaedia Iranica" (http://www.iranicaonline.org/articles/co
+des-romuz-sg). www.iranicaonline.org. Archived (https://web.archive.org/web/201703051136
+51/http://www.iranicaonline.org/articles/codes-romuz-sg) from the original on 5 March 2017.
+Retrieved 4 March 2017.
+25. Kahn, David (1996). The Codebreakers: The Comprehensive History of Secret
+Communication from Ancient Times to the Internet (https://books.google.com/books?id=3S8r
+hOEmDIIC&q=david+kahn+the+codebreakers). Simon and Schuster. ISBN 978-
+1439103555. Archived (https://web.archive.org/web/20230701101753/https://books.google.c
+om/books?id=3S8rhOEmDIIC&q=david+kahn+the+codebreakers) from the original on 1 July
+2023. Retrieved 16 October 2020.
+26. Broemeling, Lyle D. (1 November 2011). "An Account of Early Statistical Inference in Arab
+Cryptology". The American Statistician. 65 (4): 255–257. doi:10.1198/tas.2011.10191 (https://
+doi.org/10.1198%2Ftas.2011.10191). S2CID 123537702 (https://api.semanticscholar.org/Cor
+pusID:123537702).
+27. Singh, Simon (2000). The Code Book. New York: Anchor Books. pp. 14–20. ISBN 978-0-
+385-49532-5.
+28. Al-Kadi, Ibrahim A. (April 1992). "The origins of cryptology: The Arab contributions".
+Cryptologia. 16 (2): 97–126. doi:10.1080/0161-119291866801 (https://doi.org/10.1080%2F0
+161-119291866801).
+29. Schrödel, Tobias (October 2008). "Breaking Short Vigenère Ciphers". Cryptologia. 32 (4):
+334–337. doi:10.1080/01611190802336097 (https://doi.org/10.1080%2F016111908023360
+97). S2CID 21812933 (https://api.semanticscholar.org/CorpusID:21812933).
+30. Hakim, Joy (1995). A History of US: War, Peace and all that Jazz. New York: Oxford
+University Press. ISBN 978-0-19-509514-2.
+31. Gannon, James (2001). Stealing Secrets, Telling Lies: How Spies and Codebreakers
+Helped Shape the Twentieth Century (https://archive.org/details/stealingsecretst00gann).
+Washington, D.C.: Brassey's. ISBN 978-1-57488-367-1.
+32. "The Legacy of DES – Schneier on Security" (https://www.schneier.com/blog/archives/2004/
+10/the_legacy_of_d.html). www.schneier.com. Archived (https://web.archive.org/web/202202
+23233956/https://www.schneier.com/blog/archives/2004/10/the_legacy_of_d.html) from the
+original on 23 February 2022. Retrieved 26 January 2022.
+33. Diffie, Whitfield; Hellman, Martin (November 1976). "New Directions in Cryptography" (http://
+www-ee.stanford.edu/~hellman/publications/24.pdf) (PDF). IEEE Transactions on
+Information Theory. IT-22 (6): 644–654. CiteSeerX 10.1.1.37.9720 (https://citeseerx.ist.psu.e
+du/viewdoc/summary?doi=10.1.1.37.9720). doi:10.1109/tit.1976.1055638 (https://doi.org/10.
+1109%2Ftit.1976.1055638). Archived (https://web.archive.org/web/20171203090237/https://
+www-ee.stanford.edu/~hellman/publications/24.pdf) (PDF) from the original on 3 December
+2017. Retrieved 16 November 2015.
+34. Singh, Simon (1999). The Code Book: The Science of Secrecy From Ancient Egypt To
+Quantum Cryptography (https://archive.org/details/codebook00simo/page/278) (First Anchor
+Books ed.). New York: Anchor Books. pp. 278 (https://archive.org/details/codebook00simo/p
+age/278). ISBN 978-0-385-49532-5.
+35. Cryptography: Theory and Practice, Third Edition (Discrete Mathematics and Its
+Applications), 2005, by Douglas R. Stinson, Chapman and Hall/CRC
+36. Blaze, Matt; Diffie, Whitefield; Rivest, Ronald L.; Schneier, Bruce; Shimomura, Tsutomu;
+Thompson, Eric; Wiener, Michael (January 1996). "Minimal key lengths for symmetric
+ciphers to provide adequate commercial security" (http://www.fortify.net/related/cryptographer
+s.html). Fortify. Archived (https://web.archive.org/web/20150924014751/http://www.fortify.net/r
+elated/cryptographers.html) from the original on 24 September 2015. Retrieved 26 March
+2015.
+37. Diffie, W.; Hellman, M. (1 September 2006). "New directions in cryptography" (https://dl.acm.
+org/doi/10.1109/TIT.1976.1055638). IEEE Transactions on Information Theory. 22 (6): 644–
+654. doi:10.1109/TIT.1976.1055638 (https://doi.org/10.1109%2FTIT.1976.1055638).
+Archived (https://web.archive.org/web/20220419150601/https://dl.acm.org/doi/10.1109/TIT.1
+976.1055638) from the original on 19 April 2022. Retrieved 19 April 2022.
+38. "FIPS PUB 197: The official Advanced Encryption Standard" (https://web.archive.org/web/20
+150407153905/http://csrc.nist.gov/publications/fips/fips197/fips-197.pdf) (PDF). Computer
+Security Resource Center. National Institute of Standards and Technology. Archived from the
+original (http://www.csrc.nist.gov/publications/fips/fips197/fips-197.pdf) (PDF) on 7 April
+2015. Retrieved 26 March 2015.
+39. "NCUA letter to credit unions" (https://www.ncua.gov/Resources/Documents/LCU2004-09.pd
+f) (PDF). National Credit Union Administration. July 2004. Archived (https://web.archive.org/
+web/20140912045940/http://www.ncua.gov/Resources/Documents/LCU2004-09.pdf) (PDF)
+from the original on 12 September 2014. Retrieved 26 March 2015.
+40. Finney, Hal; Thayer, Rodney L.; Donnerhacke, Lutz; Callas, Jon (November 1998). "Open
+PGP Message Format" (https://tools.ietf.org/html/rfc2440). Internet Engineering Task Force.
+doi:10.17487/RFC2440 (https://doi.org/10.17487%2FRFC2440). RFC 2440 (https://tools.ietf.
+org/html/rfc2440). Archived (https://web.archive.org/web/20150315064722/http://tools.ietf.org/
+html/rfc2440) from the original on 15 March 2015. Retrieved 26 March 2015.
+41. Golen, Pawel (19 July 2002). "SSH" (http://www.windowsecurity.com/articles/SSH.html).
+WindowSecurity. Archived (https://web.archive.org/web/20091029164411/http://www.windo
+wsecurity.com/articles/SSH.html) from the original on 29 October 2009. Retrieved 26 March
+2015.
+42. Schneier, Bruce (1996). Applied Cryptography (https://archive.org/details/Applied_Cryptogra
+phy_2nd_ed._B._Schneier) (2nd ed.). Wiley. ISBN 978-0-471-11709-4.
+43. Paar, Christof (2009). Understanding cryptography : a textbook for students and practitioners
+(https://www.worldcat.org/oclc/567365751). Jan Pelzl. Berlin: Springer. p. 123. ISBN 978-3-
+642-04101-3. OCLC 567365751 (https://www.worldcat.org/oclc/567365751).
+44. Bernstein, Daniel J.; Lange, Tanja (14 September 2017). "Post-quantum cryptography" (htt
+p://www.nature.com/articles/nature23461). Nature. 549 (7671): 188–194.
+Bibcode:2017Natur.549..188B (https://ui.adsabs.harvard.edu/abs/2017Natur.549..188B).
+doi:10.1038/nature23461 (https://doi.org/10.1038%2Fnature23461). ISSN 0028-0836 (http
+s://www.worldcat.org/issn/0028-0836). PMID 28905891 (https://pubmed.ncbi.nlm.nih.gov/289
+05891). S2CID 4446249 (https://api.semanticscholar.org/CorpusID:4446249). Archived (http
+s://web.archive.org/web/20220710194707/https://www.nature.com/articles/nature23461)
+from the original on 10 July 2022. Retrieved 26 August 2022.
+45. "Announcing Request for Candidate Algorithm Nominations for a New Cryptographic Hash
+Algorithm (SHA–3) Family" (https://www.govinfo.gov/content/pkg/FR-2007-11-02/pdf/E7-215
+81.pdf) (PDF). Federal Register. 72 (212). 2 November 2007. Archived (https://web.archive.o
+rg/web/20080228075550/http://csrc.nist.gov/groups/ST/hash/documents/FR_Notice_Nov07.
+pdf) (PDF) from the original on 28 February 2008.
+46. "NIST Selects Winner of Secure Hash Algorithm (SHA-3) Competition" (https://www.nist.gov/
+itl/csd/sha-100212.cfm). NIST. National Institute of Standards and Technology. 2 October
+2012. Archived (https://web.archive.org/web/20150402081721/http://www.nist.gov/itl/csd/sha
+-100212.cfm) from the original on 2 April 2015. Retrieved 26 March 2015.
+47. Diffie, Whitfield; Hellman, Martin (8 June 1976). "Multi-user cryptographic techniques".
+AFIPS Proceedings. 45: 109–112. doi:10.1145/1499799.1499815 (https://doi.org/10.1145%2
+F1499799.1499815). S2CID 13210741 (https://api.semanticscholar.org/CorpusID:1321074
+1).
+48. Ralph Merkle was working on similar ideas at the time and encountered publication delays,
+and Hellman has suggested that the term used should be Diffie–Hellman–Merkle
+asymmetric key cryptography.
+49. Kahn, David (Fall 1979). "Cryptology Goes Public". Foreign Affairs. 58 (1): 141–159.
+doi:10.2307/20040343 (https://doi.org/10.2307%2F20040343). JSTOR 20040343 (https://ww
+w.jstor.org/stable/20040343).
+50. "Using Client-Certificate based authentication with NGINX on Ubuntu" (https://www.ssltrust.c
+om.au/help/setup-guides/client-certificate-authentication). SSLTrust. Archived (https://web.ar
+chive.org/web/20190826005346/https://www.ssltrust.com.au/help/setup-guides/client-certific
+ate-authentication) from the original on 26 August 2019. Retrieved 13 June 2019.
+51. Rivest, Ronald L.; Shamir, A.; Adleman, L. (1978). "A Method for Obtaining Digital Signatures
+and Public-Key Cryptosystems" (https://web.archive.org/web/20011116122233/http://theory.l
+cs.mit.edu/~rivest/rsapaper.pdf) (PDF). Communications of the ACM. 21 (2): 120–126.
+CiteSeerX 10.1.1.607.2677 (https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.607.2
+677). doi:10.1145/359340.359342 (https://doi.org/10.1145%2F359340.359342).
+S2CID 2873616 (https://api.semanticscholar.org/CorpusID:2873616). Archived from the
+original (http://theory.lcs.mit.edu/~rivest/rsapaper.pdf) (PDF) on 16 November 2001.
+Previously released as an MIT "Technical Memo" in April 1977, and published in Martin
+Gardner's Scientific American Mathematical recreations column
+52. Wayner, Peter (24 December 1997). "British Document Outlines Early Encryption Discovery"
+(https://www.nytimes.com/library/cyber/week/122497encrypt.html). The New York Times.
+Archived (https://web.archive.org/web/20170627155400/http://www.nytimes.com/library/cybe
+r/week/122497encrypt.html) from the original on 27 June 2017. Retrieved 26 March 2015.
+53. Cocks, Clifford (20 November 1973). "A Note on 'Non-Secret Encryption' " (http://www.fi.mun
+i.cz/usr/matyas/lecture/paper2.pdf) (PDF). CESG Research Report. Archived (https://web.arc
+hive.org/web/20110727161329/http://www.fi.muni.cz/usr/matyas/lecture/paper2.pdf) (PDF)
+from the original on 27 July 2011. Retrieved 22 July 2009.
+54. Singh, Simon (1999). The Code Book (https://archive.org/details/codebookevolutio00sing).
+Doubleday. pp. 279–292 (https://archive.org/details/codebookevolutio00sing/page/279).
+ISBN 9780385495318.
+55. Shannon, Claude; Weaver, Warren (1963). The Mathematical Theory of Communication.
+University of Illinois Press. ISBN 978-0-252-72548-7.
+56. "An Example of a Man-in-the-middle Attack Against Server Authenticated SSL-sessions" (htt
+p://www8.cs.umu.se/education/examina/Rapporter/MattiasEriksson.pdf) (PDF). Archived (htt
+ps://web.archive.org/web/20160603222024/http://www8.cs.umu.se/education/examina/Rapp
+orter/MattiasEriksson.pdf) (PDF) from the original on 3 June 2016. Retrieved 13 October
+2015.
+57. Junod, Pascal (2001). "On the Complexity of Matsui's Attack". Selected Areas in
+Cryptography (http://citeseer.ist.psu.edu/cache/papers/cs/22094/http:zSzzSzeprint.iacr.orgzS
+z2001zSz056.pdf/junod01complexity.pdf) (PDF). Lecture Notes in Computer Science.
+Vol. 2259. pp. 199–211. doi:10.1007/3-540-45537-X_16 (https://doi.org/10.1007%2F3-540-4
+5537-X_16). ISBN 978-3-540-43066-7.
+58. Song, Dawn; Wagner, David A.; Tian, Xuqing (2001). "Timing Analysis of Keystrokes and
+Timing Attacks on SSH" (http://citeseer.ist.psu.edu/cache/papers/cs/22094/http:zSzzSzeprint.
+iacr.orgzSz2001zSz056.pdf/junod01complexity.pdf) (PDF). Tenth USENIX Security
+Symposium.
+59. Brands, S. (1994). "Untraceable Off-line Cash in Wallet with Observers". Advances in
+Cryptology – CRYPTO' 93 (https://web.archive.org/web/20110726214409/http://ftp.se.kde.or
+g/pub/security/docs/ecash/crypto93.ps.gz). Lecture Notes in Computer Science. Vol. 773.
+pp. 302–318. doi:10.1007/3-540-48329-2_26 (https://doi.org/10.1007%2F3-540-48329-2_2
+6). ISBN 978-3-540-57766-9. Archived from the original (http://ftp.se.kde.org/pub/security/doc
+s/ecash/crypto93.ps.gz) on 26 July 2011.
+60. Babai, László (1985). "Trading group theory for randomness". Proceedings of the
+seventeenth annual ACM symposium on Theory of computing – STOC '85 (http://portal.acm.
+org/citation.cfm?id=22192). pp. 421–429. CiteSeerX 10.1.1.130.3397 (https://citeseerx.ist.ps
+u.edu/viewdoc/summary?doi=10.1.1.130.3397). doi:10.1145/22145.22192 (https://doi.org/10.
+1145%2F22145.22192). ISBN 978-0-89791-151-1. S2CID 17981195 (https://api.semanticsc
+holar.org/CorpusID:17981195).
+61. Goldwasser, S.; Micali, S.; Rackoff, C. (1989). "The Knowledge Complexity of Interactive
+Proof Systems". SIAM Journal on Computing. 18 (1): 186–208. CiteSeerX 10.1.1.397.4002
+(https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.397.4002). doi:10.1137/0218012
+(https://doi.org/10.1137%2F0218012).
+62. Blakley, G. (June 1979). "Safeguarding cryptographic keys". Proceedings of AFIPS 1979. 48:
+313–317.
+63. Shamir, A. (1979). "How to share a secret" (https://doi.org/10.1145%2F359168.359176).
+Communications of the ACM. 22 (11): 612–613. doi:10.1145/359168.359176 (https://doi.org/
+10.1145%2F359168.359176). S2CID 16321225 (https://api.semanticscholar.org/CorpusID:1
+6321225).
+64. Gunathilake, Nilupulee A.; Al-Dubai, Ahmed; Buchana, William J. (2 November 2020).
+"Recent Advances and Trends in Lightweight Cryptography for IoT Security" (https://ieeexplo
+re.ieee.org/document/9269083). 2020 16th International Conference on Network and
+Service Management (CNSM) (https://napier-surface.worktribe.com/2746967/1/Recent%20A
+dvances%20and%20Trends%20in%20Lightweight%20Cryptography%20for%20IoT%20Sec
+urity). Izmir, Turkey: IEEE. pp. 1–5. doi:10.23919/CNSM50824.2020.9269083 (https://doi.org/
+10.23919%2FCNSM50824.2020.9269083). ISBN 978-3-903176-31-7. S2CID 227277538 (h
+ttps://api.semanticscholar.org/CorpusID:227277538). Archived (https://web.archive.org/web/2
+0210424034813/https://ieeexplore.ieee.org/document/9269083/) from the original on 24 April
+2021. Retrieved 24 April 2021.
+65. Thakor, Vishal A.; Razzaque, Mohammad Abdur; Khandaker, Muhammad R. A. (2021).
+"Lightweight Cryptography Algorithms for Resource-Constrained IoT Devices: A Review,
+Comparison and Research Opportunities" (https://doi.org/10.1109%2FACCESS.2021.30528
+67). IEEE Access. 9: 28177–28193. Bibcode:2021IEEEA...928177T (https://ui.adsabs.harvar
+d.edu/abs/2021IEEEA...928177T). doi:10.1109/ACCESS.2021.3052867 (https://doi.org/10.1
+109%2FACCESS.2021.3052867). ISSN 2169-3536 (https://www.worldcat.org/issn/2169-353
+6). S2CID 232042514 (https://api.semanticscholar.org/CorpusID:232042514).
+66. Cohen, Fred (1995). "2.4 – Applications of Cryptography" (http://all.net/edu/curr/ip/Chap2-4.h
+tml). all.net. Archived (https://web.archive.org/web/19990824044441/http://all.net/edu/curr/ip/
+Chap2-4.html) from the original on 24 August 1999. Retrieved 21 December 2021.
+67. "4 Common Encryption Methods to Shield Sensitive Data From Prying Eyes" (https://www.ge
+tapp.com/resources/common-encryption-methods/). GetApp. Archived (https://web.archive.or
+g/web/20220514061045/https://www.getapp.com/resources/common-encryption-methods/)
+from the original on 14 May 2022. Retrieved 14 May 2022.
+68. Chamberlain, Austin (12 March 2017). "Applications of Cryptography | UCL Risky Business"
+(https://blogs.ucl.ac.uk/infosec/2017/03/12/applications-of-cryptography/). blogs.ucl.ac.uk.
+Archived (https://web.archive.org/web/20180226185448/https://blogs.ucl.ac.uk/infosec/2017/
+03/12/applications-of-cryptography/) from the original on 26 February 2018. Retrieved
+21 December 2021.
+69. "6.5.1 What Are the Cryptographic Policies of Some Countries?" (http://www.emc.com/emc-p
+lus/rsa-labs/standards-initiatives/cryptographic-policies-countries.htm). RSA Laboratories.
+Archived (https://web.archive.org/web/20150416025558/http://www.emc.com/emc-plus/rsa-la
+bs/standards-initiatives/cryptographic-policies-countries.htm) from the original on 16 April
+2015. Retrieved 26 March 2015.
+70. Rosenoer, Jonathan (1995). "Cryptography & Speech" (https://web.archive.org/web/2005120
+1184530/http://www.cyberlaw.com/cylw1095.html). CyberLaw. Archived from the original (htt
+p://www.cyberlaw.com/cylw1095.html) on 1 December 2005. Retrieved 23 June 2006.
+71. "Case Closed on Zimmermann PGP Investigation" (http://www.ieee-security.org/Cipher/New
+sbriefs/1996/960214.zimmerman.html). IEEE Computer Society's Technical Committee on
+Security and Privacy. 14 February 1996. Archived (https://web.archive.org/web/2010061123
+0953/http://www.ieee-security.org/Cipher/Newsbriefs/1996/960214.zimmerman.html) from
+the original on 11 June 2010. Retrieved 26 March 2015.
+72. Levy, Steven (2001). Crypto: How the Code Rebels Beat the Government – Saving Privacy
+in the Digital Age. Penguin Books. p. 56. ISBN 978-0-14-024432-8. OCLC 244148644 (http
+s://www.worldcat.org/oclc/244148644).
+73. "Bernstein v USDOJ" (https://www.epic.org/crypto/export_controls/bernstein_decision_9_cir.
+html). Electronic Privacy Information Center. United States Court of Appeals for the Ninth
+Circuit. 6 May 1999. Archived (https://web.archive.org/web/20090813015456/http://epic.org/c
+rypto/export_controls/bernstein_decision_9_cir.html) from the original on 13 August 2009.
+Retrieved 26 March 2015.
+74. "Dual-use List – Category 5 – Part 2 – "Information Security" " (https://www.bis.doc.gov/inde
+x.php/documents/regulations-docs/445-category-5-part-2-information-security/file) (PDF).
+Wassenaar Arrangement. Archived (https://web.archive.org/web/20180926085950/https://ww
+w.bis.doc.gov/index.php/documents/regulations-docs/445-category-5-part-2-information-sec
+urity/file) from the original on 26 September 2018. Retrieved 26 March 2015.
+75. ".4 United States Cryptography Export/Import Laws" (http://www.emc.com/emc-plus/rsa-labs/
+standards-initiatives/united-states-cryptography-export-import.htm). RSA Laboratories.
+Archived (https://web.archive.org/web/20150331004104/http://www.emc.com/emc-plus/rsa-la
+bs/standards-initiatives/united-states-cryptography-export-import.htm) from the original on 31
+March 2015. Retrieved 26 March 2015.
+76. Schneier, Bruce (15 June 2000). "The Data Encryption Standard (DES)" (http://www.schneie
+r.com/crypto-gram-0006.html#DES). Crypto-Gram. Archived (https://web.archive.org/web/201
+00102025613/http://schneier.com/crypto-gram-0006.html#DES) from the original on 2
+January 2010. Retrieved 26 March 2015.
+77. Coppersmith, D. (May 1994). "The Data Encryption Standard (DES) and its strength against
+attacks" (http://domino.watson.ibm.com/tchjr/journalindex.nsf/0/94f78816c77fc77885256bfa0
+067fb98?OpenDocument) (PDF). IBM Journal of Research and Development. 38 (3): 243–
+250. doi:10.1147/rd.383.0243 (https://doi.org/10.1147%2Frd.383.0243). Archived (https://we
+b.archive.org/web/20160304061501/http://domino.watson.ibm.com/tchjr/journalindex.nsf/0/9
+4f78816c77fc77885256bfa0067fb98?OpenDocument) from the original on 4 March 2016.
+Retrieved 26 March 2015.
+78. Biham, E.; Shamir, A. (1991). "Differential cryptanalysis of DES-like cryptosystems". Journal
+of Cryptology. 4 (1): 3–72. doi:10.1007/bf00630563 (https://doi.org/10.1007%2Fbf00630563).
+S2CID 206783462 (https://api.semanticscholar.org/CorpusID:206783462).
+79. "The Digital Millennium Copyright Act of 1998" (https://www.copyright.gov/legislation/dmca.p
+df) (PDF). United States Copyright Office. Archived (https://web.archive.org/web/2007080823
+2655/http://www.copyright.gov/legislation/dmca.pdf) (PDF) from the original on 8 August
+2007. Retrieved 26 March 2015.
+80. Ferguson, Niels (15 August 2001). "Censorship in action: why I don't publish my HDCP
+results" (https://web.archive.org/web/20011201184919/http://www.macfergus.com/niels/dmc
+a/cia.html). Archived from the original (http://www.macfergus.com/niels/dmca/cia.html) on 1
+December 2001. Retrieved 16 February 2009.
+81. Schneier, Bruce (6 August 2001). "Arrest of Computer Researcher Is Arrest of First
+Amendment Rights" (https://www.schneier.com/essays/archives/2001/08/arrest_of_computer
+_r.html). InternetWeek. Archived (https://web.archive.org/web/20170307204724/https://www.s
+chneier.com/essays/archives/2001/08/arrest_of_computer_r.html) from the original on 7
+March 2017. Retrieved 7 March 2017.
+82. Williams, Christopher (11 August 2009). "Two convicted for refusal to decrypt data" (https://w
+ww.theregister.co.uk/2009/08/11/ripa_iii_figures/). The Register. Archived (https://web.archiv
+e.org/web/20150317130319/http://www.theregister.co.uk/2009/08/11/ripa_iii_figures/) from
+the original on 17 March 2015. Retrieved 26 March 2015.
+83. Williams, Christopher (24 November 2009). "UK jails schizophrenic for refusal to decrypt
+files" (https://www.theregister.co.uk/2009/11/24/ripa_jfl/). The Register. Archived (https://web.
+archive.org/web/20150326053131/http://www.theregister.co.uk/2009/11/24/ripa_jfl/) from the
+original on 26 March 2015. Retrieved 26 March 2015.
+84. Ingold, John (4 January 2012). "Password case reframes Fifth Amendment rights in context
+of digital world" (http://www.denverpost.com/news/ci_19669803). The Denver Post. Archived
+(https://web.archive.org/web/20150402121718/http://www.denverpost.com/news/ci_1966980
+3) from the original on 2 April 2015. Retrieved 26 March 2015.
+85. Leyden, John (13 July 2011). "US court test for rights not to hand over crypto keys" (https://w
+ww.theregister.co.uk/2011/07/13/eff_piles_in_against_forced_decryption/). The Register.
+Archived (https://web.archive.org/web/20141024034741/http://www.theregister.co.uk/2011/0
+7/13/eff_piles_in_against_forced_decryption/) from the original on 24 October 2014.
+Retrieved 26 March 2015.
+86. "Order Granting Application under the All Writs Act Requiring Defendant Fricosu to Assist in
+the Execution of Previously Issued Search Warrants" (https://www.wired.com/images_blogs/t
+hreatlevel/2012/01/decrypt.pdf) (PDF). United States District Court for the District of
+Colorado. Archived (https://web.archive.org/web/20210609162701/https://www.wired.com/im
+ages_blogs/threatlevel/2012/01/decrypt.pdf) (PDF) from the original on 9 June 2021.
+Retrieved 26 March 2015.
+Arbib, Jonathan; Dwyer, John (2011). Discrete Mathematics for Cryptography. Algana
+Publishing. ISBN 978-1-907934-01-8.
+Becket, B (1988). Introduction to Cryptology. Blackwell Scientific Publications. ISBN 978-0-
+632-01836-9. OCLC 16832704 (https://www.worldcat.org/oclc/16832704). Excellent
+coverage of many classical ciphers and cryptography concepts and of the "modern" DES
+and RSA systems.
+Esslinger, Bernhard; et al. The CrypTool Script (https://web.archive.org/web/2011072218301
+3/http://www.cryptool.org/download/CrypToolScript-en.pdf) (PDF) (10th ed.). Archived from
+the original (https://www.cryptool.org/download/CrypToolScript-en.pdf) (PDF) on 22 July
+2011. Retrieved 23 December 2013. CrypTool is the most widespread e-learning program
+about cryptography and cryptanalysis, open source.
+In Code: A Mathematical Journey by Sarah Flannery (with David Flannery). Popular account
+of Sarah's award-winning project on public-key cryptography, co-written with her father.
+James Gannon, Stealing Secrets, Telling Lies: How Spies and Codebreakers Helped Shape
+the Twentieth Century, Washington, D.C., Brassey's, 2001, ISBN 1-57488-367-4.
+Oded Goldreich, Foundations of Cryptography (http://www.wisdom.weizmann.ac.il/~oded/foc
+-book.html) Archived (https://web.archive.org/web/20160809044453/http://www.wisdom.weiz
+mann.ac.il/~oded/PSBookFrag/part2N.ps) 9 August 2016 at the Wayback Machine, in two
+volumes, Cambridge University Press, 2001 and 2004.
+Alvin's Secret Code by Clifford B. Hicks (children's novel that introduces some basic
+cryptography and cryptanalysis).
+Introduction to Modern Cryptography (http://www.cs.umd.edu/~jkatz/imc.html) Archived (http
+s://web.archive.org/web/20091016160136/http://www.cs.umd.edu/~jkatz/imc.html) 16
+October 2009 at the Wayback Machine by Jonathan Katz and Yehuda Lindell.
+Further reading
+Ibrahim A. Al-Kadi, "The Origins of Cryptology: the Arab Contributions," Cryptologia, vol. 16,
+no. 2 (April 1992), pp. 97–126.
+Christof Paar (https://web.archive.org/web/20060709111152/http://www.crypto.rub.de/en_pa
+ar.html), Jan Pelzl, Understanding Cryptography, A Textbook for Students and Practitioners.
+(http://www.cryptography-textbook.com/) Archived (https://web.archive.org/web/20201031190
+651/http://cryptography-textbook.com/) 31 October 2020 at the Wayback Machine Springer,
+2009. (Slides, online cryptography lectures and other information are available on the
+companion web site.) Very accessible introduction to practical cryptography for non-
+mathematicians.
+"Max Planck Encyclopedia of Public International Law" (http://www.mpepil.com/). Archived (h
+ttps://web.archive.org/web/20180501072701/http://www.mpepil.com/) from the original on 1
+May 2018. Retrieved 15 December 2021., giving an overview of international law issues
+regarding cryptography.
+Introduction to Modern Cryptography by Phillip Rogaway and Mihir Bellare, a mathematical
+introduction to theoretical cryptography including reduction-based security proofs. PDF
+download (http://www.cs.ucdavis.edu/~rogaway/classes/227/spring05/book/main.pdf)
+Archived (https://web.archive.org/web/20090924102944/http://www.cs.ucdavis.edu/~rogawa
+y/classes/227/spring05/book/main.pdf) 24 September 2009 at the Wayback Machine.
+Stallings, William (2013). Cryptography and Network Security: Principles and Practice
+(6th ed.). Prentice Hall. ISBN 978-0-13-335469-0.
+Tenzer, Theo (2021): Super Secreto – The Third Epoch of Cryptography: Multiple,
+exponential, quantum-secure and above all, simple and practical Encryption for Everyone,
+Norderstedt, ISBN 978-3755761174.
+Johann-Christoph Woltag, 'Coded Communications (Encryption)' in Rüdiger Wolfrum (ed)
+Max Planck Encyclopedia of Public International Law (http://www.csil.cn/upFiles/files/Interna
+tional%20Law.pdf) (Oxford University Press 2009).
+The dictionary definition of cryptography at Wiktionary
+Media related to Cryptography at Wikimedia Commons
+Cryptography (https://www.bbc.co.uk/programmes/p004y272) on In Our Time at the BBC
+Crypto Glossary and Dictionary of Technical Cryptography (https://ciphersbyritter.com/GLOS
+SARY.HTM) Archived (https://web.archive.org/web/20220704220419/http://www.ciphersbyritt
+er.com/GLOSSARY.HTM) 4 July 2022 at the Wayback Machine
+A Course in Cryptography (https://www.cs.cornell.edu/courses/cs4830/2010fa/lecnotes.pdf)
+by Raphael Pass & Abhi Shelat – offered at Cornell in the form of lecture notes.
+For more on the use of cryptographic elements in fiction, see: Dooley, John F. (23 August
+2012). "Cryptology in Fiction" (https://web.archive.org/web/20200729044734/http://faculty.kn
+ox.edu/jdooley/Crypto/CryptoFiction.htm). Archived from the original (http://faculty.knox.edu/j
+dooley/Crypto/CryptoFiction.htm) on 29 July 2020. Retrieved 20 February 2015.
+The George Fabyan Collection (https://www.loc.gov/rr/rarebook/coll/073.html) at the Library
+of Congress has early editions of works of seventeenth-century English literature,
+publications relating to cryptography.
+Retrieved from "https://en.wikipedia.org/w/index.php?title=Cryptography&oldid=1223129533"
+External links
+The tree missed the days the kids used to come by and play. It still wore the tire swing the kids had put up in its branches years ago although both the tire and the rope had seen better days. The tree had watched all the kids in the neighborhood grow up and leave, and it wondered if there would ever be a time when another child played and laughed again under its branches. That was the hope that the tree wished every day as the swing gently swung empty in the wind.
+The robot clicked disapprovingly, gurgled briefly inside its cubical interior and extruded a pony glass of brownish liquid. "Sir, you will undoubtedly end up in a drunkard's grave, dead of hepatic cirrhosis," it informed me virtuously as it returned my ID card. I glared as I pushed the glass across the table.
+The red ball sat proudly at the top of the toybox. It had been the last to be played with and anticipated it would be the next as well. The other toys grumbled beneath. At one time each had held the spot of the red ball, but over time they had sunk deeper and deeper into the toy box.
+The rain was coming. Everyone thought this would be a good thing. It hadn't rained in months and the earth was dry as a bone. It wasn't a surprise that everyone thought a good rain was what was needed, but they never expected how much rain would actually arrive.
+Sometimes there isn't a good answer. No matter how you try to rationalize the outcome, it doesn't make sense. And instead of an answer, you are simply left with a question. Why?
+She had been an angel for coming up on 10 years and in all that time nobody had told her this was possible. The fact that it could ever happen never even entered her mind. Yet there she stood, with the undeniable evidence sitting on the ground before her. Angels could lose their wings.
+The fog was as thick as pea soup. This was a problem. Gary was driving but couldn't see a thing in front of him. He knew he should stop, but the road was narrow so if he did, it would be right in the center of the road. He was sure that another car would end up rear-ending him, so he continued forward despite the lack of visibility. This was an unwise move.
+She never liked cleaning the sink. It was beyond her comprehension how it got so dirty so quickly. It seemed that she was forced to clean it every other day. Even when she was extra careful to keep things clean and orderly, it still ended up looking like a mess in a couple of days. What she didn't know was there was a tiny creature living in it that didn't like things neat.
+Out of another, I get a lovely view of the bay and a little private wharf belonging to the estate. There is a beautiful shaded lane that runs down there from the house. I always fancy I see people walking in these numerous paths and arbors, but John has cautioned me not to give way to fancy in the least. He says that with my imaginative power and habit of story-making a nervous weakness like mine is sure to lead to all manner of excited fancies and that I ought to use my will and good sense to check the tendency. So I try.
+Sometimes it's just better not to be seen. That's how Harry had always lived his life. He prided himself as being the fly on the wall and the fae that blended into the crowd. That's why he was so shocked that she noticed him.
+His parents continued to question him. He didn't know what to say to them since they refused to believe the truth. He explained again and again, and they dismissed his explanation as a figment of his imagination. There was no way that grandpa, who had been dead for five years, could have told him where the treasure had been hidden. Of course, it didn't help that grandpa was roaring with laughter in the chair next to him as he tried to explain once again how he'd found it.
+It's not his fault. I know you're going to want to, but you can't blame him. He really has no idea how it happened. I kept trying to come up with excuses I could say to mom that would keep her calm when she found out what happened, but the more I tried, the more I could see none of them would work. He was going to get her wrath and there was nothing I could say to prevent it.
+The wave crashed and hit the sandcastle head-on. The sandcastle began to melt under the waves force and as the wave receded, half the sandcastle was gone. The next wave hit, not quite as strong, but still managed to cover the remains of the sandcastle and take more of it away. The third wave, a big one, crashed over the sandcastle completely covering and engulfing it. When it receded, there was no trace the sandcastle ever existed and hours of hard work disappeared forever.
+Don't be scared. The things out there that are unknown aren't scary in themselves. They are just unknown at the moment. Take the time to know them before you list them as scary. Then the world will be a much less scary place for you.
+The boxed moved. That was a problem. Peter had packed the box three hours before and there was nothing inside that should make it move. The question now was whether or not Peter was going to open it up and look inside to see why it had moved. The answer to that question was obvious. Peter dropped the package into the mailbox so he would never have to see it again.
+The thing that's great about this job is the time sourcing the items involves no traveling. I just look online to buy it. It's really as simple as that. While everyone else is searching for what they can sell, I sit in front of my computer and buy better stuff for less money and spend a fraction of the time doing it.
+It had been a rough day. Things hadn't gone as planned and that meant Hannah got yelled at by her boss. It didn't even matter that it wasn't her fault. When things went wrong at work, Hannah got the blame no matter the actual circumstances. It wasn't fair, but there was little she could do without risking her job, and she wasn't in a position to do that with the plans she had.
+Things aren't going well at all with mom today. She is just a limp noodle and wants to sleep all the time. I sure hope that things get better soon.
+
+The rain and wind abruptly stopped, but the sky still had the gray swirls of storms in the distance. Dave knew this feeling all too well. The calm before the storm. He only had a limited amount of time before all Hell broke loose, but he stopped to admire the calmness. Maybe it would be different this time, he thought, with the knowledge deep within that it wouldn't.
+"Explain to me again why I shouldn't cheat?" he asked. "All the others do and nobody ever gets punished for doing so. I should go about being happy losing to cheaters because I know that I don't? That's what you're telling me?"
+Sometimes it's simply better to ignore the haters. That's the lesson that Tom's dad had been trying to teach him, but Tom still couldn't let it go. He latched onto them and their hate and couldn't let it go, but he also realized that this wasn't healthy. That's when he came up with his devious plan.
+The blinking light caught her attention. She thought about it a bit and couldn't remember ever noticing it before. That was strange since it was obvious the flashing light had been there for years. Now she wondered how she missed it for that amount of time and what other things in her small town she had failed to notice.
+She sat deep in thought. The next word that came out o her mouth would likely be the most important word of her life. It had to be exact with no possibility of being misinterpreted. She was ready. She looked deeply into his eyes and said, "Octopus."
+MaryLou wore the tiara with pride. There was something that made doing anything she didn't really want to do a bit easier when she wore it. She really didn't care what those staring through the window were thinking as she vacuumed her apartment.
+Finding the red rose in the mailbox was a pleasant surprise for Sarah. She didn't have a boyfriend or know of anyone who was interested in her as anything more than a friend. There wasn't even a note attached to it. Although it was a complete mystery, it still made her heart jump and race a little more than usual. She wished that she could simply accept the gesture and be content knowing someone had given it to her, but that wasn't the way Sarah did things. Now it was time to do a little detective work and try to figure who had actually left the red rose.
+There wasn't a whole lot he could do at that moment. He played the situation again and again in his head looking at what he might have done differently to make the situation better. No matter how many times he relived the situation in his head, there was never really a good alternative course of action. There simply wasn't a whole lot he could have done in that particular moment.
+The alarm went off and Jake rose awake. Rising early had become a daily ritual, one that he could not fully explain. From the outside, it was a wonder that he was able to get up so early each morning for someone who had absolutely no plans to be productive during the entire day.
+April seriously wondered about her sleeping partner choices. She looked at her bed and what a mess it had become. How did she get to the point in her life where she had two dogs, three cats, and a raccoon sleeping with her every night?
+Her mom had warned her. She had been warned time and again, but she had refused to believe her. She had done everything right and she knew she would be rewarded for doing so with the promotion. So when the promotion was given to her main rival, it not only stung, it threw her belief system into disarray. It was her first big lesson in life, but not the last.
+The time had come for Nancy to say goodbye. She had been dreading this moment for a good six months, and it had finally arrived despite her best efforts to forestall it. No matter how hard she tried, she couldn't keep the inevitable from happening. So the time had come for a normal person to say goodbye and move on. It was at this moment that Nancy decided not to be a normal person. After all the time and effort she had expended, she couldn't bring herself to do it.
+Debbie had taken George for granted for more than fifteen years now. He wasn't sure what exactly had made him choose this time and place to address the issue, but he decided that now was the time. He looked straight into her eyes and just as she was about to speak, turned away and walked out the door.
+Many people say that life isn't like a bed of roses. I beg to differ. I think that life is quite like a bed of roses. Just like life, a bed of roses looks pretty on the outside, but when you're in it, you find that it is nothing but thorns and pain. I myself have been pricked quite badly.
+I'm meant to be writing at this moment. What I mean is, I'm meant to be writing something else at this moment. The document I'm meant to be writing is, of course, open in another program on my computer and is patiently awaiting my attention. Yet here I am plonking down senseless sentiments in this paragraph because it's easier to do than to work on anything particularly meaningful. I am grateful for the distraction.
+There was no ring on his finger. That was a good sign although far from proof that he was available. Still, it was much better than if he had been wearing a wedding ring on his hand. She glanced at his hand a bit more intently to see if there were any tan lines where a ring may have been, and he's simply taken it off. She couldn't detect any which was also a good sign and a relief. The next step would be to get access to his wallet to see if there were any family photos in it.
+Patrick didn't want to go. The fact that she was insisting they must go made him want to go even less. He had no desire to make small talk with strangers he would never again see just to be polite. But she insisted that Patrick go, and she would soon find out that this would be the biggest mistake she could make in their relationship.
+Twenty-five hours had passed since the incident. It seemed to be a lot longer than that. That twenty-five hours seemed more like a week in her mind. The fact that she still was having trouble comprehending exactly what took place wasn't helping the matter. She thought if she could just get a little rest the entire incident might make a little more sense.
+If you can imagine a furry humanoid seven feet tall, with the face of an intelligent gorilla and the braincase of a man, you'll have a rough idea of what they looked like -- except for their teeth. The canines would have fitted better in the face of a tiger, and showed at the corners of their wide, thin-lipped mouths, giving them an expression of ferocity.
+
+The rain and wind abruptly stopped, but the sky still had the gray swirls of storms in the distance. Dave knew this feeling all too well. The calm before the storm. He only had a limited amount of time before all Hell broke loose, but he stopped to admire the calmness. Maybe it would be different this time, he thought, with the knowledge deep within that it wouldn't.
+"Explain to me again why I shouldn't cheat?" he asked. "All the others do and nobody ever gets punished for doing so. I should go about being happy losing to cheaters because I know that I don't? That's what you're telling me?"
+Sometimes it's simply better to ignore the haters. That's the lesson that Tom's dad had been trying to teach him, but Tom still couldn't let it go. He latched onto them and their hate and couldn't let it go, but he also realized that this wasn't healthy. That's when he came up with his devious plan.
+The blinking light caught her attention. She thought about it a bit and couldn't remember ever noticing it before. That was strange since it was obvious the flashing light had been there for years. Now she wondered how she missed it for that amount of time and what other things in her small town she had failed to notice.
+She sat deep in thought. The next word that came out o her mouth would likely be the most important word of her life. It had to be exact with no possibility of being misinterpreted. She was ready. She looked deeply into his eyes and said, "Octopus."
+MaryLou wore the tiara with pride. There was something that made doing anything she didn't really want to do a bit easier when she wore it. She really didn't care what those staring through the window were thinking as she vacuumed her apartment.
+Finding the red rose in the mailbox was a pleasant surprise for Sarah. She didn't have a boyfriend or know of anyone who was interested in her as anything more than a friend. There wasn't even a note attached to it. Although it was a complete mystery, it still made her heart jump and race a little more than usual. She wished that she could simply accept the gesture and be content knowing someone had given it to her, but that wasn't the way Sarah did things. Now it was time to do a little detective work and try to figure who had actually left the red rose.
+There wasn't a whole lot he could do at that moment. He played the situation again and again in his head looking at what he might have done differently to make the situation better. No matter how many times he relived the situation in his head, there was never really a good alternative course of action. There simply wasn't a whole lot he could have done in that particular moment.
+The alarm went off and Jake rose awake. Rising early had become a daily ritual, one that he could not fully explain. From the outside, it was a wonder that he was able to get up so early each morning for someone who had absolutely no plans to be productive during the entire day.
+April seriously wondered about her sleeping partner choices. She looked at her bed and what a mess it had become. How did she get to the point in her life where she had two dogs, three cats, and a raccoon sleeping with her every night?
+Her mom had warned her. She had been warned time and again, but she had refused to believe her. She had done everything right and she knew she would be rewarded for doing so with the promotion. So when the promotion was given to her main rival, it not only stung, it threw her belief system into disarray. It was her first big lesson in life, but not the last.
+The time had come for Nancy to say goodbye. She had been dreading this moment for a good six months, and it had finally arrived despite her best efforts to forestall it. No matter how hard she tried, she couldn't keep the inevitable from happening. So the time had come for a normal person to say goodbye and move on. It was at this moment that Nancy decided not to be a normal person. After all the time and effort she had expended, she couldn't bring herself to do it.
+Debbie had taken George for granted for more than fifteen years now. He wasn't sure what exactly had made him choose this time and place to address the issue, but he decided that now was the time. He looked straight into her eyes and just as she was about to speak, turned away and walked out the door.
+Many people say that life isn't like a bed of roses. I beg to differ. I think that life is quite like a bed of roses. Just like life, a bed of roses looks pretty on the outside, but when you're in it, you find that it is nothing but thorns and pain. I myself have been pricked quite badly.
+I'm meant to be writing at this moment. What I mean is, I'm meant to be writing something else at this moment. The document I'm meant to be writing is, of course, open in another program on my computer and is patiently awaiting my attention. Yet here I am plonking down senseless sentiments in this paragraph because it's easier to do than to work on anything particularly meaningful. I am grateful for the distraction.
+There was no ring on his finger. That was a good sign although far from proof that he was available. Still, it was much better than if he had been wearing a wedding ring on his hand. She glanced at his hand a bit more intently to see if there were any tan lines where a ring may have been, and he's simply taken it off. She couldn't detect any which was also a good sign and a relief. The next step would be to get access to his wallet to see if there were any family photos in it.
+Patrick didn't want to go. The fact that she was insisting they must go made him want to go even less. He had no desire to make small talk with strangers he would never again see just to be polite. But she insisted that Patrick go, and she would soon find out that this would be the biggest mistake she could make in their relationship.
+Twenty-five hours had passed since the incident. It seemed to be a lot longer than that. That twenty-five hours seemed more like a week in her mind. The fact that she still was having trouble comprehending exactly what took place wasn't helping the matter. She thought if she could just get a little rest the entire incident might make a little more sense.
+If you can imagine a furry humanoid seven feet tall, with the face of an intelligent gorilla and the braincase of a man, you'll have a rough idea of what they looked like -- except for their teeth. The canines would have fitted better in the face of a tiger, and showed at the corners of their wide, thin-lipped mouths, giving them an expression of ferocity.
+
+The rain and wind abruptly stopped, but the sky still had the gray swirls of storms in the distance. Dave knew this feeling all too well. The calm before the storm. He only had a limited amount of time before all Hell broke loose, but he stopped to admire the calmness. Maybe it would be different this time, he thought, with the knowledge deep within that it wouldn't.
+"Explain to me again why I shouldn't cheat?" he asked. "All the others do and nobody ever gets punished for doing so. I should go about being happy losing to cheaters because I know that I don't? That's what you're telling me?"
+Sometimes it's simply better to ignore the haters. That's the lesson that Tom's dad had been trying to teach him, but Tom still couldn't let it go. He latched onto them and their hate and couldn't let it go, but he also realized that this wasn't healthy. That's when he came up with his devious plan.
+The blinking light caught her attention. She thought about it a bit and couldn't remember ever noticing it before. That was strange since it was obvious the flashing light had been there for years. Now she wondered how she missed it for that amount of time and what other things in her small town she had failed to notice.
+She sat deep in thought. The next word that came out o her mouth would likely be the most important word of her life. It had to be exact with no possibility of being misinterpreted. She was ready. She looked deeply into his eyes and said, "Octopus."
+MaryLou wore the tiara with pride. There was something that made doing anything she didn't really want to do a bit easier when she wore it. She really didn't care what those staring through the window were thinking as she vacuumed her apartment.
+Finding the red rose in the mailbox was a pleasant surprise for Sarah. She didn't have a boyfriend or know of anyone who was interested in her as anything more than a friend. There wasn't even a note attached to it. Although it was a complete mystery, it still made her heart jump and race a little more than usual. She wished that she could simply accept the gesture and be content knowing someone had given it to her, but that wasn't the way Sarah did things. Now it was time to do a little detective work and try to figure who had actually left the red rose.
+There wasn't a whole lot he could do at that moment. He played the situation again and again in his head looking at what he might have done differently to make the situation better. No matter how many times he relived the situation in his head, there was never really a good alternative course of action. There simply wasn't a whole lot he could have done in that particular moment.
+The alarm went off and Jake rose awake. Rising early had become a daily ritual, one that he could not fully explain. From the outside, it was a wonder that he was able to get up so early each morning for someone who had absolutely no plans to be productive during the entire day.
+April seriously wondered about her sleeping partner choices. She looked at her bed and what a mess it had become. How did she get to the point in her life where she had two dogs, three cats, and a raccoon sleeping with her every night?
+Her mom had warned her. She had been warned time and again, but she had refused to believe her. She had done everything right and she knew she would be rewarded for doing so with the promotion. So when the promotion was given to her main rival, it not only stung, it threw her belief system into disarray. It was her first big lesson in life, but not the last.
+The time had come for Nancy to say goodbye. She had been dreading this moment for a good six months, and it had finally arrived despite her best efforts to forestall it. No matter how hard she tried, she couldn't keep the inevitable from happening. So the time had come for a normal person to say goodbye and move on. It was at this moment that Nancy decided not to be a normal person. After all the time and effort she had expended, she couldn't bring herself to do it.
+Debbie had taken George for granted for more than fifteen years now. He wasn't sure what exactly had made him choose this time and place to address the issue, but he decided that now was the time. He looked straight into her eyes and just as she was about to speak, turned away and walked out the door.
+Many people say that life isn't like a bed of roses. I beg to differ. I think that life is quite like a bed of roses. Just like life, a bed of roses looks pretty on the outside, but when you're in it, you find that it is nothing but thorns and pain. I myself have been pricked quite badly.
+I'm meant to be writing at this moment. What I mean is, I'm meant to be writing something else at this moment. The document I'm meant to be writing is, of course, open in another program on my computer and is patiently awaiting my attention. Yet here I am plonking down senseless sentiments in this paragraph because it's easier to do than to work on anything particularly meaningful. I am grateful for the distraction.
+There was no ring on his finger. That was a good sign although far from proof that he was available. Still, it was much better than if he had been wearing a wedding ring on his hand. She glanced at his hand a bit more intently to see if there were any tan lines where a ring may have been, and he's simply taken it off. She couldn't detect any which was also a good sign and a relief. The next step would be to get access to his wallet to see if there were any family photos in it.
+Patrick didn't want to go. The fact that she was insisting they must go made him want to go even less. He had no desire to make small talk with strangers he would never again see just to be polite. But she insisted that Patrick go, and she would soon find out that this would be the biggest mistake she could make in their relationship.
+Twenty-five hours had passed since the incident. It seemed to be a lot longer than that. That twenty-five hours seemed more like a week in her mind. The fact that she still was having trouble comprehending exactly what took place wasn't helping the matter. She thought if she could just get a little rest the entire incident might make a little more sense.
+If you can imagine a furry humanoid seven feet tall, with the face of an intelligent gorilla and the braincase of a man, you'll have a rough idea of what they looked like -- except for their teeth. The canines would have fitted better in the face of a tiger, and showed at the corners of their wide, thin-lipped mouths, giving them an expression of ferocity.
+
+The rain and wind abruptly stopped, but the sky still had the gray swirls of storms in the distance. Dave knew this feeling all too well. The calm before the storm. He only had a limited amount of time before all Hell broke loose, but he stopped to admire the calmness. Maybe it would be different this time, he thought, with the knowledge deep within that it wouldn't.
+"Explain to me again why I shouldn't cheat?" he asked. "All the others do and nobody ever gets punished for doing so. I should go about being happy losing to cheaters because I know that I don't? That's what you're telling me?"
+Sometimes it's simply better to ignore the haters. That's the lesson that Tom's dad had been trying to teach him, but Tom still couldn't let it go. He latched onto them and their hate and couldn't let it go, but he also realized that this wasn't healthy. That's when he came up with his devious plan.
+The blinking light caught her attention. She thought about it a bit and couldn't remember ever noticing it before. That was strange since it was obvious the flashing light had been there for years. Now she wondered how she missed it for that amount of time and what other things in her small town she had failed to notice.
+She sat deep in thought. The next word that came out o her mouth would likely be the most important word of her life. It had to be exact with no possibility of being misinterpreted. She was ready. She looked deeply into his eyes and said, "Octopus."
+MaryLou wore the tiara with pride. There was something that made doing anything she didn't really want to do a bit easier when she wore it. She really didn't care what those staring through the window were thinking as she vacuumed her apartment.
+Finding the red rose in the mailbox was a pleasant surprise for Sarah. She didn't have a boyfriend or know of anyone who was interested in her as anything more than a friend. There wasn't even a note attached to it. Although it was a complete mystery, it still made her heart jump and race a little more than usual. She wished that she could simply accept the gesture and be content knowing someone had given it to her, but that wasn't the way Sarah did things. Now it was time to do a little detective work and try to figure who had actually left the red rose.
+There wasn't a whole lot he could do at that moment. He played the situation again and again in his head looking at what he might have done differently to make the situation better. No matter how many times he relived the situation in his head, there was never really a good alternative course of action. There simply wasn't a whole lot he could have done in that particular moment.
+The alarm went off and Jake rose awake. Rising early had become a daily ritual, one that he could not fully explain. From the outside, it was a wonder that he was able to get up so early each morning for someone who had absolutely no plans to be productive during the entire day.
+April seriously wondered about her sleeping partner choices. She looked at her bed and what a mess it had become. How did she get to the point in her life where she had two dogs, three cats, and a raccoon sleeping with her every night?
+Her mom had warned her. She had been warned time and again, but she had refused to believe her. She had done everything right and she knew she would be rewarded for doing so with the promotion. So when the promotion was given to her main rival, it not only stung, it threw her belief system into disarray. It was her first big lesson in life, but not the last.
+The time had come for Nancy to say goodbye. She had been dreading this moment for a good six months, and it had finally arrived despite her best efforts to forestall it. No matter how hard she tried, she couldn't keep the inevitable from happening. So the time had come for a normal person to say goodbye and move on. It was at this moment that Nancy decided not to be a normal person. After all the time and effort she had expended, she couldn't bring herself to do it.
+Debbie had taken George for granted for more than fifteen years now. He wasn't sure what exactly had made him choose this time and place to address the issue, but he decided that now was the time. He looked straight into her eyes and just as she was about to speak, turned away and walked out the door.
+Many people say that life isn't like a bed of roses. I beg to differ. I think that life is quite like a bed of roses. Just like life, a bed of roses looks pretty on the outside, but when you're in it, you find that it is nothing but thorns and pain. I myself have been pricked quite badly.
+I'm meant to be writing at this moment. What I mean is, I'm meant to be writing something else at this moment. The document I'm meant to be writing is, of course, open in another program on my computer and is patiently awaiting my attention. Yet here I am plonking down senseless sentiments in this paragraph because it's easier to do than to work on anything particularly meaningful. I am grateful for the distraction.
+There was no ring on his finger. That was a good sign although far from proof that he was available. Still, it was much better than if he had been wearing a wedding ring on his hand. She glanced at his hand a bit more intently to see if there were any tan lines where a ring may have been, and he's simply taken it off. She couldn't detect any which was also a good sign and a relief. The next step would be to get access to his wallet to see if there were any family photos in it.
+Patrick didn't want to go. The fact that she was insisting they must go made him want to go even less. He had no desire to make small talk with strangers he would never again see just to be polite. But she insisted that Patrick go, and she would soon find out that this would be the biggest mistake she could make in their relationship.
+Twenty-five hours had passed since the incident. It seemed to be a lot longer than that. That twenty-five hours seemed more like a week in her mind. The fact that she still was having trouble comprehending exactly what took place wasn't helping the matter. She thought if she could just get a little rest the entire incident might make a little more sense.
+If you can imagine a furry humanoid seven feet tall, with the face of an intelligent gorilla and the braincase of a man, you'll have a rough idea of what they looked like -- except for their teeth. The canines would have fitted better in the face of a tiger, and showed at the corners of their wide, thin-lipped mouths, giving them an expression of ferocity.
+
+The rain and wind abruptly stopped, but the sky still had the gray swirls of storms in the distance. Dave knew this feeling all too well. The calm before the storm. He only had a limited amount of time before all Hell broke loose, but he stopped to admire the calmness. Maybe it would be different this time, he thought, with the knowledge deep within that it wouldn't.
+"Explain to me again why I shouldn't cheat?" he asked. "All the others do and nobody ever gets punished for doing so. I should go about being happy losing to cheaters because I know that I don't? That's what you're telling me?"
+Sometimes it's simply better to ignore the haters. That's the lesson that Tom's dad had been trying to teach him, but Tom still couldn't let it go. He latched onto them and their hate and couldn't let it go, but he also realized that this wasn't healthy. That's when he came up with his devious plan.
+The blinking light caught her attention. She thought about it a bit and couldn't remember ever noticing it before. That was strange since it was obvious the flashing light had been there for years. Now she wondered how she missed it for that amount of time and what other things in her small town she had failed to notice.
+She sat deep in thought. The next word that came out o her mouth would likely be the most important word of her life. It had to be exact with no possibility of being misinterpreted. She was ready. She looked deeply into his eyes and said, "Octopus."
+MaryLou wore the tiara with pride. There was something that made doing anything she didn't really want to do a bit easier when she wore it. She really didn't care what those staring through the window were thinking as she vacuumed her apartment.
+Finding the red rose in the mailbox was a pleasant surprise for Sarah. She didn't have a boyfriend or know of anyone who was interested in her as anything more than a friend. There wasn't even a note attached to it. Although it was a complete mystery, it still made her heart jump and race a little more than usual. She wished that she could simply accept the gesture and be content knowing someone had given it to her, but that wasn't the way Sarah did things. Now it was time to do a little detective work and try to figure who had actually left the red rose.
+There wasn't a whole lot he could do at that moment. He played the situation again and again in his head looking at what he might have done differently to make the situation better. No matter how many times he relived the situation in his head, there was never really a good alternative course of action. There simply wasn't a whole lot he could have done in that particular moment.
+The alarm went off and Jake rose awake. Rising early had become a daily ritual, one that he could not fully explain. From the outside, it was a wonder that he was able to get up so early each morning for someone who had absolutely no plans to be productive during the entire day.
+April seriously wondered about her sleeping partner choices. She looked at her bed and what a mess it had become. How did she get to the point in her life where she had two dogs, three cats, and a raccoon sleeping with her every night?
+Her mom had warned her. She had been warned time and again, but she had refused to believe her. She had done everything right and she knew she would be rewarded for doing so with the promotion. So when the promotion was given to her main rival, it not only stung, it threw her belief system into disarray. It was her first big lesson in life, but not the last.
+The time had come for Nancy to say goodbye. She had been dreading this moment for a good six months, and it had finally arrived despite her best efforts to forestall it. No matter how hard she tried, she couldn't keep the inevitable from happening. So the time had come for a normal person to say goodbye and move on. It was at this moment that Nancy decided not to be a normal person. After all the time and effort she had expended, she couldn't bring herself to do it.
+Debbie had taken George for granted for more than fifteen years now. He wasn't sure what exactly had made him choose this time and place to address the issue, but he decided that now was the time. He looked straight into her eyes and just as she was about to speak, turned away and walked out the door.
+Many people say that life isn't like a bed of roses. I beg to differ. I think that life is quite like a bed of roses. Just like life, a bed of roses looks pretty on the outside, but when you're in it, you find that it is nothing but thorns and pain. I myself have been pricked quite badly.
+I'm meant to be writing at this moment. What I mean is, I'm meant to be writing something else at this moment. The document I'm meant to be writing is, of course, open in another program on my computer and is patiently awaiting my attention. Yet here I am plonking down senseless sentiments in this paragraph because it's easier to do than to work on anything particularly meaningful. I am grateful for the distraction.
+There was no ring on his finger. That was a good sign although far from proof that he was available. Still, it was much better than if he had been wearing a wedding ring on his hand. She glanced at his hand a bit more intently to see if there were any tan lines where a ring may have been, and he's simply taken it off. She couldn't detect any which was also a good sign and a relief. The next step would be to get access to his wallet to see if there were any family photos in it.
+Patrick didn't want to go. The fact that she was insisting they must go made him want to go even less. He had no desire to make small talk with strangers he would never again see just to be polite. But she insisted that Patrick go, and she would soon find out that this would be the biggest mistake she could make in their relationship.
+Twenty-five hours had passed since the incident. It seemed to be a lot longer than that. That twenty-five hours seemed more like a week in her mind. The fact that she still was having trouble comprehending exactly what took place wasn't helping the matter. She thought if she could just get a little rest the entire incident might make a little more sense.
+If you can imagine a furry humanoid seven feet tall, with the face of an intelligent gorilla and the braincase of a man, you'll have a rough idea of what they looked like -- except for their teeth. The canines would have fitted better in the face of a tiger, and showed at the corners of their wide, thin-lipped mouths, giving them an expression of ferocity.
+
