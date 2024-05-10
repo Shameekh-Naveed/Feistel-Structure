@@ -91,8 +91,14 @@ class FiestelStructure:
         for i in range(0, len(data), self.block_size):
             block = data[i:i+self.block_size]
             if len(block) < self.block_size:
-                block = np.concatenate(
-                    (block, np.zeros(self.block_size - len(block), dtype=int)))
+                diff = self.block_size - len(block)
+                # Represent the difference in 8 bits
+                diff_bits = np.unpackbits(np.array([diff], dtype=np.uint8))
+                print("Diff bits: ", diff_bits)
+                padding_bits = np.concatenate(
+                    (np.zeros(diff - 8, dtype=np.uint8), diff_bits))
+                block = np.concatenate((block, padding_bits))
+
             encrypted_block = self.encrypt_block(block, key)
             encrypted_data.append(encrypted_block)
         return np.concatenate(encrypted_data)
@@ -130,6 +136,12 @@ class FiestelStructure:
             block = encrypted_data[i:i+self.block_size]
             decrypted_block = self.decrypt_block(block, key)
             decrypted_data.append(decrypted_block)
+        # Remove padding
+        padding_bits = decrypted_data[-1][-8:]
+        padding_size = np.packbits(padding_bits)[0]
+        decrypted_data[-1] = decrypted_data[-1][:
+                                                len(decrypted_data[-1]) - padding_size]
+
         return np.concatenate(decrypted_data)
 
     def confusion_score(self, plaintext, ciphertext):
@@ -201,8 +213,6 @@ input_text = "Read the introduction and conclusion: These sections usually summa
 input_block = fiestel.string_to_bits(input_text)
 
 encrypted_data = fiestel.encrypt_data(input_block, key)
-print("Encrypted data: ", encrypted_data.shape)
-print("Input block: ", input_block.shape)
 decrypted_data = fiestel.decrypt_data(encrypted_data, key)
 decrypted_text = fiestel.bits_to_string(decrypted_data)
 
