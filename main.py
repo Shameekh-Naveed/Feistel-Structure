@@ -1,5 +1,7 @@
 import numpy as np
 import secrets
+import os
+import timeit
 
 
 class FiestelStructure:
@@ -94,7 +96,6 @@ class FiestelStructure:
                 diff = self.block_size - len(block)
                 # Represent the difference in 8 bits
                 diff_bits = np.unpackbits(np.array([diff], dtype=np.uint8))
-                print("Diff bits: ", diff_bits)
                 padding_bits = np.concatenate(
                     (np.zeros(diff - 8, dtype=np.uint8), diff_bits))
                 block = np.concatenate((block, padding_bits))
@@ -200,6 +201,36 @@ class FiestelStructure:
             chr(int("".join(map(str, bits[i: i + 8])), 2)) for i in range(0, len(bits), 8)
         )
 
+    def running_time(self, data_size=105000):
+        """Calculate the running time of the encryption and decryption processes.
+
+        Args:
+            data_size (int): The size of the data in bytes. Default 105000 bytes = 105kB
+
+        Returns:
+            None : The running time of the encryption and decryption processes are printed.
+        """
+        # Fetch all the files in a directory
+        directory = "test files/"
+        files = os.listdir(directory)
+        for file in files:
+            with open(directory + file, "rb") as f:
+                data = f.read(data_size)
+                data_bits = np.unpackbits(np.frombuffer(data, dtype=np.uint8))
+                key = self.generate_key()
+                encrypted_data = self.encrypt_data(data_bits, key)
+                decrypted_data = self.decrypt_data(encrypted_data, key)
+
+                print("File: ", file)
+                print("Encryption time: ", timeit.timeit(
+                    lambda: self.encrypt_data(data_bits, key), number=1), "s")
+                print("Decryption time: ", timeit.timeit(
+                    lambda: self.decrypt_data(encrypted_data, key), number=1), "s")
+                print("Decryption matches input: ",
+                      np.array_equal(data_bits, decrypted_data))
+                print("\n")
+                break
+
 
 block_size = 128
 num_rounds = 16
@@ -207,16 +238,17 @@ key_length_bytes = 8
 r = 3.9
 
 fiestel = FiestelStructure(block_size, num_rounds, key_length_bytes, r)
-key = fiestel.generate_key()
+fiestel.running_time()
+# key = fiestel.generate_key()
 
-input_text = "Read the introduction and conclusion: These sections usually summarize the paper's main argument or thesis."
-input_block = fiestel.string_to_bits(input_text)
+# input_text = "Read the introduction and conclusion: These sections usually summarize the paper's main argument or thesis."
+# input_block = fiestel.string_to_bits(input_text)
 
-encrypted_data = fiestel.encrypt_data(input_block, key)
-decrypted_data = fiestel.decrypt_data(encrypted_data, key)
-decrypted_text = fiestel.bits_to_string(decrypted_data)
+# encrypted_data = fiestel.encrypt_data(input_block, key)
+# decrypted_data = fiestel.decrypt_data(encrypted_data, key)
+# decrypted_text = fiestel.bits_to_string(decrypted_data)
 
-print("Decrypted text: ", decrypted_text)
-print("Decryption matches input: ", np.array_equal(input_block, decrypted_data))
-print("Confusion score: ", fiestel.confusion_score(input_block, decrypted_data))
-print("Diffusion score: ", fiestel.diffusion_score(input_block, decrypted_data))
+# print("Decrypted text: ", decrypted_text)
+# print("Decryption matches input: ", np.array_equal(input_block, decrypted_data))
+# print("Confusion score: ", fiestel.confusion_score(input_block, decrypted_data))
+# print("Diffusion score: ", fiestel.diffusion_score(input_block, decrypted_data))
