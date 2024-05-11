@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 class FeistelStructure:
     """Class implementing a Feistel cipher structure."""
 
+    # TODO: Need to check/fix units of block_size and key_length_bytes
     def __init__(self, block_size, num_rounds, key_length_bytes, r):
         """Initialize the Feistel cipher structure.
 
@@ -20,6 +21,8 @@ class FeistelStructure:
         Returns:
             None
         """
+        if (key_length_bytes*2 != block_size):
+            raise ValueError("Key length should be half the block size")
         self.block_size = block_size
         self.num_rounds = num_rounds
         self.key_length_bytes = key_length_bytes
@@ -88,6 +91,17 @@ class FeistelStructure:
 
         return expanded_keys
 
+    def generate_round_keys(self, master_key):
+        """Generate round keys using logistic chaotic maps."""
+        round_keys = np.array([master_key])
+        for i in range(self.num_rounds):
+            # Use logistic map to generate round key
+            round_key = self.logistic_chaotic_map(round_keys[0]) % 256
+            round_keys = np.concatenate(([round_key], round_keys))
+        round_keys = round_keys[:-1]
+        round_keys = round_keys.astype(int)
+        return round_keys
+
     def feistel_round(self, L, R, round_key):
         """Perform one round of the Feistel cipher.
 
@@ -112,7 +126,7 @@ class FeistelStructure:
         F ^= round_key
         return R, F
 
-    def encrypt_block(self, block, key):
+    def encrypt_block(self, block, round_keys):
         """Encrypt a single block of data.
 
         Args:
@@ -123,7 +137,7 @@ class FeistelStructure:
             numpy.ndarray: The encrypted block.
         """
         L, R = np.split(block, 2)
-        round_keys = [key] * self.num_rounds
+        # round_keys = [key] * self.num_rounds
         for i in range(self.num_rounds):
             L, R = self.feistel_round(L, R, round_keys[i])
         encrypted_block = np.concatenate((R, L))
@@ -140,6 +154,8 @@ class FeistelStructure:
             numpy.ndarray: The encrypted data.
         """
         encrypted_data = []
+        round_keys = self.generate_round_keys(key)
+        round_keys = round_keys[::-1]
         for i in range(0, len(data), self.block_size):
             block = data[i:i+self.block_size]
             if len(block) < self.block_size:
@@ -149,11 +165,11 @@ class FeistelStructure:
                 padding_digits[-1] = diff
                 block = np.concatenate((block, padding_digits))
 
-            encrypted_block = self.encrypt_block(block, key)
+            encrypted_block = self.encrypt_block(block, round_keys)
             encrypted_data.append(encrypted_block)
         return np.concatenate(encrypted_data)
 
-    def decrypt_block(self, block, key):
+    def decrypt_block(self, block, round_keys):
         """Decrypt a single block of data.
 
         Args:
@@ -164,8 +180,8 @@ class FeistelStructure:
             numpy.ndarray: The decrypted block.
         """
         L, R = np.split(block, 2)
-        round_keys = [key] * self.num_rounds
-        round_keys = round_keys[::-1]
+        # round_keys = [key] * self.num_rounds
+        # round_keys = round_keys[::-1]
         for i in range(self.num_rounds):
             L, R = self.feistel_round(L, R, round_keys[i])
         decrypted_block = np.concatenate((R, L))
@@ -181,11 +197,11 @@ class FeistelStructure:
         Returns:
             numpy.ndarray: The decrypted data.
         """
+        round_keys = self.generate_round_keys(key)
         decrypted_data = []
         for i in range(0, len(encrypted_data), self.block_size):
             block = encrypted_data[i:i+self.block_size]
-            print("Block Size: ", len(block))
-            decrypted_block = self.decrypt_block(block, key)
+            decrypted_block = self.decrypt_block(block, round_keys)
             decrypted_data.append(decrypted_block)
         # Remove padding
         padding_size = decrypted_data[-1][-1]
