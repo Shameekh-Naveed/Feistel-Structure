@@ -2,7 +2,7 @@ from feistelStructure import FeistelStructure
 import numpy as np
 
 block_size = 4
-num_rounds = 2
+num_rounds = 12
 key_length_bytes = 2
 r = 3.9
 
@@ -10,7 +10,6 @@ feistel = FeistelStructure(block_size, num_rounds, key_length_bytes, r)
 
 feistel.running_time()
 key = feistel.generate_key()
-expanded_key = feistel.generate_round_keys(key)
 
 # feistel.encrypt_file("test files/basic.txt",
 #                      "output files/encrypted files/basic.txt", key)

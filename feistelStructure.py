@@ -342,7 +342,7 @@ class FeistelStructure:
         """Calculate the running time of the encryption and decryption processes.
 
         Args:
-            data_size (int): The size of the data in bytes. Default 105000 bytes = 105kB
+            data_size (int) Not needed anymore: The size of the data in bytes. Default 105000 bytes = 105kB
 
         Returns:
             None : The running time of the encryption and decryption processes are printed.
@@ -352,16 +352,17 @@ class FeistelStructure:
         files = os.listdir(directory)
         for file in files:
             with open(directory + file, "rb") as f:
-                input_data = f.read(data_size)
+                input_data = f.read()
                 # Imported Files are already in ASCII
                 input_data = np.frombuffer(input_data, dtype=np.uint8)
                 key = self.generate_key()
                 encrypted_data = self.encrypt_data(input_data, key)
                 decrypted_data = self.decrypt_data(encrypted_data, key)
 
-                self.frequency_histogram(input_data, "input_histogram.png")
                 self.frequency_histogram(
-                    encrypted_data, 'encrypted_histogram.png')
+                    input_data, file+"_input_histogram.png")
+                self.frequency_histogram(
+                    encrypted_data, file+'_encrypted_histogram.png')
 
                 print("File: ", file)
                 print("Encryption time: ", timeit.timeit(
@@ -371,7 +372,6 @@ class FeistelStructure:
                 print("Decryption matches input: ",
                       np.array_equal(input_data, decrypted_data))
                 print("\n")
-                break
 
     def frequency_histogram(self, input_numbers, output_file='histogram.png'):
         """
@@ -390,6 +390,7 @@ class FeistelStructure:
 
         # Sort numbers
         sorted_numbers = sorted(number_counts.keys())
+        output_file = "histograms/" + output_file
 
         # Print the maximum and minimum numbers
         print("Minimum number: ", min(sorted_numbers))
