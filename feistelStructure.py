@@ -5,11 +5,11 @@ import timeit
 import matplotlib.pyplot as plt
 
 
-class FiestelStructure:
-    """Class implementing a Fiestel cipher structure."""
+class FeistelStructure:
+    """Class implementing a Feistel cipher structure."""
 
     def __init__(self, block_size, num_rounds, key_length_bytes, r):
-        """Initialize the Fiestel cipher structure.
+        """Initialize the Feistel cipher structure.
 
         Args:
             block_size (int): The size of each block in bits.
