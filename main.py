@@ -24,7 +24,7 @@ class FiestelStructure:
         self.key_length_bytes = key_length_bytes
         self.r = r
 
-    def chaotic_map(self, x):
+    def logistic_chaotic_map(self, x):
         """Compute the next value in a chaotic map sequence.
 
         Args:
@@ -34,6 +34,19 @@ class FiestelStructure:
             float: The next value in the chaotic map sequence.
         """
         return self.r * x * (1 - x)
+
+    def sine_chaotic_map(self, x, a):
+        """
+        Compute the next value in a sine chaotic map sequence.
+
+        Args:
+            x (float): The current value in the sequence.
+            a (float): The parameter for the chaotic map.
+
+        Returns:
+            float: The next value in the sequence.
+        """
+        return np.sin(a * x)
 
     def generate_key(self):
         """Generate a random key.
@@ -56,9 +69,15 @@ class FiestelStructure:
         Returns:
             tuple: The updated left and right halves of the block.
         """
-        C = self.chaotic_map(R)
-        C_int = C.astype(int)
-        F = L ^ C_int
+        logistic_C = self.logistic_chaotic_map(R)
+        logistic_C = logistic_C.astype(int)
+
+        sine_C = self.sine_chaotic_map(R, 2)
+        sine_C = sine_C.astype(int)
+
+        C = logistic_C ^ sine_C
+
+        F = L ^ C
         F ^= round_key
         return R, F
 
