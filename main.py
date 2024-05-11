@@ -77,6 +77,9 @@ class FiestelStructure:
 
         C = logistic_C + sine_C
 
+        # Take the modulo of the sum of the chaotic maps and the key
+        C = C % 1
+
         F = L ^ C
         F ^= round_key
         return R, F
