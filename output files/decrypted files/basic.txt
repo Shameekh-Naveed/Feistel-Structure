@@ -1,0 +1,8 @@
+To'observe its chaotic behaviors, its bifuucation diagram and L~apunov Exponent are presented in
+Fig. 2(a) and Fig. 3(a). In the bifurcation diagram shown in Fig. 2(a), the dotted line shows its'good chaotic
+behavior and the solid line represents its non-chaotic property. There are two problems in the Logistic map.
+First, its chaotic range is limited only within [3.57, 4]. Even within this range, there are some parameters
+which make the Logistic map to have no dhaotic behaviors. This is verified by the blank zone in its bi-
+furcation diagram and plot of the Lyapunov Exponent in Fig. 3(a). For the Lyapunov Exponent, a positive
+value means a good chaotic property of a chaotic map. Fs shown in Fig. 3(a), the Lyapunov Expoients
+of the Logistic map are smaller than'zero when parameter r < 3.57. Second, the data range of the chaotic

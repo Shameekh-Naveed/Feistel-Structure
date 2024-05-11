@@ -186,6 +186,7 @@ class FiestelStructure:
         decrypted_data = []
         for i in range(0, len(encrypted_data), self.block_size):
             block = encrypted_data[i:i+self.block_size]
+            print("Block Size: ", len(block))
             decrypted_block = self.decrypt_block(block, key)
             decrypted_data.append(decrypted_block)
         # Remove padding
@@ -225,12 +226,17 @@ class FiestelStructure:
         Returns:
             None
         """
-        with open(input_file, "rb") as f:
-            encrypted_data = np.frombuffer(f.read(), dtype=np.uint8)
-        encrypted_data = self.string_to_ascii(encrypted_data)
+        with open(input_file, "r") as f:
+            input_data = f.read()
+        # encrypted_data = np.array([char for char in input_data])
+        # print("Encrypted Data: ", encrypted_data)
+        # Convert the string back to a numpy array of ASCII values
+        encrypted_data = self.string_to_ascii(input_data)
+        print("Encrypted Data: ", encrypted_data)
+
         decrypted_data = self.decrypt_data(encrypted_data, key)
         decrypted_data = self.ascii_to_string(decrypted_data)
-        with open(output_file, "wb") as f:
+        with open(output_file, "w") as f:
             f.write(decrypted_data)
 
     def confusion_score(self, plaintext, ciphertext):
@@ -397,10 +403,11 @@ fiestel = FiestelStructure(block_size, num_rounds, key_length_bytes, r)
 
 # fiestel.running_time()
 key = fiestel.generate_key()
-fiestel.encrypt_file("test files/cryptography.txt",
-                     "output files/encrypted files/cryptography.txt", key)
-fiestel.decrypt_file("output files/encrypted files/cryptography.txt",
-                     "output files/decrypted files/cryptography.txt", key)
+fiestel.encrypt_file("test files/basic.txt",
+                     "output files/encrypted files/basic.txt", key)
+
+fiestel.decrypt_file("output files/encrypted files/basic.txt",
+                     "output files/decrypted files/basic.txt", key)
 
 # input_text = "Read the introduction and conclusion: These sections usually summarize the paper's main argument or thesis."
 # input_data = fiestel.string_to_ascii(input_text)
