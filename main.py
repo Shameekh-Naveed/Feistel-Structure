@@ -2,6 +2,7 @@ import numpy as np
 import secrets
 import os
 import timeit
+import matplotlib.pyplot as plt
 
 
 class FiestelStructure:
@@ -46,7 +47,8 @@ class FiestelStructure:
         Returns:
             float: The next value in the sequence.
         """
-        return np.sin(a * x)
+        pi = np.pi
+        return a * np.sin(pi * x)
 
     def generate_key(self):
         """Generate a random key.
@@ -70,12 +72,20 @@ class FiestelStructure:
             tuple: The updated left and right halves of the block.
         """
         logistic_C = self.logistic_chaotic_map(R)
-        logistic_C = logistic_C.astype(int)
+        # logistic_C = logistic_C.astype(int)
 
         sine_C = self.sine_chaotic_map(R, 2)
-        sine_C = sine_C.astype(int)
+        # sine_C = sine_C.astype(int)
 
         C = logistic_C + sine_C
+        C = C.astype(int)
+
+        print("R", L)
+        print("C", C)
+        print("Logistic_C", logistic_C)
+        print("Sine_C", sine_C)
+
+        raise Exception("Stop")
 
         # Take the modulo of the sum of the chaotic maps and the key
         C = C % 1
@@ -253,6 +263,37 @@ class FiestelStructure:
                 print("\n")
                 break
 
+    def letter_histogram(input_string, output_file='histogram.png'):
+        """
+        Generate a histogram of letter frequencies from a given string and save it as a PNG file.
+
+        Args:
+            input_string (str): The input string.
+            output_file (str): The filename to save the histogram as a PNG file. Default is 'histogram.png'.
+
+        Returns:
+            None
+        """
+        # Count occurrences of each letter in the input string
+        letter_counts = {letter: input_string.count(
+            letter) for letter in set(input_string)}
+
+        # Sort letters alphabetically
+        sorted_letters = sorted(letter_counts.keys())
+
+        # Extract letters and corresponding counts
+        letters = sorted_letters
+        counts = [letter_counts[letter] for letter in sorted_letters]
+
+        # Plotting the histogram
+        plt.figure(figsize=(10, 6))
+        plt.bar(letters, counts, color='skyblue')
+        plt.xlabel('Letters')
+        plt.ylabel('Frequency')
+        plt.title('Letter Frequency Histogram')
+        plt.savefig(output_file)  # Save the histogram as a PNG file
+        plt.show()
+
 
 block_size = 128
 num_rounds = 16
@@ -260,15 +301,22 @@ key_length_bytes = 8
 r = 3.9
 
 fiestel = FiestelStructure(block_size, num_rounds, key_length_bytes, r)
-fiestel.running_time()
+# fitestel.running_time()
 key = fiestel.generate_key()
 
 input_text = "Read the introduction and conclusion: These sections usually summarize the paper's main argument or thesis."
 input_block = fiestel.string_to_bits(input_text)
 
 encrypted_data = fiestel.encrypt_data(input_block, key)
+encrypted_text = fiestel.bits_to_string(encrypted_data)
+
 decrypted_data = fiestel.decrypt_data(encrypted_data, key)
 decrypted_text = fiestel.bits_to_string(decrypted_data)
+
+print("encrypted_text", encrypted_text)
+
+# fiestel.letter_histogram(input_text, "input_histogram.png")
+# fiestel.letter_histogram(encrypted_text, 'decrypted_histogram.png')
 
 print("Decrypted text: ", decrypted_text)
 print("Decryption matches input: ", np.array_equal(input_block, decrypted_data))
