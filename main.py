@@ -56,9 +56,37 @@ class FiestelStructure:
         Returns:
             numpy.ndarray: An array representing the generated key.
         """
-        key = secrets.token_bytes(self.key_length_bytes)
-        key_bits = np.unpackbits(np.frombuffer(key, dtype=np.uint8))
-        return key_bits
+        key = np.array([secrets.randbits(8)
+                        for _ in range(self.key_length_bytes)])
+        return key
+
+    def key_expansion(initial_key, n, r):
+        """
+        Key expansion algorithm using a 1D logistic chaotic map.
+
+        Args:
+        initial_key: Initial key (list or array of numbers between 0 and 1).
+        n: Number of new keys to generate.
+        r: Parameter controlling the behavior of the logistic map (typically in the range 0 to 4).
+
+        Returns:
+        List of n new keys, each of the same size as the initial key.
+        """
+        key_size = len(initial_key)
+        expanded_keys = []
+
+        # Generate chaotic values using the logistic map
+        chaotic_values = [logistic_map(initial_key[0], r)]
+        for _ in range(1, key_size * n):
+            chaotic_values.append(logistic_map(chaotic_values[-1], r))
+
+        # Divide chaotic values into n segments and use them to expand the initial key
+        for i in range(n):
+            expanded_key = [
+                (initial_key[j] + chaotic_values[i*key_size + j]) % 1 for j in range(key_size)]
+            expanded_keys.append(expanded_key)
+
+        return expanded_keys
 
     def feistel_round(self, L, R, round_key):
         """Perform one round of the Feistel cipher.
@@ -80,14 +108,6 @@ class FiestelStructure:
         C = logistic_C + sine_C
         C = C.astype(int)
 
-        print("R", L)
-        print("C", C)
-        print("Logistic_C", logistic_C)
-        print("Sine_C", sine_C)
-
-        raise Exception("Stop")
-
-        # Take the modulo of the sum of the chaotic maps and the key
         C = C % 1
 
         F = L ^ C
@@ -126,11 +146,10 @@ class FiestelStructure:
             block = data[i:i+self.block_size]
             if len(block) < self.block_size:
                 diff = self.block_size - len(block)
-                # Represent the difference in 8 bits
-                diff_bits = np.unpackbits(np.array([diff], dtype=np.uint8))
-                padding_bits = np.concatenate(
-                    (np.zeros(diff - 8, dtype=np.uint8), diff_bits))
-                block = np.concatenate((block, padding_bits))
+                padding_digits = np.array([secrets.randbelow(256)
+                                           for _ in range(diff)], dtype=np.uint8)
+                padding_digits[-1] = diff
+                block = np.concatenate((block, padding_digits))
 
             encrypted_block = self.encrypt_block(block, key)
             encrypted_data.append(encrypted_block)
@@ -170,12 +189,49 @@ class FiestelStructure:
             decrypted_block = self.decrypt_block(block, key)
             decrypted_data.append(decrypted_block)
         # Remove padding
-        padding_bits = decrypted_data[-1][-8:]
-        padding_size = np.packbits(padding_bits)[0]
+        padding_size = decrypted_data[-1][-1]
+        # padding_size = np.packbits(padding_bits)[0]
         decrypted_data[-1] = decrypted_data[-1][:
                                                 len(decrypted_data[-1]) - padding_size]
 
         return np.concatenate(decrypted_data)
+
+    def encrypt_file(self, input_file, output_file, key):
+        """Encrypt a file and save the encrypted data to another file.
+
+        Args:
+            input_file (str): The path to the input file.
+            output_file (str): The path to the output file.
+            key (numpy.ndarray): The encryption key.
+
+        Returns:
+            None
+        """
+        with open(input_file, "rb") as f:
+            input_data = np.frombuffer(f.read(), dtype=np.uint8)
+        encrypted_data = self.encrypt_data(input_data, key)
+        encrypted_data = self.ascii_to_string(encrypted_data)
+        with open(output_file, "w") as f:
+            f.write(encrypted_data)
+
+    def decrypt_file(self, input_file, output_file, key):
+        """Decrypt a file and save the decrypted data to another file.
+
+        Args:
+            input_file (str): The path to the input file.
+            output_file (str): The path to the output file.
+            key (numpy.ndarray): The decryption key.
+
+        Returns:
+            None
+        """
+        with open(input_file, "rb") as f:
+            encrypted_data = np.frombuffer(f.read(), dtype=np.uint8)
+        encrypted_data = self.string_to_ascii(encrypted_data)
+        decrypted_data = self.decrypt_data(encrypted_data, key)
+        decrypted_data = self.ascii_to_string(decrypted_data)
+        with open(output_file, "wb") as f:
+            f.write(decrypted_data)
 
     def confusion_score(self, plaintext, ciphertext):
         """Calculate the confusion score between plaintext and ciphertext.
@@ -233,6 +289,35 @@ class FiestelStructure:
             chr(int("".join(map(str, bits[i: i + 8])), 2)) for i in range(0, len(bits), 8)
         )
 
+    def string_to_ascii(self, input_string):
+        """
+        Replace each character in the input string with its ASCII value and return as a numpy array.
+
+        Args:
+            input_string (str): The input string.
+
+        Returns:
+            numpy.ndarray: The array containing ASCII values of characters.
+        """
+        # Create a numpy array to store ASCII values
+        ascii_values = np.array([ord(char) for char in input_string])
+        return ascii_values
+
+    def ascii_to_string(self, ascii_array):
+        """
+        Convert a numpy array of ASCII values back into a string.
+
+        Args:
+            ascii_array (numpy.ndarray): The array containing ASCII values of characters.
+
+        Returns:
+            str: The string reconstructed from ASCII values.
+        """
+        # Convert each ASCII value to its corresponding character and join them into a string
+        string = ''.join(chr(int(value)) for value in ascii_array)
+
+        return string
+
     def running_time(self, data_size=105000):
         """Calculate the running time of the encryption and decryption processes.
 
@@ -247,78 +332,91 @@ class FiestelStructure:
         files = os.listdir(directory)
         for file in files:
             with open(directory + file, "rb") as f:
-                data = f.read(data_size)
-                data_bits = np.unpackbits(np.frombuffer(data, dtype=np.uint8))
+                input_data = f.read(data_size)
+                # Imported Files are already in ASCII
+                input_data = np.frombuffer(input_data, dtype=np.uint8)
                 key = self.generate_key()
-                encrypted_data = self.encrypt_data(data_bits, key)
+                encrypted_data = self.encrypt_data(input_data, key)
                 decrypted_data = self.decrypt_data(encrypted_data, key)
+
+                self.frequency_histogram(input_data, "input_histogram.png")
+                self.frequency_histogram(
+                    encrypted_data, 'encrypted_histogram.png')
 
                 print("File: ", file)
                 print("Encryption time: ", timeit.timeit(
-                    lambda: self.encrypt_data(data_bits, key), number=1), "s")
+                    lambda: self.encrypt_data(input_data, key), number=1), "s")
                 print("Decryption time: ", timeit.timeit(
                     lambda: self.decrypt_data(encrypted_data, key), number=1), "s")
                 print("Decryption matches input: ",
-                      np.array_equal(data_bits, decrypted_data))
+                      np.array_equal(input_data, decrypted_data))
                 print("\n")
                 break
 
-    def letter_histogram(input_string, output_file='histogram.png'):
+    def frequency_histogram(self, input_numbers, output_file='histogram.png'):
         """
-        Generate a histogram of letter frequencies from a given string and save it as a PNG file.
+        Generate a histogram of number frequencies from a given array of numbers and save it as a PNG file.
 
         Args:
-            input_string (str): The input string.
+            input_numbers (list or array-like): The input array of numbers.
             output_file (str): The filename to save the histogram as a PNG file. Default is 'histogram.png'.
 
         Returns:
             None
         """
-        # Count occurrences of each letter in the input string
-        letter_counts = {letter: input_string.count(
-            letter) for letter in set(input_string)}
+        # Count occurrences of each number in the input array
+        number_counts = {number: np.count_nonzero(
+            input_numbers == number) for number in set(input_numbers)}
 
-        # Sort letters alphabetically
-        sorted_letters = sorted(letter_counts.keys())
+        # Sort numbers
+        sorted_numbers = sorted(number_counts.keys())
 
-        # Extract letters and corresponding counts
-        letters = sorted_letters
-        counts = [letter_counts[letter] for letter in sorted_letters]
+        # Print the maximum and minimum numbers
+        print("Minimum number: ", min(sorted_numbers))
+        print("Maximum number: ", max(sorted_numbers))
+
+        # Extract numbers and corresponding counts
+        numbers = sorted_numbers
+        counts = [number_counts[number] for number in sorted_numbers]
 
         # Plotting the histogram
         plt.figure(figsize=(10, 6))
-        plt.bar(letters, counts, color='skyblue')
-        plt.xlabel('Letters')
+        plt.bar(numbers, counts, color='skyblue')
+        plt.xlabel('Numbers')
         plt.ylabel('Frequency')
-        plt.title('Letter Frequency Histogram')
+        plt.title('Frequency Histogram')
         plt.savefig(output_file)  # Save the histogram as a PNG file
-        plt.show()
 
 
 block_size = 128
-num_rounds = 16
-key_length_bytes = 8
+num_rounds = 2
+key_length_bytes = 64
 r = 3.9
 
 fiestel = FiestelStructure(block_size, num_rounds, key_length_bytes, r)
-# fitestel.running_time()
+
+# fiestel.running_time()
 key = fiestel.generate_key()
+fiestel.encrypt_file("test files/cryptography.txt",
+                     "output files/encrypted files/cryptography.txt", key)
+fiestel.decrypt_file("output files/encrypted files/cryptography.txt",
+                     "output files/decrypted files/cryptography.txt", key)
 
-input_text = "Read the introduction and conclusion: These sections usually summarize the paper's main argument or thesis."
-input_block = fiestel.string_to_bits(input_text)
+# input_text = "Read the introduction and conclusion: These sections usually summarize the paper's main argument or thesis."
+# input_data = fiestel.string_to_ascii(input_text)
 
-encrypted_data = fiestel.encrypt_data(input_block, key)
-encrypted_text = fiestel.bits_to_string(encrypted_data)
+# encrypted_data = fiestel.encrypt_data(input_data, key)
+# encrypted_text = fiestel.ascii_to_string(encrypted_data)
+# print("encrypted_text", encrypted_text)
 
-decrypted_data = fiestel.decrypt_data(encrypted_data, key)
-decrypted_text = fiestel.bits_to_string(decrypted_data)
+# decrypted_data = fiestel.decrypt_data(encrypted_data, key)
+# decrypted_text = fiestel.ascii_to_string(decrypted_data)
 
-print("encrypted_text", encrypted_text)
 
-# fiestel.letter_histogram(input_text, "input_histogram.png")
-# fiestel.letter_histogram(encrypted_text, 'decrypted_histogram.png')
+# fiestel.frequency_histogram(input_data, "input_histogram.png")
+# fiestel.frequency_histogram(encrypted_data, 'encrypted_histogram.png')
 
-print("Decrypted text: ", decrypted_text)
-print("Decryption matches input: ", np.array_equal(input_block, decrypted_data))
+# print("Decrypted text: ", decrypted_text)
+# print("Decryption matches input: ", np.array_equal(input_data, decrypted_data))
 # print("Confusion score: ", fiestel.confusion_score(input_block, decrypted_data))
 # print("Diffusion score: ", fiestel.diffusion_score(input_block, decrypted_data))
