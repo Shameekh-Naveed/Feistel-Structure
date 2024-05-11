@@ -60,12 +60,12 @@ class FeistelStructure:
                         for _ in range(self.key_length_bytes)])
         return key
 
-    def key_expansion(initial_key, n, r):
+    def key_expansion(self, initial_key, n):
         """
         Key expansion algorithm using a 1D logistic chaotic map.
 
         Args:
-        initial_key: Initial key (list or array of numbers between 0 and 1).
+        initial_key: Initial key (list or array of numbers between 0 and 255 of size key_length_bytes).
         n: Number of new keys to generate.
         r: Parameter controlling the behavior of the logistic map (typically in the range 0 to 4).
 
@@ -76,9 +76,9 @@ class FeistelStructure:
         expanded_keys = []
 
         # Generate chaotic values using the logistic map
-        chaotic_values = [logistic_map(initial_key[0], r)]
+        chaotic_values = [self.logistic_chaotic_map(initial_key[0])]
         for _ in range(1, key_size * n):
-            chaotic_values.append(logistic_map(chaotic_values[-1], r))
+            chaotic_values.append(self.logistic_chaotic_map(chaotic_values[-1]))
 
         # Divide chaotic values into n segments and use them to expand the initial key
         for i in range(n):
@@ -100,10 +100,8 @@ class FeistelStructure:
             tuple: The updated left and right halves of the block.
         """
         logistic_C = self.logistic_chaotic_map(R)
-        # logistic_C = logistic_C.astype(int)
 
         sine_C = self.sine_chaotic_map(R, 2)
-        # sine_C = sine_C.astype(int)
 
         C = logistic_C + sine_C
         C = C.astype(int)
