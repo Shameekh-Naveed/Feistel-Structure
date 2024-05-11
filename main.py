@@ -75,7 +75,7 @@ class FiestelStructure:
         sine_C = self.sine_chaotic_map(R, 2)
         sine_C = sine_C.astype(int)
 
-        C = logistic_C ^ sine_C
+        C = logistic_C + sine_C
 
         F = L ^ C
         F ^= round_key
@@ -258,16 +258,16 @@ r = 3.9
 
 fiestel = FiestelStructure(block_size, num_rounds, key_length_bytes, r)
 fiestel.running_time()
-# key = fiestel.generate_key()
+key = fiestel.generate_key()
 
-# input_text = "Read the introduction and conclusion: These sections usually summarize the paper's main argument or thesis."
-# input_block = fiestel.string_to_bits(input_text)
+input_text = "Read the introduction and conclusion: These sections usually summarize the paper's main argument or thesis."
+input_block = fiestel.string_to_bits(input_text)
 
-# encrypted_data = fiestel.encrypt_data(input_block, key)
-# decrypted_data = fiestel.decrypt_data(encrypted_data, key)
-# decrypted_text = fiestel.bits_to_string(decrypted_data)
+encrypted_data = fiestel.encrypt_data(input_block, key)
+decrypted_data = fiestel.decrypt_data(encrypted_data, key)
+decrypted_text = fiestel.bits_to_string(decrypted_data)
 
-# print("Decrypted text: ", decrypted_text)
-# print("Decryption matches input: ", np.array_equal(input_block, decrypted_data))
+print("Decrypted text: ", decrypted_text)
+print("Decryption matches input: ", np.array_equal(input_block, decrypted_data))
 # print("Confusion score: ", fiestel.confusion_score(input_block, decrypted_data))
 # print("Diffusion score: ", fiestel.diffusion_score(input_block, decrypted_data))
