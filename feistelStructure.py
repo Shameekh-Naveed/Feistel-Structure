@@ -3,12 +3,12 @@ import secrets
 import os
 import timeit
 import matplotlib.pyplot as plt
+import random
 
 
 class FeistelStructure:
     """Class implementing a Feistel cipher structure."""
 
-    # TODO: Need to check/fix units of block_size and key_length_bytes
     def __init__(self, block_size, num_rounds, key_length_bytes, r):
         """Initialize the Feistel cipher structure.
 
@@ -285,6 +285,47 @@ class FeistelStructure:
         hamming_dist /= len(plaintext)
         return hamming_dist
 
+    def avalanche_effect(self, plaintext, key):
+        """
+        Compute the Avalanche effect for a given encryption function.
+
+        Parameters:
+            encrypt_func (function): Encryption function that takes plaintext and returns ciphertext.
+            plaintext (numpy.ndarray): Input plaintext as a NumPy array of bytes.
+
+        Returns:
+            float: Percentage of changed bits in the ciphertext compared to changing one bit in the plaintext.
+        """
+        # Encrypt the plaintext
+        ciphertext = self.encrypt_data(plaintext, key)
+
+        # Create an array to store the percentage of changed bytes
+        changed_bytes_percentage = np.zeros(len(plaintext))
+
+        # Iterate over each bit in the plaintext
+        for i in range(len(plaintext)):
+            # Flip the ith bit in the plaintext
+            modified_plaintext = np.copy(plaintext)
+            modified_plaintext[i] = random.randint(0, 255)
+            # modified_plaintext[i // 8] ^= (1 << (i % 8))
+
+            # Encrypt the modified plaintext
+            modified_ciphertext = self.encrypt_data(modified_plaintext, key)
+
+            # Calculate the percentage of changed bits in the ciphertext
+            # changed_bytes_percentage[i] = np.sum(
+            #     modified_ciphertext != ciphertext) * 100 / len(ciphertext)
+            change_percentage = 0
+            for j in range(len(ciphertext)):
+                if modified_ciphertext[j] != ciphertext[j] and i != j:
+                    change_percentage += 1
+            change_percentage = change_percentage * 100 / len(ciphertext)
+            changed_bytes_percentage[i] = change_percentage
+
+        # Return the average percentage of changed bits
+        print("changed_bytes_percentage: ", changed_bytes_percentage)
+        return np.mean(changed_bytes_percentage)
+
     def string_to_bits(self, string):
         """Convert a string to a binary array.
 
@@ -370,16 +411,18 @@ class FeistelStructure:
 
                 encrytion_time = timeit.timeit(
                     lambda: self.encrypt_data(input_data, key), number=1)
-                
+
                 decryption_time = timeit.timeit(
                     lambda: self.decrypt_data(encrypted_data, key), number=1)
-                
+
                 print("Encryption time: ", encrytion_time, "s")
                 print("Decryption time: ", decryption_time, "s")
 
-                print("Rate of encryption: ", data_size / encrytion_time, "bytes/s")
-                print("Rate of decryption: ", data_size / decryption_time, "bytes/s")
-                
+                print("Rate of encryption: ", data_size /
+                      encrytion_time, "bytes/s")
+                print("Rate of decryption: ", data_size /
+                      decryption_time, "bytes/s")
+
                 print("Decryption matches input: ",
                       np.array_equal(input_data, decrypted_data))
                 print("\n")

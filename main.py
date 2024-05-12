@@ -1,15 +1,17 @@
 from feistelStructure import FeistelStructure
 import numpy as np
 
-block_size = 4
+block_size = 32
 num_rounds = 12
-key_length_bytes = 2
+key_length_bytes = 16
 r = 3.9
 
 feistel = FeistelStructure(block_size, num_rounds, key_length_bytes, r)
 
-feistel.running_time()
+# feistel.running_time()
 key = feistel.generate_key()
+# print("Key: ", key)
+# key = [182, 21]
 
 # feistel.encrypt_file("test files/basic.txt",
 #                      "output files/encrypted files/basic.txt", key)
@@ -17,12 +19,14 @@ key = feistel.generate_key()
 # feistel.decrypt_file("output files/encrypted files/basic.txt",
 #                      "output files/decrypted files/basic.txt", key)
 
-input_text = "Read the introduction and conclusion: These sections usually summarize the paper's main argument or thesis."
+input_text = "Read the introduction and conclusion: These sections usually summarize the paper's main argument or thesis"
 input_data = feistel.string_to_ascii(input_text)
+
+avalanche_effect = feistel.avalanche_effect(input_data, key)
+
 
 encrypted_data = feistel.encrypt_data(input_data, key)
 encrypted_text = feistel.ascii_to_string(encrypted_data)
-print("encrypted_text", encrypted_text)
 
 decrypted_data = feistel.decrypt_data(encrypted_data, key)
 decrypted_text = feistel.ascii_to_string(decrypted_data)
