@@ -271,20 +271,6 @@ class FeistelStructure:
         confusion = np.sum(prob_ct ** 2)
         return confusion
 
-    def diffusion_score(self, plaintext, ciphertext):
-        """Calculate the diffusion score between plaintext and ciphertext.
-
-        Args:
-            plaintext (numpy.ndarray): The original plaintext data.
-            ciphertext (numpy.ndarray): The encrypted ciphertext data.
-
-        Returns:
-            float: The diffusion score.
-        """
-        hamming_dist = np.sum(plaintext != ciphertext)
-        hamming_dist /= len(plaintext)
-        return hamming_dist
-
     def avalanche_effect(self, plaintext, key):
         """
         Compute the Avalanche effect for a given encryption function.
@@ -307,14 +293,11 @@ class FeistelStructure:
             # Flip the ith bit in the plaintext
             modified_plaintext = np.copy(plaintext)
             modified_plaintext[i] = random.randint(0, 255)
-            # modified_plaintext[i // 8] ^= (1 << (i % 8))
 
             # Encrypt the modified plaintext
             modified_ciphertext = self.encrypt_data(modified_plaintext, key)
 
             # Calculate the percentage of changed bits in the ciphertext
-            # changed_bytes_percentage[i] = np.sum(
-            #     modified_ciphertext != ciphertext) * 100 / len(ciphertext)
             change_percentage = 0
             for j in range(len(ciphertext)):
                 if modified_ciphertext[j] != ciphertext[j] and i != j:
@@ -323,7 +306,6 @@ class FeistelStructure:
             changed_bytes_percentage[i] = change_percentage
 
         # Return the average percentage of changed bits
-        print("changed_bytes_percentage: ", changed_bytes_percentage)
         return np.mean(changed_bytes_percentage)
 
     def string_to_bits(self, string):
