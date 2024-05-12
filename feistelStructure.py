@@ -355,6 +355,7 @@ class FeistelStructure:
                 input_data = f.read()
                 # Imported Files are already in ASCII
                 input_data = np.frombuffer(input_data, dtype=np.uint8)
+                data_size = len(input_data)
                 key = self.generate_key()
                 encrypted_data = self.encrypt_data(input_data, key)
                 decrypted_data = self.decrypt_data(encrypted_data, key)
@@ -365,10 +366,20 @@ class FeistelStructure:
                     encrypted_data, file+'_encrypted_histogram.png')
 
                 print("File: ", file)
-                print("Encryption time: ", timeit.timeit(
-                    lambda: self.encrypt_data(input_data, key), number=1), "s")
-                print("Decryption time: ", timeit.timeit(
-                    lambda: self.decrypt_data(encrypted_data, key), number=1), "s")
+                print("Data size: ", data_size, "bytes")
+
+                encrytion_time = timeit.timeit(
+                    lambda: self.encrypt_data(input_data, key), number=1)
+                
+                decryption_time = timeit.timeit(
+                    lambda: self.decrypt_data(encrypted_data, key), number=1)
+                
+                print("Encryption time: ", encrytion_time, "s")
+                print("Decryption time: ", decryption_time, "s")
+
+                print("Rate of encryption: ", data_size / encrytion_time, "bytes/s")
+                print("Rate of decryption: ", data_size / decryption_time, "bytes/s")
+                
                 print("Decryption matches input: ",
                       np.array_equal(input_data, decrypted_data))
                 print("\n")
