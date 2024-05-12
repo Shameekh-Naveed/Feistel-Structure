@@ -8,10 +8,8 @@ r = 3.9
 
 feistel = FeistelStructure(block_size, num_rounds, key_length_bytes, r)
 
-# feistel.running_time()
+feistel.running_time()
 key = feistel.generate_key()
-# print("Key: ", key)
-# key = [182, 21]
 
 # feistel.encrypt_file("test files/basic.txt",
 #                      "output files/encrypted files/basic.txt", key)
