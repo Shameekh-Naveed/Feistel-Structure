@@ -27,6 +27,7 @@ class FeistelStructure:
         self.num_rounds = num_rounds
         self.key_length_bytes = key_length_bytes
         self.r = r
+        self.max_int = 2**64 - 1
 
     def logistic_chaotic_map(self, x):
         """Compute the next value in a chaotic map sequence.
@@ -113,6 +114,7 @@ class FeistelStructure:
         Returns:
             tuple: The updated left and right halves of the block.
         """
+
         logistic_C = self.logistic_chaotic_map(R)
 
         sine_C = self.sine_chaotic_map(R, 2)
@@ -120,9 +122,12 @@ class FeistelStructure:
         C = logistic_C + sine_C
         C = C.astype(int)
 
-        C = C % 1
+        C = C % 256
 
-        F = L ^ C
+        Rx = np.roll(R, C)
+        
+        F = L ^ Rx
+        F = F.astype(int)
         F ^= round_key
         return R, F
 
@@ -136,7 +141,11 @@ class FeistelStructure:
         Returns:
             numpy.ndarray: The encrypted block.
         """
-        L, R = np.split(block, 2)
+        try:
+            L, R = np.split(block, 2)
+        except:
+            print("Block size: ", len(block))
+            raise ValueError("Block size should be a multiple of 2")
         # round_keys = [key] * self.num_rounds
         for i in range(self.num_rounds):
             L, R = self.feistel_round(L, R, round_keys[i])
@@ -246,10 +255,12 @@ class FeistelStructure:
         # print("Encrypted Data: ", encrypted_data)
         # Convert the string back to a numpy array of ASCII values
         encrypted_data = self.string_to_ascii(input_data)
-        print("Encrypted Data: ", encrypted_data)
 
         decrypted_data = self.decrypt_data(encrypted_data, key)
         decrypted_data = self.ascii_to_string(decrypted_data)
+        print("Decrypted Data: ", decrypted_data)
+        avalanche_effect = self.avalanche_effect(encrypted_data, key)
+        print("Avalanche effect: ", avalanche_effect)
         with open(output_file, "w") as f:
             f.write(decrypted_data)
 
